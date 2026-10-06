@@ -1,0 +1,14 @@
+{
+  "name": "Cartas de viaje",
+  "short_name": "Cartas",
+  "description": "Des histoires de voyage pour apprendre l'espagnol.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fffaf3",
+  "theme_color": "#c2410c",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
