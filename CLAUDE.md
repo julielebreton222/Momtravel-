@@ -58,8 +58,7 @@ When asked to "convert the new stories" (or similar), do this for each story in 
 11. Move the story (and its photos) from `stories/inbox/` to `stories/done/`.
 12. Commit with the lesson title in the message.
 
-Use `lessons/exemple-sevilla.json` as the reference for the format. Once the first real lesson
-exists, delete the example lesson (ask first).
+Use an existing lesson (e.g. `lessons/2026-10-puerto-viejo-1-cocos.json`) as the reference for the format.
 
 ## Home map
 
