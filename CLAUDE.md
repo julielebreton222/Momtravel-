@@ -7,6 +7,9 @@ is **intermediate (B1)**. All UI text, translations and explanations are in Fren
 ## Files
 
 - `index.html`, `app.js`, `styles.css`, `sw.js`: the app (vanilla JS, hash routing)
+- `scene.js`: paints the paper-cut home map (one landscape band per lesson)
+- `tour.js`: first-visit welcome (Julie's voice note in `media/intro-julie.mp3`) and the guided tour
+- `icon.svg`, `icons/`: app icon (mother and daughter hugging at sunset); regenerate the PNGs from `icons/icon-square.svg` if it changes
 - `config.json`: names shown in the app (`learnerName`, `authorName`)
 - `lessons/<id>.json`: one lesson per story. `lessons/index.json` is **generated**, so never edit it by hand
 - `lessons/media/<id>/`: photos for a lesson
@@ -62,8 +65,15 @@ Use an existing lesson (e.g. `lessons/2026-10-puerto-viejo-1-cocos.json`) as the
 
 ## Home map
 
-The home page is a journey map: lessons are numbered stops along a winding path, oldest first,
-so every new story extends the trip. A lesson's `landscape` picks the scenery around its stop.
+The home page is a paper-cut journey map: lessons are numbered stops along a stitched path,
+oldest first, from a dawn sky down to a starry night where the next story will appear. A lesson's
+`landscape` picks the scenery painted around its stop (see `PAINT` in `scene.js`).
+
+## Design
+
+Cut paper: flat shapes with a small cast shadow (`--cut`), Gloock for display text, Figtree for body,
+colours from the tokens at the top of `styles.css`. No emoji in the UI. If a file is added, also add it
+to the copy step in `.github/workflows/pages.yml` and to `SHELL` in `sw.js`.
 
 ## Checking changes
 

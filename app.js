@@ -114,20 +114,7 @@ function setActiveNav(name) {
   document.querySelectorAll('[data-nav]').forEach((a) => a.classList.toggle('active', a.dataset.nav === name));
 }
 
-// Each lesson sits in a landscape; the background blends from one to the next as the path goes down.
-const LANDSCAPES = {
-  countryside: { color: '#e4eeb9', decor: ['🌻', '🐄', '🌳', '🚜'] },
-  city: { color: '#f4dcc6', decor: ['🏛️', '⛪', '🚋', '🌳'] },
-  sea: { color: '#bfe3f2', decor: ['🌊', '⛵', '🐚', '🏖️'] },
-  mountain: { color: '#d3e6c8', decor: ['⛰️', '🌲', '🏔️', '🦅'] },
-  desert: { color: '#f6e3b2', decor: ['🌵', '🐪', '☀️', '🏜️'] },
-  forest: { color: '#c2dfb0', decor: ['🌲', '🍄', '🦌', '🌳'] },
-  island: { color: '#b8e8e0', decor: ['🌴', '🐠', '🏝️', '⛵'] },
-  snow: { color: '#e6eef6', decor: ['❄️', '🌲', '⛷️', '🏔️'] },
-  jungle: { color: '#b9dfa5', decor: ['🦥', '🐒', '🦜', '🐸'] },
-};
-const LANDSCAPE_CYCLE = ['countryside', 'city', 'sea', 'mountain', 'desert', 'forest', 'island'];
-const SKY = { color: '#dceefc', decor: ['☁️', '✈️', '☁️', '🌤️'] };
+const SPEAK = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
 
 function stars(done) {
   if (!done) return 0;
@@ -135,95 +122,163 @@ function stars(done) {
   return r >= 0.9 ? 3 : r >= 0.6 ? 2 : 1;
 }
 
+let stopParallax = () => {};
+
 function renderHome() {
   setActiveNav('home');
   document.title = 'Cartas de viaje';
-  const name = config.learnerName ? `, ${esc(config.learnerName)}` : '';
-  const from = config.authorName ? ` de ${esc(config.authorName)}` : '';
   // Oldest first: the journey starts at the top and every new story extends it downward.
   const lessons = index.slice()
     .sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')) || a.id.localeCompare(b.id));
   const doneCount = lessons.filter((l) => store.data.done[l.id]).length;
   const currentIdx = lessons.findIndex((l) => !store.data.done[l.id]);
+  const scene = PaperScene.build(lessons);
+  const pos = (p) => `left:${(p.x / scene.W) * 100}%;top:${(p.y / scene.H) * 100}%`;
+  const name = config.learnerName ? `, ${esc(config.learnerName)}` : '';
+  const from = config.authorName ? ` de ${esc(config.authorName)}` : '';
 
-  const ROW = 180;
-  const TOP = 70;
-  // Stops: start, each lesson, then the "next story" node.
-  const stops = [{ kind: 'start' }, ...lessons.map((l, i) => ({ kind: 'lesson', l, i })), { kind: 'next' }];
-  const pts = stops.map((s, i) => ({ x: i === 0 ? 50 : 50 + 27 * Math.sin(i * 1.15), y: TOP + i * ROW }));
-  const height = pts[pts.length - 1].y + 110;
-  const scene = (s, i) => {
-    if (s.kind === 'next') return SKY;
-    const l = s.kind === 'start' ? lessons[0] : s.l;
-    const key = l?.landscape || LANDSCAPE_CYCLE[Math.max(0, i - 1) % LANDSCAPE_CYCLE.length];
-    return LANDSCAPES[key] || LANDSCAPES.countryside;
-  };
-
-  const gradient = `linear-gradient(to bottom, ${stops.map((s, i) => `${scene(s, i).color} ${pts[i].y}px`).join(', ')})`;
-  const path = pts.slice(1).reduce((d, p, i) => {
-    const a = pts[i];
-    return `${d} C ${a.x} ${a.y + ROW / 2}, ${p.x} ${p.y - ROW / 2}, ${p.x} ${p.y}`;
-  }, `M ${pts[0].x} ${pts[0].y}`);
-
-  const decor = stops.map((s, i) => {
-    if (s.kind === 'start') return '';
-    const d = scene(s, i).decor;
-    const p = pts[i];
-    // Put scenery on the side of the screen away from the path.
-    const side = p.x > 50 ? [8, 24] : [76, 92];
-    return `<span class="deco" style="left:${side[0]}%;top:${p.y - 34}px">${d[i % d.length]}</span>
-      <span class="deco small" style="left:${side[1]}%;top:${p.y + 26}px">${d[(i + 1) % d.length]}</span>`;
-  }).join('');
-
-  const nodes = stops.map((s, i) => {
-    const { x, y } = pts[i];
-    const pos = `style="left:${x}%;top:${y}px"`;
-    if (s.kind === 'start') {
-      return `<div class="node start" ${pos}><span class="disc" aria-hidden="true">🏠</span><span class="label"><b>Départ</b></span></div>`;
-    }
-    if (s.kind === 'next') {
-      return `<div class="node next" ${pos}><span class="disc" aria-hidden="true">✈️</span>
-        <span class="label"><b>Prochaine étape…</b><small>Bientôt une nouvelle histoire !</small></span></div>`;
-    }
-    const { l } = s;
+  const stamps = lessons.map((l) => `<span class="${store.data.done[l.id] ? 'on' : ''}"></span>`).join('');
+  const stops = lessons.map((l, i) => {
     const done = store.data.done[l.id];
-    const isCurrent = s.i === currentIdx;
+    const isCurrent = i === currentIdx;
     const n = stars(done);
-    const cls = ['node', 'lesson', done ? 'done' : '', isCurrent ? 'current' : ''].join(' ');
+    const cls = ['stop', 'lesson', done ? 'done' : '', isCurrent ? 'current' : ''].join(' ');
     const city = String(l.place || '').split(',')[0];
-    return `<a class="${cls}" ${pos} href="#/lecon/${encodeURIComponent(l.id)}" aria-label="Histoire ${s.i + 1} : ${esc(l.title)}">
+    return `<button type="button" class="${cls}" style="${pos(scene.stops[i])}" data-id="${esc(l.id)}" aria-label="Histoire ${i + 1} : ${esc(l.title)}">
       ${isCurrent ? `<span class="bubble">${store.data.seen[l.id] ? '¡Sigue!' : '¡Nuevo!'}</span>` : ''}
-      ${done ? `<span class="stars" aria-label="${n} étoiles">${'★'.repeat(n)}<i>${'★'.repeat(3 - n)}</i></span>` : ''}
-      <span class="disc">${done ? '✓' : s.i + 1}</span>
-      <span class="label"><b>${esc(city)}</b><small>${esc(l.title)}</small></span>
-    </a>`;
+      ${n ? `<span class="stars" aria-label="${n} étoiles">${'★'.repeat(n)}<i>${'★'.repeat(3 - n)}</i></span>` : ''}
+      <span class="medal">${done ? '✓' : i + 1}</span>
+      <span class="tag"><small>${esc(city)}</small><span>${esc(l.title)}</span></span>
+    </button>`;
   }).join('');
 
-  app.innerHTML = `<div class="welcome map-head">
-      <h1>¡Hola${name}!</h1>
-      <p>Le voyage${from}, une histoire à la fois.</p>
-      ${lessons.length ? `<div class="progress" role="img" aria-label="${doneCount} histoires terminées sur ${lessons.length}">
-        <div class="bar"><span style="width:${(100 * doneCount) / lessons.length}%"></span></div>
-        <span>🏅 ${doneCount} / ${lessons.length}</span></div>` : ''}
+  app.innerHTML = `<div class="map">
+    <div class="scene" style="aspect-ratio:${scene.W} / ${scene.H}">
+      <svg viewBox="0 0 ${scene.W} ${scene.H}" aria-hidden="true">${scene.art}</svg>
+      <div class="hello">
+        <h1>¡Hola${name}!</h1>
+        <p>Le voyage${from}, une histoire à la fois.</p>
+        ${lessons.length ? `<div class="stamps" role="img" aria-label="${doneCount} histoires terminées sur ${lessons.length}">${stamps}</div>` : ''}
+      </div>
+      <div class="stop start" style="${pos(scene.start)}"><span class="tag"><small>Départ</small><span>${esc(lessons[0]?.place?.split(',').pop()?.trim() || 'Le voyage')}</span></span></div>
+      ${stops}
+      <div class="stop next" style="${pos(scene.next)}"><span class="medal">${lessons.length + 1}</span>
+        <span class="tag"><small>Prochaine étape</small><span>Bientôt…</span></span></div>
     </div>
-    <div class="map" style="height:${height}px">
-      <div class="map-bg" style="background:${gradient}">${decor}</div>
-      <svg class="route" viewBox="0 0 100 ${height}" preserveAspectRatio="none" aria-hidden="true">
-        <path d="${path}" />
-      </svg>
-      ${nodes}
-    </div>`;
+  </div>`;
 
-  const cur = app.querySelector('.node.current');
-  if (cur && currentIdx > 1) cur.scrollIntoView({ block: 'center' });
+  stopParallax();
+  stopParallax = PaperScene.parallax(app.querySelector('.scene svg'), app.querySelector('.scene'));
+  app.querySelector('.scene').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-id]');
+    if (b) openLessonSheet(lessons.find((l) => l.id === b.dataset.id));
+  });
+  const cur = app.querySelector('.stop.current');
+  if (cur && currentIdx > 0) cur.scrollIntoView({ block: 'center' });
+}
+
+/* ---------- Bottom sheets (lesson preview on the map, help menu) ---------- */
+
+const sheet = $('#sheet');
+function openSheet(html) {
+  sheet.innerHTML = html;
+  sheet.hidden = false;
+  requestAnimationFrame(() => sheet.classList.add('open'));
+  sheet.querySelector('[data-close]')?.addEventListener('click', closeSheet);
+  sheet.querySelector('button')?.focus();
+}
+function closeSheet() {
+  sheet.classList.remove('open');
+  setTimeout(() => { if (!sheet.classList.contains('open')) sheet.hidden = true; }, 350);
+}
+document.addEventListener('click', (e) => {
+  if (sheet.classList.contains('open') && !sheet.contains(e.target) && !e.target.closest('[data-id], #help-btn')) closeSheet();
+});
+// Torn top edge, like a page pulled from a notebook.
+(() => {
+  let edge = 'polygon(0 14px';
+  for (let x = 0; x <= 100; x += 2.5) edge += `, ${x}% ${(6 + ((x * 37) % 9)).toFixed(1)}px`;
+  sheet.style.clipPath = `${edge}, 100% 100%, 0 100%)`;
+})();
+
+function openLessonSheet(l) {
+  if (!l) return;
+  const done = store.data.done[l.id];
+  openSheet(`<small>${esc(l.place)}${l.date ? ` · ${esc(formatDate(l.date))}` : ''}</small>
+    <h2>${esc(l.title)}</h2>
+    <p class="fr">${esc(l.titleFr || '')}</p>
+    ${l.summaryFr ? `<p class="sum">${esc(l.summaryFr)}</p>` : ''}
+    ${done ? `<p class="hint">Terminée : ${done.score} / ${done.total}</p>` : ''}
+    <div class="row">
+      <a class="btn primary" href="#/lecon/${encodeURIComponent(l.id)}">${done ? 'Relire la leçon' : 'Commencer la leçon'}</a>
+      <button type="button" class="btn ghost" data-close>Fermer</button>
+    </div>`);
+  sheet.querySelector('a').addEventListener('click', closeSheet);
+}
+
+function openHelp() {
+  const from = config.authorName || '';
+  openSheet(`<small>Aide</small>
+    <h2>Besoin d'un coup de main ?</h2>
+    <div class="menu">
+      <button type="button" class="btn" id="help-voice">Réécouter le message${from ? ` de ${esc(from)}` : ''}</button>
+      <button type="button" class="btn" id="help-tour">Refaire la visite guidée</button>
+      <button type="button" class="btn ghost" data-close>Fermer</button>
+    </div>`);
+  $('#help-voice').addEventListener('click', () => { closeSheet(); Welcome.intro({ thenTour: false }); });
+  $('#help-tour').addEventListener('click', () => { closeSheet(); Welcome.tour(); });
+}
+$('#help-btn').addEventListener('click', openHelp);
+
+/* ---------- Write to Julie (free letter, any time) ---------- */
+
+function renderWrite() {
+  setActiveNav('write');
+  const to = config.authorName || '';
+  document.title = `Écrire${to ? ` à ${to}` : ''} · Cartas de viaje`;
+  const letters = store.data.letters || [];
+  app.innerHTML = `<div class="page">
+    <h1>Écrire${to ? ` à ${esc(to)}` : ''}</h1>
+    <p class="lede">Raconte-moi ce que tu veux : ta journée, une question, un souvenir, une chanson… En espagnol ou en français, comme tu préfères. Les fautes, ce n'est pas grave !</p>
+    <div class="letter">
+      <label for="letter" class="sr-only">Ta lettre</label>
+      <textarea id="letter" placeholder="${to ? `Querida ${esc(to)},` : 'Escribe aquí…'}" spellcheck="true">${esc(store.data.letterDraft || '')}</textarea>
+    </div>
+    <div class="toolbar">
+      <button type="button" class="btn primary" id="send">Envoyer${to ? ` à ${esc(to)}` : ''}</button>
+      <button type="button" class="btn" id="copy">Copier le texte</button>
+    </div>
+    <p class="hint" id="sent-msg" role="status"></p>
+    ${letters.length ? `<h2>Mes lettres envoyées</h2><ul class="letters">${letters.slice().reverse().map((x) => `<li><small>${esc(new Date(x.at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' }))}</small><p>${esc(x.text)}</p></li>`).join('')}</ul>` : ''}
+  </div>`;
+  const ta = $('#letter');
+  const msg = $('#sent-msg');
+  ta.addEventListener('input', () => { store.data.letterDraft = ta.value; store.save(); });
+  const sent = () => {
+    store.data.letters = [...(store.data.letters || []), { at: Date.now(), text: ta.value.trim() }].slice(-30);
+    store.data.letterDraft = '';
+    store.save();
+  };
+  const copy = async () => {
+    try { await navigator.clipboard.writeText(ta.value.trim()); msg.textContent = 'Copié ! Colle-le dans un message pour moi.'; return true; } catch (_) { ta.select(); msg.textContent = 'Sélectionne le texte et copie-le.'; return false; }
+  };
+  $('#copy').addEventListener('click', copy);
+  $('#send').addEventListener('click', async () => {
+    if (!ta.value.trim()) { msg.textContent = "Écris d'abord quelque chose."; ta.focus(); return; }
+    if (navigator.share) {
+      try { await navigator.share({ text: ta.value.trim() }); sent(); renderWrite(); $('#sent-msg').textContent = '¡Enviado! Merci pour ta lettre.'; } catch (_) { /* cancelled */ }
+    } else if (await copy()) {
+      sent();
+    }
+  });
 }
 
 const STEPS = [
-  { id: 'story', label: '📖 Histoire' },
-  { id: 'vocab', label: '🔤 Mots' },
-  { id: 'grammar', label: '✏️ Grammaire' },
-  { id: 'exercises', label: '🎯 Exercices' },
-  { id: 'reply', label: '💌 À toi' },
+  { id: 'story', label: 'Histoire' },
+  { id: 'vocab', label: 'Mots' },
+  { id: 'grammar', label: 'Grammaire' },
+  { id: 'exercises', label: 'Exercices' },
+  { id: 'reply', label: 'À toi' },
 ];
 
 let current = null; // { lesson, step, answers }
@@ -249,7 +304,7 @@ async function renderLesson(id, step) {
     <div class="lesson-hero">
       ${lesson.cover ? `<img src="${esc(lesson.cover)}" alt="">` : ''}
       <h1>${esc(lesson.title)}</h1>
-      <p class="subtitle">${esc(lesson.titleFr || '')}${lesson.place ? ` · 📍 ${esc(lesson.place)}` : ''}${lesson.date ? ` · ${esc(formatDate(lesson.date))}` : ''}</p>
+      <p class="subtitle">${esc(lesson.titleFr || '')}${lesson.place ? ` · ${esc(lesson.place)}` : ''}${lesson.date ? ` · ${esc(formatDate(lesson.date))}` : ''}</p>
       ${lesson.note ? `<div class="note">${esc(lesson.note)}${author}</div>` : ''}
     </div>
     <div class="steps" role="tablist">
@@ -335,15 +390,15 @@ function viewStory(host, lesson) {
 
   host.innerHTML = `
     <div class="toolbar">
-      ${speech.supported ? `<button type="button" class="btn primary" id="play">🔊 Écouter l'histoire</button>
-      <button type="button" class="btn" id="slow" aria-pressed="${speech.slow}">🐢 ${speech.slow ? 'Lent' : 'Normal'}</button>` : ''}
-      <button type="button" class="btn" id="all-tr">🇫🇷 Tout traduire</button>
+      ${speech.supported ? `<button type="button" class="btn primary" id="play">${SPEAK} Écouter l'histoire</button>
+      <button type="button" class="btn" id="slow" aria-pressed="${speech.slow}">Vitesse : ${speech.slow ? 'lente' : 'normale'}</button>` : ''}
+      <button type="button" class="btn" id="all-tr">Tout traduire</button>
     </div>
     <p class="hint">Touche une phrase pour voir la traduction. Les <span class="v">mots en couleur</span> sont expliqués.</p>
     <div class="story">${body}</div>
     ${nextStepButton('vocab', 'Les mots')}`;
 
-  const trLine = (i) => `<div class="tr-line">${speech.supported ? `<button type="button" class="speak" data-say="${i}" aria-label="Écouter">🔊</button>` : ''}<span>${esc(sentences[i].fr)}</span></div>`;
+  const trLine = (i) => `<div class="tr-line">${speech.supported ? `<button type="button" class="speak" data-say="${i}" aria-label="Écouter">${SPEAK}</button>` : ''}<span>${esc(sentences[i].fr)}</span></div>`;
 
   const story = host.querySelector('.story');
   story.addEventListener('click', (e) => {
@@ -375,7 +430,7 @@ function viewStory(host, lesson) {
   let showingAll = false;
   host.querySelector('#all-tr').addEventListener('click', (e) => {
     showingAll = !showingAll;
-    e.currentTarget.textContent = showingAll ? '🇫🇷 Masquer la traduction' : '🇫🇷 Tout traduire';
+    e.currentTarget.textContent = showingAll ? 'Masquer la traduction' : 'Tout traduire';
     story.querySelectorAll('.s.active').forEach((x) => x.classList.remove('active'));
     story.querySelectorAll('.para-wrap').forEach((wrap) => {
       const tr = wrap.querySelector('.tr');
@@ -391,7 +446,7 @@ function viewStory(host, lesson) {
   const stopPlaying = () => {
     playing = false;
     speech.stop();
-    play.textContent = "🔊 Écouter l'histoire";
+    play.innerHTML = `${SPEAK} Écouter l'histoire`;
     story.querySelectorAll('.speaking').forEach((x) => x.classList.remove('speaking'));
   };
   const playFrom = (i) => {
@@ -410,13 +465,13 @@ function viewStory(host, lesson) {
     if (playing) { stopPlaying(); return; }
     speech.stop();
     playing = true;
-    play.textContent = '⏹ Arrêter';
+    play.textContent = 'Arrêter';
     playFrom(0);
   });
   host.querySelector('#slow').addEventListener('click', (e) => {
     speech.slow = !speech.slow;
     e.currentTarget.setAttribute('aria-pressed', speech.slow);
-    e.currentTarget.textContent = `🐢 ${speech.slow ? 'Lent' : 'Normal'}`;
+    e.currentTarget.textContent = `Vitesse : ${speech.slow ? 'lente' : 'normale'}`;
   });
 }
 
@@ -425,7 +480,7 @@ function viewStory(host, lesson) {
 function viewVocab(host, lesson) {
   const items = (lesson.vocabulary || []).map((v, i) => `<li>
       <div class="row">
-        <span>${speech.supported ? `<button type="button" class="speak" data-i="${i}" aria-label="Écouter">🔊</button>` : ''}<span class="es">${esc(v.es)}</span></span>
+        <span>${speech.supported ? `<button type="button" class="speak" data-i="${i}" aria-label="Écouter">${SPEAK}</button>` : ''}<span class="es">${esc(v.es)}</span></span>
         <span class="fr">${esc(v.fr)}</span>
       </div>
       ${v.note ? `<div class="ex">${esc(v.note)}</div>` : ''}
@@ -481,11 +536,11 @@ function viewExercises(host, lesson) {
       store.data.done[lesson.id] = { score, total: exercises.length, at: Date.now() };
       store.save();
     }
-    const msg = score === exercises.length ? '¡Perfecto! 🎉' : score >= exercises.length * 0.7 ? '¡Muy bien! 👏' : '¡Bien! Sigue así 💪';
+    const msg = score === exercises.length ? '¡Perfecto!' : score >= exercises.length * 0.7 ? '¡Muy bien!' : '¡Bien! Sigue así';
     box.innerHTML = `<div class="score"><strong>${score} / ${exercises.length}</strong>${msg}
       <div style="margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
         <button type="button" class="btn" id="retry">↺ Recommencer</button>
-        <button type="button" class="btn primary" data-goto="reply">💌 À toi d'écrire →</button>
+        <button type="button" class="btn primary" data-goto="reply">À toi d'écrire →</button>
       </div></div>`;
     box.querySelector('#retry').addEventListener('click', () => {
       for (const k of Object.keys(answers)) delete answers[k];
@@ -553,9 +608,9 @@ function renderExercise(ex, i, a) {
       <p class="hint">Dis-le à voix haute ou écris-le sur un papier, puis regarde la réponse.</p>
       ${a ? `<div class="reveal">${esc(ex.es)}</div>` : ''}
       <div class="options inline" style="margin-top:10px">
-        ${!a ? `<button type="button" class="option" data-ex="${i}" data-act="reveal">👀 Voir la réponse</button>`
-          : a.pending ? `<button type="button" class="option" data-ex="${i}" data-act="yes">👍 J'avais bon</button>
-                 <button type="button" class="option" data-ex="${i}" data-act="no">🤏 Pas tout à fait</button>` : ''}
+        ${!a ? `<button type="button" class="option" data-ex="${i}" data-act="reveal">Voir la réponse</button>`
+          : a.pending ? `<button type="button" class="option" data-ex="${i}" data-act="yes">J'avais bon</button>
+                 <button type="button" class="option" data-ex="${i}" data-act="no">Pas tout à fait</button>` : ''}
       </div>`;
   }
   return `<div class="exercise">${head}${body}${feedback(ex, a)}</div>`;
@@ -567,7 +622,7 @@ function viewReply(host, lesson) {
   const r = lesson.reply || {};
   const draft = store.data.drafts[lesson.id] || '';
   const to = config.authorName || '';
-  host.innerHTML = `<h2>💌 À toi d'écrire</h2>
+  host.innerHTML = `<h2>À toi d'écrire</h2>
     <div class="grammar">
       <p style="font-family:var(--serif);font-size:1.15rem;margin:0 0 6px">${esc(r.prompt || '¿Qué te ha parecido esta historia?')}</p>
       ${r.promptFr ? `<p class="hint" style="margin:0">${esc(r.promptFr)}</p>` : ''}
@@ -575,8 +630,8 @@ function viewReply(host, lesson) {
     <p class="hint" style="margin-top:14px">Écris ta réponse en espagnol${to ? ` et envoie-la à ${esc(to)}` : ''}. Pas grave s'il y a des fautes !</p>
     <textarea id="draft" placeholder="Escribe aquí…" lang="es" spellcheck="true">${esc(draft)}</textarea>
     <div class="toolbar" style="margin-top:10px">
-      <button type="button" class="btn primary" id="send">📤 Envoyer${to ? ` à ${esc(to)}` : ''}</button>
-      <button type="button" class="btn" id="copy">📋 Copier</button>
+      <button type="button" class="btn primary" id="send">Envoyer${to ? ` à ${esc(to)}` : ''}</button>
+      <button type="button" class="btn" id="copy">Copier</button>
     </div>
     <p class="hint" id="sent-msg" role="status"></p>`;
   const ta = host.querySelector('#draft');
@@ -588,9 +643,9 @@ function viewReply(host, lesson) {
   };
   host.querySelector('#copy').addEventListener('click', copy);
   host.querySelector('#send').addEventListener('click', async () => {
-    if (!ta.value.trim()) { msg.textContent = "Écris d'abord quelque chose 🙂"; ta.focus(); return; }
+    if (!ta.value.trim()) { msg.textContent = "Écris d'abord quelque chose."; ta.focus(); return; }
     if (navigator.share) {
-      try { await navigator.share({ text: text() }); msg.textContent = '¡Enviado! 💌'; } catch (_) { /* cancelled */ }
+      try { await navigator.share({ text: text() }); msg.textContent = '¡Enviado!'; } catch (_) { /* cancelled */ }
     } else {
       await copy();
     }
@@ -639,12 +694,12 @@ async function renderWords() {
       <div class="flash"><button type="button" class="flash-card" id="card">
         <div class="front">${esc(c.v.es)}</div>
         ${flipped ? `<div class="back-side"><div class="fr">${esc(c.v.fr)}</div>${c.v.note ? `<div class="ex">${esc(c.v.note)}</div>` : ''}</div>
-          <div class="from-lesson">📍 ${esc(c.lesson.title)}</div>`
+          <div class="from-lesson">${esc(c.lesson.title)}</div>`
           : '<div class="hint" style="margin-top:14px">Touche pour voir la traduction</div>'}
       </button></div>
       <div class="flash-actions">
-        ${speech.supported ? '<button type="button" class="btn" id="say">🔊 Écouter</button>' : ''}
-        ${flipped ? `<button type="button" class="btn" id="again-card">🔁 À revoir</button>
+        ${speech.supported ? '<button type="button" class="btn" id="say">${SPEAK} Écouter</button>' : ''}
+        ${flipped ? `<button type="button" class="btn" id="again-card">À revoir</button>
           <button type="button" class="btn primary" id="knew">✓ Je savais</button>` : ''}
       </div>`;
     $('#card').addEventListener('click', () => { flipped = !flipped; draw(); });
@@ -676,7 +731,9 @@ applyScale();
 
 async function route() {
   const parts = location.hash.replace(/^#\/?/, '').split('/').map(decodeURIComponent);
+  closeSheet();
   if (parts[0] === 'lecon' && parts[1]) {
+    stopParallax();
     const sameLesson = current && current.lesson.id === parts[1] && $('#step');
     if (sameLesson) {
       current.step = STEPS.some((s) => s.id === parts[2]) ? parts[2] : 'story';
@@ -688,13 +745,16 @@ async function route() {
     return;
   }
   current = null;
+  stopParallax();
   window.scrollTo(0, 0);
   if (parts[0] === 'mots') await renderWords();
+  else if (parts[0] === 'ecrire') renderWrite();
   else renderHome();
 }
 
 (async function start() {
   try { config = Object.assign(config, await getJSON('config.json')); } catch (_) { /* defaults */ }
+  $('[data-nav="write"] span').textContent = config.authorName ? `Écrire à ${config.authorName}` : 'Écrire';
   try {
     index = await getJSON('lessons/index.json');
   } catch (err) {
@@ -702,7 +762,10 @@ async function route() {
     return;
   }
   window.addEventListener('hashchange', route);
-  route();
+  await route();
+  // First visit: Julie's voice message, then the guided tour.
+  Welcome.init(config, () => { store.data.introSeen = true; store.save(); });
+  if (!store.data.introSeen) Welcome.intro();
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
     navigator.serviceWorker.register('sw.js').catch(() => {});
   }
