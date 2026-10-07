@@ -213,3 +213,55 @@ textarea {
 
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* Journey map (home) */
+.map-head { text-align: center; }
+.progress { display: flex; align-items: center; gap: 10px; justify-content: center; margin-top: 10px; font-weight: 600; font-size: .9rem; }
+.progress .bar { width: min(220px, 50vw); height: 12px; background: var(--surface-2); border-radius: 999px; overflow: hidden; border: 1px solid var(--border); }
+.progress .bar span { display: block; height: 100%; background: linear-gradient(90deg, #f59e0b, #facc15); border-radius: 999px; }
+
+.map { position: relative; margin: 8px -16px 0; overflow: hidden; border-radius: 24px; }
+.map-bg { position: absolute; inset: 0; }
+.deco { position: absolute; font-size: 2.1rem; transform: translate(-50%, -50%); opacity: .9; pointer-events: none; user-select: none; }
+.deco.small { font-size: 1.5rem; opacity: .75; }
+.route { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.route path { fill: none; stroke: rgba(120, 72, 30, .45); stroke-width: 6; stroke-dasharray: 2 14; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+
+.node {
+  position: absolute; transform: translate(-50%, -50%);
+  display: flex; flex-direction: column; align-items: center;
+  text-decoration: none; color: #2b2118; z-index: 1;
+}
+.node .disc {
+  width: 68px; height: 68px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 1.7rem; font-weight: bold;
+  background: #fb923c; color: #fff; border: 4px solid #fff;
+  box-shadow: 0 6px 0 #c2410c, 0 10px 18px rgba(0, 0, 0, .18);
+  transition: transform .12s;
+}
+.node.lesson:active .disc { transform: translateY(4px); box-shadow: 0 2px 0 #c2410c; }
+.node.done .disc { background: linear-gradient(145deg, #fcd34d, #f59e0b); box-shadow: 0 6px 0 #b45309, 0 10px 18px rgba(0, 0, 0, .18); }
+.node.current .disc { width: 82px; height: 82px; font-size: 2rem; animation: pulse 1.8s ease-in-out infinite; }
+.node.start .disc, .node.next .disc { background: #fff; font-size: 1.8rem; box-shadow: 0 6px 0 #d6c4b0, 0 10px 18px rgba(0, 0, 0, .12); }
+.node.next .disc { border: 3px dashed #9ca3af; background: rgba(255, 255, 255, .7); }
+.node .label {
+  margin-top: 12px; background: rgba(255, 255, 255, .92); border-radius: 12px; padding: 3px 10px;
+  text-align: center; line-height: 1.25; box-shadow: 0 1px 4px rgba(0, 0, 0, .1); max-width: 170px;
+}
+.node .label b { display: block; font-size: .9rem; }
+.node .label small { display: block; font-size: .75rem; color: #6b5d50; font-style: italic; }
+.node .stars { position: absolute; top: -26px; font-size: 1.15rem; color: #f59e0b; letter-spacing: 1px; text-shadow: 0 1px 0 #fff; }
+.node .stars i { font-style: normal; color: rgba(0, 0, 0, .15); }
+.node .bubble {
+  position: absolute; top: -42px; background: #fff; color: #c2410c; font-weight: 700; font-size: .85rem;
+  padding: 3px 12px; border-radius: 999px; box-shadow: 0 2px 6px rgba(0, 0, 0, .15); white-space: nowrap;
+  animation: bob 1.6s ease-in-out infinite;
+}
+.node .bubble::after { content: ''; position: absolute; left: 50%; bottom: -6px; margin-left: -6px; border: 6px solid transparent; border-bottom: 0; border-top-color: #fff; }
+@keyframes pulse { 0%, 100% { outline: 0 solid rgba(251, 146, 60, .5); } 50% { outline: 12px solid rgba(251, 146, 60, 0); } }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@media (prefers-reduced-motion: reduce) { .node .disc, .node .bubble { animation: none; } }
+@media (prefers-color-scheme: dark) {
+  .map-bg { filter: brightness(.55) saturate(.9); }
+}

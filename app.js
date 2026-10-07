@@ -114,38 +114,106 @@ function setActiveNav(name) {
   document.querySelectorAll('[data-nav]').forEach((a) => a.classList.toggle('active', a.dataset.nav === name));
 }
 
+// Each lesson sits in a landscape; the background blends from one to the next as the path goes down.
+const LANDSCAPES = {
+  countryside: { color: '#e4eeb9', decor: ['🌻', '🐄', '🌳', '🚜'] },
+  city: { color: '#f4dcc6', decor: ['🏛️', '⛪', '🚋', '🌳'] },
+  sea: { color: '#bfe3f2', decor: ['🌊', '⛵', '🐚', '🏖️'] },
+  mountain: { color: '#d3e6c8', decor: ['⛰️', '🌲', '🏔️', '🦅'] },
+  desert: { color: '#f6e3b2', decor: ['🌵', '🐪', '☀️', '🏜️'] },
+  forest: { color: '#c2dfb0', decor: ['🌲', '🍄', '🦌', '🌳'] },
+  island: { color: '#b8e8e0', decor: ['🌴', '🐠', '🏝️', '⛵'] },
+  snow: { color: '#e6eef6', decor: ['❄️', '🌲', '⛷️', '🏔️'] },
+};
+const LANDSCAPE_CYCLE = ['countryside', 'city', 'sea', 'mountain', 'desert', 'forest', 'island'];
+const SKY = { color: '#dceefc', decor: ['☁️', '✈️', '☁️', '🌤️'] };
+
+function stars(done) {
+  if (!done) return 0;
+  const r = done.score / done.total;
+  return r >= 0.9 ? 3 : r >= 0.6 ? 2 : 1;
+}
+
 function renderHome() {
   setActiveNav('home');
   document.title = 'Cartas de viaje';
   const name = config.learnerName ? `, ${esc(config.learnerName)}` : '';
-  if (!index.length) {
-    app.innerHTML = `<div class="welcome"><h1>¡Hola${name}!</h1></div>
-      <p class="empty">Pas encore d'histoire… La première arrive bientôt ✈️</p>`;
-    return;
-  }
-  const cards = index.map((l) => {
+  const from = config.authorName ? ` de ${esc(config.authorName)}` : '';
+  // Oldest first: the journey starts at the top and every new story extends it downward.
+  const lessons = index.slice().sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
+  const doneCount = lessons.filter((l) => store.data.done[l.id]).length;
+  const currentIdx = lessons.findIndex((l) => !store.data.done[l.id]);
+
+  const ROW = 180;
+  const TOP = 70;
+  // Stops: start, each lesson, then the "next story" node.
+  const stops = [{ kind: 'start' }, ...lessons.map((l, i) => ({ kind: 'lesson', l, i })), { kind: 'next' }];
+  const pts = stops.map((s, i) => ({ x: i === 0 ? 50 : 50 + 27 * Math.sin(i * 1.15), y: TOP + i * ROW }));
+  const height = pts[pts.length - 1].y + 110;
+  const scene = (s, i) => {
+    if (s.kind === 'next') return SKY;
+    const l = s.kind === 'start' ? lessons[0] : s.l;
+    const key = l?.landscape || LANDSCAPE_CYCLE[Math.max(0, i - 1) % LANDSCAPE_CYCLE.length];
+    return LANDSCAPES[key] || LANDSCAPES.countryside;
+  };
+
+  const gradient = `linear-gradient(to bottom, ${stops.map((s, i) => `${scene(s, i).color} ${pts[i].y}px`).join(', ')})`;
+  const path = pts.slice(1).reduce((d, p, i) => {
+    const a = pts[i];
+    return `${d} C ${a.x} ${a.y + ROW / 2}, ${p.x} ${p.y - ROW / 2}, ${p.x} ${p.y}`;
+  }, `M ${pts[0].x} ${pts[0].y}`);
+
+  const decor = stops.map((s, i) => {
+    if (s.kind === 'start') return '';
+    const d = scene(s, i).decor;
+    const p = pts[i];
+    // Put scenery on the side of the screen away from the path.
+    const side = p.x > 50 ? [8, 24] : [76, 92];
+    return `<span class="deco" style="left:${side[0]}%;top:${p.y - 34}px">${d[i % d.length]}</span>
+      <span class="deco small" style="left:${side[1]}%;top:${p.y + 26}px">${d[(i + 1) % d.length]}</span>`;
+  }).join('');
+
+  const nodes = stops.map((s, i) => {
+    const { x, y } = pts[i];
+    const pos = `style="left:${x}%;top:${y}px"`;
+    if (s.kind === 'start') {
+      return `<div class="node start" ${pos}><span class="disc" aria-hidden="true">🏠</span><span class="label"><b>Départ</b></span></div>`;
+    }
+    if (s.kind === 'next') {
+      return `<div class="node next" ${pos}><span class="disc" aria-hidden="true">✈️</span>
+        <span class="label"><b>Prochaine étape…</b><small>Bientôt une nouvelle histoire !</small></span></div>`;
+    }
+    const { l } = s;
     const done = store.data.done[l.id];
-    const badge = done
-      ? `<span class="badge done">✓ ${done.score}/${done.total}</span>`
-      : (!store.data.seen[l.id] ? '<span class="badge new">Nouveau</span>' : '');
-    const cover = l.cover
-      ? `<img class="card-cover" src="${esc(l.cover)}" alt="" loading="lazy">`
-      : '<div class="card-cover placeholder" aria-hidden="true">🗺️</div>';
-    return `<a class="card" href="#/lecon/${encodeURIComponent(l.id)}">
-      ${cover}
-      <div class="card-body">
-        <h2>${esc(l.title)}${badge}</h2>
-        <div class="card-meta">📍 ${esc(l.place)}${l.date ? ` · ${esc(formatDate(l.date))}` : ''}</div>
-        ${l.summaryFr ? `<p class="card-summary">${esc(l.summaryFr)}</p>` : ''}
-      </div>
+    const isCurrent = s.i === currentIdx;
+    const n = stars(done);
+    const cls = ['node', 'lesson', done ? 'done' : '', isCurrent ? 'current' : ''].join(' ');
+    const city = String(l.place || '').split(',')[0];
+    return `<a class="${cls}" ${pos} href="#/lecon/${encodeURIComponent(l.id)}" aria-label="Histoire ${s.i + 1} : ${esc(l.title)}">
+      ${isCurrent ? `<span class="bubble">${store.data.seen[l.id] ? '¡Sigue!' : '¡Nuevo!'}</span>` : ''}
+      ${done ? `<span class="stars" aria-label="${n} étoiles">${'★'.repeat(n)}<i>${'★'.repeat(3 - n)}</i></span>` : ''}
+      <span class="disc">${done ? '✓' : s.i + 1}</span>
+      <span class="label"><b>${esc(city)}</b><small>${esc(l.title)}</small></span>
     </a>`;
   }).join('');
-  const from = config.authorName ? ` de ${esc(config.authorName)}` : '';
-  app.innerHTML = `<div class="welcome">
+
+  app.innerHTML = `<div class="welcome map-head">
       <h1>¡Hola${name}!</h1>
-      <p>Les histoires de voyage${from}, à lire en espagnol.</p>
+      <p>Le voyage${from}, une histoire à la fois.</p>
+      ${lessons.length ? `<div class="progress" role="img" aria-label="${doneCount} histoires terminées sur ${lessons.length}">
+        <div class="bar"><span style="width:${(100 * doneCount) / lessons.length}%"></span></div>
+        <span>🏅 ${doneCount} / ${lessons.length}</span></div>` : ''}
     </div>
-    <div class="cards">${cards}</div>`;
+    <div class="map" style="height:${height}px">
+      <div class="map-bg" style="background:${gradient}">${decor}</div>
+      <svg class="route" viewBox="0 0 100 ${height}" preserveAspectRatio="none" aria-hidden="true">
+        <path d="${path}" />
+      </svg>
+      ${nodes}
+    </div>`;
+
+  const cur = app.querySelector('.node.current');
+  if (cur && currentIdx > 1) cur.scrollIntoView({ block: 'center' });
 }
 
 const STEPS = [
@@ -165,7 +233,7 @@ async function renderLesson(id, step) {
   try {
     lesson = await loadLesson(id);
   } catch (err) {
-    app.innerHTML = `<a class="back" href="#/">← Toutes les histoires</a><p class="empty">Histoire introuvable.</p>`;
+    app.innerHTML = `<a class="back" href="#/">← La carte</a><p class="empty">Histoire introuvable.</p>`;
     return;
   }
   if (!current || current.lesson.id !== lesson.id) current = { lesson, step: 'story', answers: {} };
@@ -175,7 +243,7 @@ async function renderLesson(id, step) {
 
   const author = config.authorName ? `<span class="from">— ${esc(config.authorName)}</span>` : '';
   app.innerHTML = `
-    <a class="back" href="#/">← Toutes les histoires</a>
+    <a class="back" href="#/">← La carte</a>
     <div class="lesson-hero">
       ${lesson.cover ? `<img src="${esc(lesson.cover)}" alt="">` : ''}
       <h1>${esc(lesson.title)}</h1>

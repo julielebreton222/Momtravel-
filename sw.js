@@ -1,6 +1,6 @@
 // Network-first service worker: always tries to fetch the newest lessons,
 // falls back to the cached copy when offline.
-const CACHE = 'cartas-v1';
+const CACHE = 'cartas-v2';
 const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'icon.svg', 'manifest.webmanifest', 'config.json'];
 
 self.addEventListener('install', (e) => {
