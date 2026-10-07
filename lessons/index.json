@@ -1,5 +1,14 @@
 [
   {
+    "id": "2026-10-playa-cantar",
+    "title": "La playa, el mar y una canción",
+    "titleFr": "La plage, la mer et une chanson",
+    "place": "Costa Rica",
+    "date": "2026-10-07",
+    "landscape": "sea",
+    "summaryFr": "Un moment à la plage sans téléphone, des chansons au hasard… et la professeure Luna qui explique pourquoi chanter fait tant de bien."
+  },
+  {
     "id": "exemple-sevilla",
     "title": "Una tarde en Sevilla",
     "titleFr": "Un après-midi à Séville (exemple)",
@@ -13,6 +22,7 @@
     "title": "Puerto Viejo, el Caribe de Costa Rica",
     "titleFr": "Puerto Viejo, les Caraïbes du Costa Rica",
     "place": "Puerto Viejo, Costa Rica",
+    "date": "2026-09",
     "landscape": "jungle",
     "summaryFr": "L'histoire afro-caribéenne de Puerto Viejo, le « rice and beans » au lait de coco, les paresseux, les singes hurleurs et la devise « pura vida »."
   },
@@ -21,6 +31,7 @@
     "title": "La aventura de los cocos",
     "titleFr": "L'aventure des noix de coco",
     "place": "Puerto Viejo, Costa Rica",
+    "date": "2026-09",
     "landscape": "island",
     "summaryFr": "Josh veut faire de l'huile de coco maison… mais les cocotiers sont trop hauts, et les noix de coco cachent une drôle de surprise."
   }

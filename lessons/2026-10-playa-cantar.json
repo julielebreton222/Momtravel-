@@ -1,0 +1,144 @@
+{
+  "id": "2026-10-playa-cantar",
+  "title": "La playa, el mar y una canción",
+  "titleFr": "La plage, la mer et une chanson",
+  "place": "Costa Rica",
+  "date": "2026-10-07",
+  "landscape": "sea",
+  "level": "B1",
+  "summaryFr": "Un moment à la plage sans téléphone, des chansons au hasard… et la professeure Luna qui explique pourquoi chanter fait tant de bien.",
+  "story": [
+    {
+      "sentences": [
+        { "es": "Hoy fui a la playa por mi cuenta, sin nadie y sin teléfono.", "fr": "Aujourd'hui, j'ai passé un moment à la plage, de mon côté, sans personne et sans téléphone." },
+        { "es": "Me quedé mucho tiempo mirando las olas.", "fr": "J'ai regardé les vagues pendant longtemps." },
+        { "es": "Sentí una paz enorme.", "fr": "J'ai ressenti une paix immense." },
+        { "es": "Poco a poco, me relajé muchísimo y volví a conectar conmigo.", "fr": "Petit à petit, j'ai complètement lâché prise et j'ai renoué avec moi-même." }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "Y entonces, sin pensarlo, empecé a cantar.", "fr": "Et puis, sans y penser, j'ai commencé à chanter." },
+        { "es": "Canté canciones al azar, todo lo que me venía a la cabeza.", "fr": "J'ai chanté des chansons au hasard, tout ce qui me passait par la tête." },
+        { "es": "¡Me sentó tan bien cantar!", "fr": "Ça m'a fait tellement de bien de chanter !" },
+        { "es": "Y me pregunté: mamá, ¿cuándo fue la última vez que cantaste? ¡Sé que te encanta!", "fr": "Et je me suis demandé : maman, quand as-tu chanté pour la dernière fois ? Je sais que tu adores ça !" }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "Pero hoy la lección no termina aquí.", "fr": "Mais aujourd'hui, la leçon ne s'arrête pas là." },
+        { "es": "Se abre la puerta y entra en la clase la profesora Luna, con una guitarra.", "fr": "La porte s'ouvre et la professeure Luna entre dans la classe, avec une guitare." },
+        { "es": "—Buenos días a todos. Hoy quiero hablarles de algo muy importante: ¡cantar!", "fr": "— Bonjour à tous. Aujourd'hui, je veux vous parler de quelque chose de très important : chanter !" },
+        { "es": "—Cuando cantamos, respiramos más profundo y más despacio, como en la meditación.", "fr": "— Quand on chante, on respire plus profondément et plus lentement, comme pendant la méditation." },
+        { "es": "Eso calma el cuerpo y baja el estrés.", "fr": "Ça calme le corps et ça fait baisser le stress." },
+        { "es": "Además, el cerebro libera endorfinas, las hormonas del bienestar.", "fr": "En plus, le cerveau libère des endorphines, les hormones du bien-être." }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "Una alumna levanta la mano: —¿Y si desafino, profesora?", "fr": "Une élève lève la main : — Et si je chante faux, madame ?" },
+        { "es": "—¡No importa! El cuerpo no sabe si cantas bien o mal. Lo importante es que cantes.", "fr": "— Ça n'a aucune importance ! Le corps ne sait pas si tu chantes bien ou mal. L'important, c'est que tu chantes." },
+        { "es": "—Y cantar con otras personas es todavía mejor: en un coro, el corazón de los cantantes puede latir al mismo ritmo.", "fr": "— Et chanter avec d'autres, c'est encore mieux : dans une chorale, le cœur des chanteurs peut battre au même rythme." },
+        { "es": "Las canciones también son buenas para la memoria: ¿quién no recuerda las canciones de su juventud?", "fr": "Les chansons sont aussi bonnes pour la mémoire : qui ne se souvient pas des chansons de sa jeunesse ?" },
+        { "es": "—Mi consejo es sencillo: canten en la ducha, en la cocina, en el carro… ¡o en la playa!", "fr": "— Mon conseil est simple : chantez sous la douche, dans la cuisine, en voiture… ou à la plage !" },
+        { "es": "Y ahora, quiero que todos canten conmigo.", "fr": "Et maintenant, je veux que vous chantiez tous avec moi." }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "Mamá, espero que esta semana cantes una canción, aunque sea pequeñita.", "fr": "Maman, j'espère que cette semaine tu chanteras une chanson, même une toute petite." },
+        { "es": "Y si quieres, ¡cuéntame cuál!", "fr": "Et si tu veux, dis-moi laquelle !" }
+      ]
+    }
+  ],
+  "vocabulary": [
+    { "es": "por mi cuenta", "fr": "de mon côté, toute seule / tout seul", "note": "Faire quelque chose « por mi cuenta », c'est le faire de façon indépendante, sans personne." },
+    { "es": "la ola", "fr": "la vague", "match": "olas" },
+    { "es": "la paz", "fr": "la paix" },
+    { "es": "relajarse", "fr": "se détendre", "match": "me relajé" },
+    { "es": "al azar", "fr": "au hasard" },
+    { "es": "sentar bien", "fr": "faire du bien", "match": "Me sentó tan bien", "note": "S'utilise aussi pour un vêtement (ese vestido te sienta bien = cette robe te va bien) ou un repas (la cena me sentó mal = j'ai mal digéré le dîner)." },
+    { "es": "la última vez", "fr": "la dernière fois" },
+    { "es": "respirar", "fr": "respirer", "match": "respiramos" },
+    { "es": "el bienestar", "fr": "le bien-être" },
+    { "es": "desafinar", "fr": "chanter faux", "match": "desafino" },
+    { "es": "el coro", "fr": "la chorale" },
+    { "es": "latir", "fr": "battre (pour le cœur)", "note": "El latido = le battement de cœur." },
+    { "es": "la juventud", "fr": "la jeunesse" },
+    { "es": "el carro", "fr": "la voiture", "note": "En Amérique latine. En Espagne, on dit « el coche »." }
+  ],
+  "grammar": {
+    "title": "Le subjonctif après « espero que », « quiero que », « lo importante es que »",
+    "explanation": "Quand on exprime un souhait, une envie ou ce qui est important pour quelqu'un d'autre, l'espagnol met le verbe qui suit « que » au subjonctif, comme en français : « je veux que tu chantes » → « quiero que cantes ».\n\nPour le former au présent, on part de la 1re personne du présent (canto, como, vivo), on enlève le -o et on « échange » la voyelle : les verbes en -ar prennent un -e (cante, cantes, cante, cantemos, canten), les verbes en -er et -ir prennent un -a (coma, comas, viva, vivas). Les irréguliers gardent leur irrégularité : hago → haga, tengo → tenga.\n\nAttention : après « espero que », le français utilise souvent l'indicatif (« j'espère que tu chanteras »), mais l'espagnol, lui, prend toujours le subjonctif. Même chose après « aunque » quand on parle d'une possibilité : « aunque sea pequeñita » (même si elle est toute petite).",
+    "examples": [
+      { "es": "Lo importante es que cantes.", "fr": "L'important, c'est que tu chantes." },
+      { "es": "Y ahora, quiero que todos canten conmigo.", "fr": "Et maintenant, je veux que vous chantiez tous avec moi." },
+      { "es": "Mamá, espero que esta semana cantes una canción…", "fr": "Maman, j'espère que cette semaine tu chanteras une chanson… (subjonctif en espagnol, futur en français)" },
+      { "es": "…aunque sea pequeñita.", "fr": "…même si elle est toute petite. (sea : subjonctif de ser)" }
+    ]
+  },
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "¿Qué no llevó a la playa?",
+      "options": ["Su teléfono", "Su toalla", "Su guitarra"],
+      "answer": 0,
+      "explanation": "« Hoy fui a la playa por mi cuenta, sin nadie y sin teléfono. »"
+    },
+    {
+      "type": "choice",
+      "question": "¿Qué sintió mirando las olas?",
+      "options": ["Miedo", "Una paz enorme", "Mucho calor"],
+      "answer": 1
+    },
+    {
+      "type": "truefalse",
+      "statement": "En la playa, cantó canciones al azar.",
+      "answer": true,
+      "explanation": "« Canté canciones al azar, todo lo que me venía a la cabeza. »"
+    },
+    {
+      "type": "truefalse",
+      "statement": "Según la profesora Luna, hay que cantar bien para sentir los beneficios.",
+      "answer": false,
+      "explanation": "« El cuerpo no sabe si cantas bien o mal. Lo importante es que cantes. »"
+    },
+    {
+      "type": "choice",
+      "question": "Según la profesora, ¿por qué cantar calma el cuerpo?",
+      "options": ["Porque respiramos más profundo y más despacio", "Porque cantamos muy fuerte", "Porque cantamos con los ojos cerrados"],
+      "answer": 0
+    },
+    {
+      "type": "fill",
+      "sentence": "Lo importante es que tú ___.",
+      "hint": "cantar — après « lo importante es que » → subjonctif",
+      "options": ["cantas", "cantes", "cantar"],
+      "answer": "cantes",
+      "explanation": "Verbe en -ar → subjonctif en -e : cantes."
+    },
+    {
+      "type": "fill",
+      "sentence": "Espero que mañana ___ sol en la playa.",
+      "hint": "hacer — après « espero que » → subjonctif (irrégulier)",
+      "options": ["hace", "haga", "hizo"],
+      "answer": "haga",
+      "explanation": "Hago → haga. Après « espero que », toujours le subjonctif."
+    },
+    {
+      "type": "fill",
+      "sentence": "En un coro, el corazón de los cantantes puede ___ al mismo ritmo.",
+      "options": ["latir", "respirar", "desafinar"],
+      "answer": "latir"
+    },
+    {
+      "type": "translate",
+      "fr": "Je veux que tu chantes avec moi.",
+      "es": "Quiero que cantes conmigo."
+    }
+  ],
+  "reply": {
+    "prompt": "Mamá, ¿cuándo fue la última vez que cantaste? ¿Qué canción te encanta cantar? Y termina con un deseo para esta semana: «Espero que…»",
+    "promptFr": "Raconte-moi ta dernière chanson, puis écris un souhait avec « Espero que… » + subjonctif."
+  }
+}
