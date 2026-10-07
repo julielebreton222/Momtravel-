@@ -124,6 +124,7 @@ const LANDSCAPES = {
   forest: { color: '#c2dfb0', decor: ['🌲', '🍄', '🦌', '🌳'] },
   island: { color: '#b8e8e0', decor: ['🌴', '🐠', '🏝️', '⛵'] },
   snow: { color: '#e6eef6', decor: ['❄️', '🌲', '⛷️', '🏔️'] },
+  jungle: { color: '#b9dfa5', decor: ['🦥', '🐒', '🦜', '🐸'] },
 };
 const LANDSCAPE_CYCLE = ['countryside', 'city', 'sea', 'mountain', 'desert', 'forest', 'island'];
 const SKY = { color: '#dceefc', decor: ['☁️', '✈️', '☁️', '🌤️'] };
@@ -140,7 +141,8 @@ function renderHome() {
   const name = config.learnerName ? `, ${esc(config.learnerName)}` : '';
   const from = config.authorName ? ` de ${esc(config.authorName)}` : '';
   // Oldest first: the journey starts at the top and every new story extends it downward.
-  const lessons = index.slice().sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')));
+  const lessons = index.slice()
+    .sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')) || a.id.localeCompare(b.id));
   const doneCount = lessons.filter((l) => store.data.done[l.id]).length;
   const currentIdx = lessons.findIndex((l) => !store.data.done[l.id]);
 

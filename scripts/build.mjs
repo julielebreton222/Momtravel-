@@ -22,7 +22,7 @@ async function check(file, l) {
   if (!/^[a-z0-9-]+$/.test(l.id || '')) err('"id" may only contain a-z, 0-9 and "-"');
   for (const k of ['title', 'titleFr', 'place']) if (!str(l[k])) err(`missing "${k}"`);
   if (l.date && !/^\d{4}(-\d{2}(-\d{2})?)?$/.test(l.date)) err('"date" must look like 2026-09-15 (or 2026-09)');
-  const LANDSCAPES = ['countryside', 'city', 'sea', 'mountain', 'desert', 'forest', 'island', 'snow'];
+  const LANDSCAPES = ['countryside', 'city', 'sea', 'mountain', 'desert', 'forest', 'island', 'snow', 'jungle'];
   if (l.landscape && !LANDSCAPES.includes(l.landscape)) err(`"landscape" must be one of: ${LANDSCAPES.join(', ')}`);
   for (const k of ['cover']) if (l[k] && !(await exists(l[k]))) err(`${k} file not found: ${l[k]}`);
 
@@ -93,7 +93,7 @@ for (const file of files) {
 }
 
 // Newest first.
-index.sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+index.sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')) || b.id.localeCompare(a.id));
 
 for (const w of warnings) console.warn(`warning: ${w}`);
 if (errors.length) {

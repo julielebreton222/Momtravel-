@@ -49,7 +49,7 @@ When asked to "convert the new stories" (or similar), do this for each story in 
 7. **Reply prompt** (`reply.prompt` in Spanish, `reply.promptFr` in French): a warm, personal question
    for the mother that invites her to write back using the grammar point.
 8. `title` (Spanish), `titleFr`, `place` (in French, e.g. "Lisbonne, Portugal"), `date`,
-   `landscape` (the scenery on the home map: countryside, city, sea, mountain, desert, forest, island or snow), `summaryFr`
+   `landscape` (the scenery on the home map: countryside, city, sea, mountain, desert, forest, island, snow or jungle), `summaryFr`
    (one sentence), optional `cover` (an image path), and `note` (a short message from the author to their
    mother, in French. Use the author's own words if they wrote one, otherwise leave it out).
 9. **Photos**: copy them to `lessons/media/<id>/` and resize to max 1600px wide, JPEG quality ~80

@@ -247,8 +247,11 @@ textarea {
 .node.next .disc { border: 3px dashed #9ca3af; background: rgba(255, 255, 255, .7); }
 .node .label {
   margin-top: 12px; background: rgba(255, 255, 255, .92); border-radius: 12px; padding: 3px 10px;
-  text-align: center; line-height: 1.25; box-shadow: 0 1px 4px rgba(0, 0, 0, .1); max-width: 170px;
+  text-align: center; line-height: 1.25; box-shadow: 0 1px 4px rgba(0, 0, 0, .1); max-width: 190px;
 }
+.node .label b, .node .label small { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.node.next .label { max-width: 150px; }
+.node.next .label b, .node.next .label small { white-space: normal; }
 .node .label b { display: block; font-size: .9rem; }
 .node .label small { display: block; font-size: .75rem; color: #6b5d50; font-style: italic; }
 .node .stars { position: absolute; top: -26px; font-size: 1.15rem; color: #f59e0b; letter-spacing: 1px; text-shadow: 0 1px 0 #fff; }

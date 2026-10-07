@@ -1,0 +1,148 @@
+{
+  "id": "2026-10-puerto-viejo-1-cocos",
+  "title": "La aventura de los cocos",
+  "titleFr": "L'aventure des noix de coco",
+  "place": "Puerto Viejo, Costa Rica",
+  "landscape": "island",
+  "level": "B1",
+  "summaryFr": "Josh veut faire de l'huile de coco maison… mais les cocotiers sont trop hauts, et les noix de coco cachent une drôle de surprise.",
+  "story": [
+    {
+      "sentences": [
+        { "es": "En Puerto Viejo, en la costa caribe de Costa Rica, hay palmeras de coco por todas partes.", "fr": "À Puerto Viejo, sur la côte caraïbe du Costa Rica, il y a des cocotiers partout." },
+        { "es": "Un día, a Josh se le ocurrió una idea: hacer aceite de coco casero.", "fr": "Un jour, Josh a eu une idée : faire de l'huile de coco maison." },
+        { "es": "Para eso solo se necesitan cocos, ¡y aquí son gratis!", "fr": "Pour ça, il suffit d'avoir des noix de coco, et ici, elles sont gratuites !" },
+        { "es": "Así que salimos a buscarlos.", "fr": "Alors nous sommes partis en chercher." }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "Josh intentó subirse a varias palmeras, pero eran demasiado altas y resbalosas.", "fr": "Josh a essayé de grimper à plusieurs cocotiers, mais ils étaient trop hauts et trop glissants." },
+        { "es": "Después de varios intentos, nos preguntamos cómo lo hacía la gente de aquí.", "fr": "Après plusieurs tentatives, nous nous sommes demandé comment faisaient les gens d'ici." },
+        { "es": "Entonces miramos al suelo: había muchos cocos caídos.", "fr": "Alors nous avons regardé par terre : il y avait plein de noix de coco tombées." },
+        { "es": "Recogimos algunos, pero cuando los abrimos, ya no estaban buenos.", "fr": "Nous en avons ramassé quelques-unes, mais quand nous les avons ouvertes, elles n'étaient plus bonnes." }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "Entonces una chica se acercó y nos dio un consejo.", "fr": "Puis une fille s'est approchée et nous a donné un conseil." },
+        { "es": "«Saquen del suelo los cocos que ya están germinando», nos dijo. «Esos tienen lo que ustedes necesitan».", "fr": "« Sortez de la terre les noix de coco qui sont déjà en train de germer », nous a-t-elle dit. « Elles ont ce dont vous avez besoin. »" },
+        { "es": "Para hacer aceite, hay que usar la pulpa, la parte blanca del coco.", "fr": "Pour faire de l'huile, il faut utiliser la chair, la partie blanche de la noix de coco." }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "Lo que no sabíamos es que, para germinar, esos cocos ya habían usado parte de su pulpa.", "fr": "Ce que nous ne savions pas, c'est que pour germer, ces noix de coco avaient déjà utilisé une partie de leur chair." },
+        { "es": "Cuando abrimos uno, nos llevamos una sorpresa.", "fr": "Quand nous en avons ouvert une, nous avons eu une surprise." },
+        { "es": "En lugar de agua, había una especie de esponja que ocupaba casi todo el interior.", "fr": "Au lieu de l'eau, il y avait une sorte d'éponge qui occupait presque tout l'intérieur." },
+        { "es": "La planta la había formado para alimentarse de la pulpa.", "fr": "La plante l'avait formée pour se nourrir de la chair." },
+        { "es": "Nunca habíamos visto algo así: ¡su textura era una locura!", "fr": "Nous n'avions jamais rien vu de pareil : sa texture, c'était fou !" }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "¿Sabías que el coco es en realidad una semilla gigante?", "fr": "Savais-tu que la noix de coco est en réalité une graine géante ?" },
+        { "es": "Puede flotar en el mar durante meses y germinar en una playa muy lejana.", "fr": "Elle peut flotter en mer pendant des mois et germer sur une plage très lointaine." },
+        { "es": "En parte por eso, hay palmeras de coco en tantas costas tropicales del mundo.", "fr": "C'est en partie pour ça qu'il y a des cocotiers sur tant de côtes tropicales du monde." },
+        { "es": "En Costa Rica, el coco verde se llama «pipa», y su agua fresca se vende en la calle.", "fr": "Au Costa Rica, la noix de coco verte s'appelle « pipa », et on vend son eau bien fraîche dans la rue." },
+        { "es": "Y los que saben subir a las palmeras usan una cuerda en los pies, o bajan los cocos con un palo muy largo.", "fr": "Et ceux qui savent grimper aux cocotiers utilisent une corde aux pieds, ou font tomber les noix de coco avec une très longue perche." }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "Al final no hicimos aceite, porque nuestros cocos no tenían suficiente pulpa.", "fr": "Finalement, nous n'avons pas fait d'huile, parce que nos noix de coco n'avaient pas assez de chair." },
+        { "es": "Pero no nos rendimos: ¡algún día lo vamos a hacer!", "fr": "Mais nous n'abandonnons pas : un jour, nous allons y arriver !" }
+      ]
+    }
+  ],
+  "vocabulary": [
+    { "es": "la palmera", "fr": "le palmier", "match": "palmeras", "note": "La palmera de coco = le cocotier." },
+    { "es": "ocurrírsele algo a alguien", "fr": "avoir une idée (qui vient à l'esprit)", "match": "se le ocurrió", "note": "A Josh se le ocurrió una idea = une idée est venue à Josh." },
+    { "es": "casero, casera", "fr": "fait maison", "match": "casero" },
+    { "es": "resbaloso, resbalosa", "fr": "glissant, glissante", "match": "resbalosas", "note": "Mot d'Amérique latine. En Espagne, on dit plutôt « resbaladizo »." },
+    { "es": "el intento", "fr": "la tentative, l'essai", "match": "intentos" },
+    { "es": "recoger", "fr": "ramasser", "match": "Recogimos" },
+    { "es": "el consejo", "fr": "le conseil" },
+    { "es": "germinar", "fr": "germer", "match": ["germinando", "germinar"] },
+    { "es": "la pulpa", "fr": "la chair (d'un fruit), la pulpe" },
+    { "es": "la semilla", "fr": "la graine" },
+    { "es": "la pipa", "fr": "la noix de coco verte (à boire)", "note": "Au Costa Rica seulement ! En Espagne, « las pipas » sont les graines de tournesol." },
+    { "es": "el palo", "fr": "le bâton, la perche" },
+    { "es": "rendirse", "fr": "abandonner, baisser les bras", "match": "nos rendimos", "note": "Verbe irrégulier : me rindo, te rindes…" },
+    { "es": "una locura", "fr": "une folie ; « c'est fou ! »", "note": "¡Qué locura! = C'est dingue !" }
+  ],
+  "grammar": {
+    "title": "Le plus-que-parfait (pretérito pluscuamperfecto)",
+    "explanation": "Le pluscuamperfecto sert, comme le plus-que-parfait en français, à parler d'une action qui s'est passée AVANT une autre action passée. « Ces noix de coco avaient déjà utilisé leur chair » : elles l'ont fait avant que nous les ouvrions.\n\nOn le forme avec l'imparfait de haber + le participe passé : había, habías, había, habíamos, habíais, habían + usado, comido, vivido… En espagnol, on utilise TOUJOURS haber, même là où le français prend « être » : « la planta se había formado » (la plante s'était formée).\n\nLe participe ne s'accorde jamais et ne se sépare pas de haber. Attention aux participes irréguliers : visto (vu), hecho (fait), dicho (dit), abierto (ouvert), puesto (mis), vuelto (revenu), escrito (écrit), roto (cassé).",
+    "examples": [
+      { "es": "Esos cocos ya habían usado parte de su pulpa.", "fr": "Ces noix de coco avaient déjà utilisé une partie de leur chair." },
+      { "es": "La planta la había formado para alimentarse de la pulpa.", "fr": "La plante l'avait formée pour se nourrir de la chair." },
+      { "es": "Nunca habíamos visto algo así.", "fr": "Nous n'avions jamais rien vu de pareil. (visto : participe irrégulier de ver)" }
+    ]
+  },
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "¿Qué quería hacer Josh?",
+      "options": ["Un jugo de pipa", "Aceite de coco casero", "Un pastel de coco"],
+      "answer": 1,
+      "explanation": "« A Josh se le ocurrió una idea: hacer aceite de coco casero. »"
+    },
+    {
+      "type": "choice",
+      "question": "¿Por qué Josh no pudo subirse a las palmeras?",
+      "options": ["Porque eran demasiado altas y resbalosas", "Porque tenía miedo", "Porque estaba prohibido"],
+      "answer": 0
+    },
+    {
+      "type": "truefalse",
+      "statement": "Los cocos que recogieron del suelo estaban buenos.",
+      "answer": false,
+      "explanation": "« …cuando los abrimos, ya no estaban buenos. »"
+    },
+    {
+      "type": "truefalse",
+      "statement": "Para hacer aceite de coco, se necesita la pulpa.",
+      "answer": true,
+      "explanation": "« Para hacer aceite, hay que usar la pulpa, la parte blanca del coco. »"
+    },
+    {
+      "type": "choice",
+      "question": "¿Qué encontraron dentro del coco germinado?",
+      "options": ["Mucha agua fresca", "Una especie de esponja", "Una semilla pequeña"],
+      "answer": 1,
+      "explanation": "« En lugar de agua, había una especie de esponja que ocupaba casi todo el interior. »"
+    },
+    {
+      "type": "fill",
+      "sentence": "Cuando llegamos a la playa, la chica ya ___ todos los cocos.",
+      "hint": "recoger — elle l'avait fait AVANT notre arrivée",
+      "options": ["recogió", "había recogido", "recogía"],
+      "answer": "había recogido",
+      "explanation": "Action antérieure à une autre action passée (llegamos) → pluscuamperfecto."
+    },
+    {
+      "type": "fill",
+      "sentence": "Nunca ___ un coco germinado.",
+      "hint": "ver, nosotros — attention, participe irrégulier",
+      "options": ["habíamos visto", "habíamos veído", "veíamos"],
+      "answer": "habíamos visto",
+      "explanation": "Le participe de ver est irrégulier : visto."
+    },
+    {
+      "type": "fill",
+      "sentence": "En Costa Rica, el coco verde se llama ___.",
+      "options": ["pipa", "palo", "pulpa"],
+      "answer": "pipa"
+    },
+    {
+      "type": "translate",
+      "fr": "Nous n'avions jamais vu de cocotiers aussi hauts.",
+      "es": "Nunca habíamos visto palmeras tan altas."
+    }
+  ],
+  "reply": {
+    "prompt": "¿Y tú? ¿Alguna vez descubriste algo que te sorprendió mucho, algo que nunca habías visto o probado?",
+    "promptFr": "As-tu déjà découvert quelque chose qui t'a beaucoup surprise ? Essaie d'utiliser le pluscuamperfecto : « nunca había visto… », « nunca había probado… »."
+  }
+}

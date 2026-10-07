@@ -1,0 +1,137 @@
+{
+  "id": "2026-10-puerto-viejo-2-caribe",
+  "title": "Puerto Viejo, el Caribe de Costa Rica",
+  "titleFr": "Puerto Viejo, les Caraïbes du Costa Rica",
+  "place": "Puerto Viejo, Costa Rica",
+  "landscape": "jungle",
+  "level": "B1",
+  "summaryFr": "L'histoire afro-caribéenne de Puerto Viejo, le « rice and beans » au lait de coco, les paresseux, les singes hurleurs et la devise « pura vida ».",
+  "story": [
+    {
+      "sentences": [
+        { "es": "Puerto Viejo es un pueblo pequeño en la costa caribe de Costa Rica, en la provincia de Limón.", "fr": "Puerto Viejo est un petit village sur la côte caraïbe du Costa Rica, dans la province de Limón." },
+        { "es": "Aquí la selva llega casi hasta el mar, y las playas están llenas de palmeras.", "fr": "Ici, la jungle arrive presque jusqu'à la mer, et les plages sont pleines de palmiers." },
+        { "es": "Pero lo más especial de este lugar es su cultura, muy diferente del resto del país.", "fr": "Mais ce qu'il y a de plus spécial ici, c'est sa culture, très différente du reste du pays." }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "A finales del siglo XIX, llegaron muchos trabajadores de Jamaica.", "fr": "À la fin du XIXe siècle, beaucoup de travailleurs sont arrivés de Jamaïque." },
+        { "es": "Vinieron a construir el ferrocarril entre San José y el puerto de Limón, y después a trabajar en las plantaciones de banano.", "fr": "Ils sont venus construire le chemin de fer entre San José et le port de Limón, puis travailler dans les plantations de bananes." },
+        { "es": "Muchos se quedaron y formaron familias en la costa.", "fr": "Beaucoup sont restés et ont fondé des familles sur la côte." },
+        { "es": "Durante mucho tiempo, sus descendientes no tuvieron la nacionalidad costarricense: la obtuvieron con la Constitución de 1949.", "fr": "Pendant longtemps, leurs descendants n'ont pas eu la nationalité costaricienne : ils l'ont obtenue avec la Constitution de 1949." }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "Por eso, hoy en Puerto Viejo se habla español, pero también un inglés criollo que aquí llaman «mekatelyu».", "fr": "C'est pourquoi aujourd'hui, à Puerto Viejo, on parle espagnol, mais aussi un créole anglais qu'on appelle ici « mekatelyu »." },
+        { "es": "Se escucha música calipso y se come el famoso «rice and beans»: arroz con frijoles cocinado en leche de coco.", "fr": "On écoute du calypso et on mange le fameux « rice and beans » : du riz aux haricots rouges cuit dans du lait de coco." },
+        { "es": "¡El coco está en todas partes!", "fr": "La noix de coco est partout !" },
+        { "es": "En las montañas cercanas viven también los bribris, un pueblo indígena para el que el cacao es sagrado.", "fr": "Dans les montagnes voisines vivent aussi les Bribris, un peuple autochtone pour qui le cacao est sacré." }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "Costa Rica es un país pequeño, pero tiene cerca del cinco por ciento de los animales y plantas del mundo.", "fr": "Le Costa Rica est un petit pays, mais il abrite près de cinq pour cent des espèces animales et végétales du monde." },
+        { "es": "En los árboles de Puerto Viejo se pueden ver perezosos, que se mueven muy despacio, y tucanes con su enorme pico de colores.", "fr": "Dans les arbres de Puerto Viejo, on peut voir des paresseux, qui bougent très lentement, et des toucans avec leur énorme bec coloré." },
+        { "es": "Por las mañanas, los monos aulladores despiertan a todo el mundo con sus gritos.", "fr": "Le matin, les singes hurleurs réveillent tout le monde avec leurs cris." },
+        { "es": "En el suelo de la selva viven unas ranitas rojas y azules muy pequeñas, ¡pero venenosas!", "fr": "Sur le sol de la forêt vivent de toutes petites grenouilles rouges et bleues… mais toxiques !" },
+        { "es": "Y en la playa de Gandoca, muy cerca, las tortugas marinas vienen a poner sus huevos.", "fr": "Et sur la plage de Gandoca, tout près, les tortues marines viennent pondre leurs œufs." }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "Aquí la gente dice «pura vida» para saludar, para dar las gracias o para decir que todo está bien.", "fr": "Ici, les gens disent « pura vida » pour dire bonjour, pour dire merci ou pour dire que tout va bien." },
+        { "es": "¡Es el lema de todo el país!", "fr": "C'est la devise de tout le pays !" }
+      ]
+    }
+  ],
+  "vocabulary": [
+    { "es": "el pueblo", "fr": "le village ; le peuple", "note": "Les deux sens sont dans l'histoire : « un pueblo pequeño » (un petit village) et « un pueblo indígena » (un peuple autochtone)." },
+    { "es": "la selva", "fr": "la jungle, la forêt tropicale" },
+    { "es": "el siglo", "fr": "le siècle", "note": "Les siècles s'écrivent en chiffres romains : el siglo XIX (diecinueve)." },
+    { "es": "el ferrocarril", "fr": "le chemin de fer" },
+    { "es": "el banano", "fr": "la banane, le bananier", "note": "Au Costa Rica, on dit « banano ». En Espagne, c'est « plátano »." },
+    { "es": "quedarse", "fr": "rester", "match": "se quedaron" },
+    { "es": "los frijoles", "fr": "les haricots (rouges ou noirs)", "match": "frijoles", "note": "En Amérique latine. En Espagne : « judías » ou « alubias »." },
+    { "es": "sagrado, sagrada", "fr": "sacré, sacrée", "match": "sagrado" },
+    { "es": "el perezoso", "fr": "le paresseux (l'animal)", "match": "perezosos", "note": "Comme en français, c'est aussi un adjectif : ¡no seas perezoso! (ne sois pas paresseux !)" },
+    { "es": "despacio", "fr": "lentement" },
+    { "es": "el pico", "fr": "le bec" },
+    { "es": "el mono aullador", "fr": "le singe hurleur", "match": "monos aulladores", "note": "Au Costa Rica, on l'appelle aussi « mono congo ». Aullar = hurler." },
+    { "es": "venenoso, venenosa", "fr": "venimeux, toxique", "match": "venenosas" },
+    { "es": "poner huevos", "fr": "pondre (des œufs)", "match": "poner sus huevos" }
+  ],
+  "grammar": {
+    "title": "Le « se » qui veut dire « on » (se habla, se come…)",
+    "explanation": "Pour dire « on » quand on parle des gens en général, l'espagnol utilise souvent se + verbe à la 3e personne : « se habla español » = on parle espagnol ; « se come rice and beans » = on mange du rice and beans.\n\nAttention : le verbe s'accorde avec la chose dont on parle. Si elle est au pluriel, le verbe est au pluriel : « se venden pipas » (on vend des noix de coco), « se pueden ver perezosos » (on peut voir des paresseux).\n\nC'est très courant sur les panneaux et dans les recettes : « Se alquilan bicicletas » (location de vélos), « Se habla inglés » (on parle anglais).",
+    "examples": [
+      { "es": "Hoy en Puerto Viejo se habla español.", "fr": "Aujourd'hui, à Puerto Viejo, on parle espagnol." },
+      { "es": "Se escucha música calipso y se come el famoso «rice and beans».", "fr": "On écoute du calypso et on mange le fameux « rice and beans »." },
+      { "es": "En los árboles se pueden ver perezosos.", "fr": "Dans les arbres, on peut voir des paresseux. (perezosos est au pluriel → pueden)" }
+    ]
+  },
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "¿De dónde llegaron muchos trabajadores a finales del siglo XIX?",
+      "options": ["De Jamaica", "De España", "De México"],
+      "answer": 0
+    },
+    {
+      "type": "choice",
+      "question": "¿Para qué vinieron?",
+      "options": ["Para pescar tortugas", "Para construir el ferrocarril y trabajar en las plantaciones de banano", "Para vender cocos en la playa"],
+      "answer": 1
+    },
+    {
+      "type": "truefalse",
+      "statement": "En Puerto Viejo solo se habla español.",
+      "answer": false,
+      "explanation": "On parle aussi un créole anglais : le « mekatelyu »."
+    },
+    {
+      "type": "truefalse",
+      "statement": "El «rice and beans» se cocina con leche de coco.",
+      "answer": true,
+      "explanation": "« …arroz con frijoles cocinado en leche de coco. »"
+    },
+    {
+      "type": "choice",
+      "question": "¿Qué animal despierta a todo el mundo por la mañana?",
+      "options": ["El perezoso", "El tucán", "El mono aullador"],
+      "answer": 2,
+      "explanation": "« Por las mañanas, los monos aulladores despiertan a todo el mundo con sus gritos. »"
+    },
+    {
+      "type": "fill",
+      "sentence": "En la playa ___ pipas muy frescas.",
+      "hint": "vender — « on vend » (pipas est au pluriel)",
+      "options": ["se vende", "se venden", "se vendió"],
+      "answer": "se venden",
+      "explanation": "Le verbe s'accorde avec « pipas » (pluriel) → se venden."
+    },
+    {
+      "type": "fill",
+      "sentence": "En Costa Rica ___ «pura vida» para saludar.",
+      "hint": "decir — « on dit »",
+      "options": ["se dice", "se dicen", "se dijo"],
+      "answer": "se dice"
+    },
+    {
+      "type": "fill",
+      "sentence": "El tucán tiene un ___ enorme de colores.",
+      "options": ["pico", "siglo", "pueblo"],
+      "answer": "pico"
+    },
+    {
+      "type": "translate",
+      "fr": "Ici, on mange beaucoup de riz aux haricots rouges.",
+      "es": "Aquí se come mucho arroz con frijoles."
+    }
+  ],
+  "reply": {
+    "prompt": "¿Y en tu región? ¿Qué se come, qué idiomas se hablan y qué animales se pueden ver?",
+    "promptFr": "Décris-moi ta région en utilisant le « se » : se come…, se habla…, se pueden ver…"
+  }
+}
