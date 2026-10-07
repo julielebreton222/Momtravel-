@@ -122,8 +122,6 @@ function stars(done) {
   return r >= 0.9 ? 3 : r >= 0.6 ? 2 : 1;
 }
 
-let stopParallax = () => {};
-
 function renderHome() {
   setActiveNav('home');
   document.title = 'Cartas de viaje';
@@ -154,7 +152,8 @@ function renderHome() {
 
   app.innerHTML = `<div class="map">
     <div class="scene" style="aspect-ratio:${scene.W} / ${scene.H}">
-      <svg viewBox="0 0 ${scene.W} ${scene.H}" aria-hidden="true">${scene.art}</svg>
+      <img class="scene-art" src="${PaperScene.imageUrl(scene)}" alt="" decoding="async">
+      <svg class="scene-live" viewBox="0 0 ${scene.W} ${scene.H}" aria-hidden="true">${scene.live}</svg>
       <div class="hello">
         <h1>¡Hola${name}!</h1>
         <p>Le voyage${from}, une histoire à la fois.</p>
@@ -167,8 +166,6 @@ function renderHome() {
     </div>
   </div>`;
 
-  stopParallax();
-  stopParallax = PaperScene.parallax(app.querySelector('.scene svg'), app.querySelector('.scene'));
   app.querySelector('.scene').addEventListener('click', (e) => {
     const b = e.target.closest('[data-id]');
     if (b) openLessonSheet(lessons.find((l) => l.id === b.dataset.id));
@@ -733,7 +730,6 @@ async function route() {
   const parts = location.hash.replace(/^#\/?/, '').split('/').map(decodeURIComponent);
   closeSheet();
   if (parts[0] === 'lecon' && parts[1]) {
-    stopParallax();
     const sameLesson = current && current.lesson.id === parts[1] && $('#step');
     if (sameLesson) {
       current.step = STEPS.some((s) => s.id === parts[2]) ? parts[2] : 'story';
@@ -745,7 +741,6 @@ async function route() {
     return;
   }
   current = null;
-  stopParallax();
   window.scrollTo(0, 0);
   if (parts[0] === 'mots') await renderWords();
   else if (parts[0] === 'ecrire') renderWrite();
@@ -753,10 +748,12 @@ async function route() {
 }
 
 (async function start() {
-  try { config = Object.assign(config, await getJSON('config.json')); } catch (_) { /* defaults */ }
+  const [cfg, idx] = await Promise.allSettled([getJSON('config.json'), getJSON('lessons/index.json')]);
+  if (cfg.status === 'fulfilled') config = Object.assign(config, cfg.value);
   $('[data-nav="write"] span').textContent = config.authorName ? `Écrire à ${config.authorName}` : 'Écrire';
   try {
-    index = await getJSON('lessons/index.json');
+    if (idx.status === 'rejected') throw idx.reason;
+    index = idx.value;
   } catch (err) {
     app.innerHTML = '<p class="empty">Impossible de charger les histoires. Vérifie la connexion internet.</p>';
     return;

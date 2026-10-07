@@ -70,6 +70,8 @@ const PaperScene = (() => {
     <rect x="${x - 7}" y="${base - h}" width="14" height="${h}" rx="7"/>
     <path d="M ${x - 7} ${base - h * 0.45} h -12 a 5 5 0 0 1 -5 -5 v -${f(h * 0.25)}" stroke="#4f8a5b" stroke-width="9" fill="none" stroke-linecap="round"/>
     <path d="M ${x + 7} ${base - h * 0.6} h 10 a 5 5 0 0 0 5 -5 v -${f(h * 0.18)}" stroke="#4f8a5b" stroke-width="9" fill="none" stroke-linecap="round"/></g>`;
+  // Moving details (fireflies, stars) are collected separately and drawn live over the image.
+  let live = '';
   const fireflies = (y, h, n) => {
     let s = '';
     for (let i = 0; i < n; i++) {
@@ -84,7 +86,7 @@ const PaperScene = (() => {
     }
     return s;
   };
-  const layer = (depth, body) => `<g data-depth="${depth}">${body}</g>`;
+  const layer = (_depth, body) => body;
 
   // One painter per landscape. Each draws its band from y down past y + SEG, so the next
   // band's top edge always covers its bottom.
@@ -111,7 +113,7 @@ const PaperScene = (() => {
         + layer(0.1, wave(y + 80, 18, 0.024, 2, B(y), '#356b4c'))
         + layer(0.14, `<g ${CUT}>${leaves}</g>`)
         + layer(0.18, wave(y + 390, 14, 0.03, 5, B(y), '#2a5440'))
-        + fireflies(y + 110, 300, 14);
+        + ((live += fireflies(y + 110, 300, 14)), '');
     },
     forest: (y) => {
       let trees = '';
@@ -137,7 +139,7 @@ const PaperScene = (() => {
       + layer(0.08, wave(y + 160, 20, 0.016, 1, B(y), '#f4f7fa'))
       + layer(0.12, pine(60, y + 260, 90, '#2f5a48') + pine(110, y + 280, 70, '#3d6b55') + pine(350, y + 300, 95, '#2f5a48'))
       + layer(0.16, wave(y + 300, 14, 0.022, 3, B(y), '#ffffff'))
-      + sparkles(y + 40, 380, 24, '#ffffff', 'snowflake twinkle'),
+      + ((live += sparkles(y + 40, 380, 24, '#ffffff', 'snowflake twinkle')), ''),
     desert: (y) => layer(0.05, wave(y, 10, 0.012, 1, B(y), '#f4c58d'))
       + layer(0.09, `<circle cx="300" cy="${y + 120}" r="40" fill="#fff0c4" ${CUT}/>`)
       + layer(0.12, wave(y + 170, 22, 0.014, 2, B(y), '#e9a96b') + cactus(70, y + 210, 70))
@@ -170,6 +172,7 @@ const PaperScene = (() => {
 
   function build(lessons) {
     seed = 7;
+    live = '';
     const H = TOP + lessons.length * SEG + END;
     const stops = lessons.map((l, i) => ({
       x: (i % 2 ? 115 : 285) + (rnd() - 0.5) * 16,
@@ -180,11 +183,9 @@ const PaperScene = (() => {
 
     let art = `<defs>
       <filter id="cut" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#14201a" flood-opacity=".28"/></filter>
-      <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .1  0 0 0 0 .1  0 0 0 0 .08  0 0 0 .55 0"/></filter>
       <linearGradient id="dawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6dcc0"/><stop offset="1" stop-color="#cfe6e4"/></linearGradient>
       <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3b28a"/><stop offset=".55" stop-color="#ee9478"/><stop offset="1" stop-color="#d9746a"/></linearGradient>
       <linearGradient id="nightsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b3a63"/><stop offset="1" stop-color="#141d33"/></linearGradient>
-      <radialGradient id="ff"><stop offset="0" stop-color="#fff6c2"/><stop offset=".35" stop-color="#ffe27a" stop-opacity=".8"/><stop offset="1" stop-color="#ffe27a" stop-opacity="0"/></radialGradient>
       <mask id="crescent"><rect width="${W}" height="${H}" fill="#fff"/><circle cx="318" cy="${H - END + 108}" r="24" fill="#000"/></mask>
     </defs>
     <rect width="${W}" height="${H}" fill="url(#dawn)"/>`;
@@ -201,7 +202,7 @@ const PaperScene = (() => {
     // Night: stars and a paper moon, waiting for the next story.
     const ny = H - END;
     art += layer(0.05, cloudBank(ny + 20, H + 40, 'url(#nightsky)'));
-    art += sparkles(ny + 60, END - 60, 40, '#fbf6ea');
+    live += sparkles(ny + 60, END - 60, 40, '#fbf6ea');
     art += layer(0.08, `<circle cx="300" cy="${ny + 120}" r="28" fill="#f6e7bd" mask="url(#crescent)" ${CUT}/>`);
     art += layer(0.1, cloud(70, H - 50, 0.9, '#33446f') + cloud(335, H - 30, 0.7, '#2b3a63'));
 
@@ -216,38 +217,21 @@ const PaperScene = (() => {
     }
     art += `<path d="${d}" fill="none" stroke="rgba(20,32,26,.22)" stroke-width="5" stroke-linecap="round" stroke-dasharray="7 9" transform="translate(0 2)"/>`;
     art += `<path d="${d}" fill="none" stroke="#fbf6ea" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="7 9"/>`;
-    art += `<rect width="${W}" height="${H}" filter="url(#grain)" opacity=".3" style="mix-blend-mode:multiply"/>`;
-
-    return { W, H, art, stops, start, next };
+    const liveDefs = '<defs><radialGradient id="ff"><stop offset="0" stop-color="#fff6c2"/><stop offset=".35" stop-color="#ffe27a" stop-opacity=".8"/><stop offset="1" stop-color="#ffe27a" stop-opacity="0"/></radialGradient></defs>';
+    return { W, H, art, live: liveDefs + live, stops, start, next };
   }
 
-  // Each paper layer slides a little at its own speed as the page scrolls.
-  function parallax(svg, scene) {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return () => {};
-    const layers = [...svg.querySelectorAll('[data-depth]')].map((g) => {
-      const bb = g.getBBox();
-      return { g, depth: Number(g.dataset.depth), mid: bb.y + Math.min(bb.height, 300) / 2 };
-    });
-    let ticking = false;
-    const update = () => {
-      ticking = false;
-      if (!scene.isConnected) return;
-      const r = scene.getBoundingClientRect();
-      const centre = (window.innerHeight / 2 - r.top) * (W / r.width);
-      for (const l of layers) {
-        const off = (centre - l.mid) * l.depth * -0.35;
-        l.g.setAttribute('transform', `translate(0 ${f(Math.max(-24, Math.min(24, off)))})`);
-      }
-    };
-    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    update();
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    };
+  // The static scene becomes one cached image: phones scroll a bitmap far more smoothly than
+  // a tall SVG full of shadow filters.
+  const cache = new Map();
+  function imageUrl(scene) {
+    const key = `${scene.H}:${scene.art.length}`;
+    if (!cache.has(key)) {
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${scene.H}" width="${W}" height="${scene.H}">${scene.art}</svg>`;
+      cache.set(key, URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' })));
+    }
+    return cache.get(key);
   }
 
-  return { build, parallax };
+  return { build, imageUrl };
 })();
