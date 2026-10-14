@@ -724,8 +724,10 @@ function applyChrome() {
   $('[data-nav="words"] span').textContent = t('nav.words');
   $('[data-nav="quiz"] span').textContent = t('nav.quiz');
   $('[data-nav="write"] span').textContent = config.authorName ? t('nav.write', { name: config.authorName }) : t('nav.writeNoName');
-  $('#font-btn').setAttribute('aria-label', t('top.size'));
-  $('#help-btn').setAttribute('aria-label', t('top.help'));
+  for (const [id, key] of [['#font-btn', 'top.size'], ['#help-btn', 'top.help']]) {
+    $(id).setAttribute('aria-label', t(key));
+    $(id).title = t(key);
+  }
   document.querySelectorAll('#lang-switch [data-lang]').forEach((b) => b.setAttribute('aria-pressed', b.dataset.lang === I18N.lang));
 }
 
@@ -784,6 +786,16 @@ async function route() {
   Welcome.init(config, () => { store.data.introSeen = true; store.save(); });
   if (!store.data.introSeen) Welcome.intro();
   if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
+    // Always look for a new version on open, and switch to it as soon as it takes over.
+    const hadController = !!navigator.serviceWorker.controller;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (hadController && !sessionStorage.getItem('cartas-reloaded')) {
+        sessionStorage.setItem('cartas-reloaded', '1');
+        location.reload();
+      }
+    });
+    navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' })
+      .then((reg) => reg.update())
+      .catch(() => {});
   }
 }());

@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Fonts load in the background so they never hold up the first screen. -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
   <header class="topbar">
@@ -56,10 +56,22 @@
 
   <div id="sheet" class="sheet" role="dialog" aria-modal="false" hidden></div>
   <div id="popover" class="popover" hidden></div>
-  <script src="i18n.js"></script>
-  <script src="scene.js"></script>
-  <script src="tour.js"></script>
-  <script src="quiz.js"></script>
-  <script src="app.js"></script>
+  <script src="i18n.js?v=8"></script>
+  <script src="scene.js?v=8"></script>
+  <script src="tour.js?v=8"></script>
+  <script src="quiz.js?v=8"></script>
+  <script src="app.js?v=8"></script>
+  <script>
+    // Self-repair: if an old saved copy served outdated code with this page, clear it and reload once.
+    setTimeout(function () {
+      if (typeof applyChrome === 'function' || sessionStorage.getItem('cartas-repaired')) return;
+      sessionStorage.setItem('cartas-repaired', '1');
+      var sw = navigator.serviceWorker;
+      Promise.all([
+        sw ? sw.getRegistrations().then(function (rs) { return Promise.all(rs.map(function (r) { return r.unregister(); })); }) : null,
+        window.caches ? caches.keys().then(function (ks) { return Promise.all(ks.map(function (k) { return caches.delete(k); })); }) : null,
+      ]).then(function () { location.reload(); }, function () { location.reload(); });
+    }, 1500);
+  </script>
 </body>
 </html>

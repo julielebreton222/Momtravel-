@@ -10,97 +10,287 @@
   "story": [
     {
       "sentences": [
-        { "es": "Cada otoño, millones de mariposas monarca salen de Canadá y de Estados Unidos y vuelan hacia el sur.", "fr": "Chaque automne, des millions de papillons monarques quittent le Canada et les États-Unis et volent vers le sud." },
-        { "es": "Viajan casi cinco mil kilómetros hasta los bosques de las montañas de Michoacán y del Estado de México.", "fr": "Ils voyagent près de cinq mille kilomètres jusqu'aux forêts des montagnes du Michoacán et de l'État de Mexico." },
-        { "es": "Allí pasan el invierno, colgadas en racimos de los oyameles, unos abetos que crecen en lo alto de las montañas.", "fr": "Là, ils passent l'hiver, accrochés en grappes aux oyameles, des sapins qui poussent en haut des montagnes." },
-        { "es": "Llegan a finales de octubre… justo para el Día de Muertos.", "fr": "Ils arrivent fin octobre… juste à temps pour le Jour des Morts." }
+        {
+          "es": "Cada otoño, millones de mariposas monarca salen de Canadá y de Estados Unidos y vuelan hacia el sur.",
+          "fr": "Chaque automne, des millions de papillons monarques quittent le Canada et les États-Unis et volent vers le sud.",
+          "en": "Every autumn, millions of monarch butterflies leave Canada and the United States and fly south."
+        },
+        {
+          "es": "Viajan casi cinco mil kilómetros hasta los bosques de las montañas de Michoacán y del Estado de México.",
+          "fr": "Ils voyagent près de cinq mille kilomètres jusqu'aux forêts des montagnes du Michoacán et de l'État de Mexico.",
+          "en": "They travel almost five thousand kilometers to the forests in the mountains of Michoacán and the State of Mexico."
+        },
+        {
+          "es": "Allí pasan el invierno, colgadas en racimos de los oyameles, unos abetos que crecen en lo alto de las montañas.",
+          "fr": "Là, ils passent l'hiver, accrochés en grappes aux oyameles, des sapins qui poussent en haut des montagnes.",
+          "en": "There they spend the winter, hanging in clusters from the oyameles, fir trees that grow high in the mountains."
+        },
+        {
+          "es": "Llegan a finales de octubre… justo para el Día de Muertos.",
+          "fr": "Ils arrivent fin octobre… juste à temps pour le Jour des Morts.",
+          "en": "They arrive at the end of October… just in time for the Day of the Dead."
+        }
       ]
     },
     {
       "image": "lessons/media/2026-10-michoacan-2-mariposas/monarcas.jpg",
-      "caption": "Des monarques au sanctuaire d'El Rosario, au Michoacán. Photo : Maricint, CC BY-SA 4.0, Wikimedia Commons."
+      "caption": "Des monarques au sanctuaire d'El Rosario, au Michoacán. Photo : Maricint, CC BY-SA 4.0, Wikimedia Commons.",
+      "captionEn": "Monarchs at the El Rosario sanctuary, in Michoacán. Photo: Maricint, CC BY-SA 4.0, Wikimedia Commons."
     },
     {
       "sentences": [
-        { "es": "Lo más increíble es que ninguna mariposa hace el viaje completo de ida y vuelta.", "fr": "Le plus incroyable, c'est qu'aucun papillon ne fait le voyage complet aller-retour." },
-        { "es": "Una monarca normal vive solo unas semanas, pero la generación que viaja al sur vive unos ocho meses.", "fr": "Un monarque ordinaire ne vit que quelques semaines, mais la génération qui voyage vers le sud vit environ huit mois." },
-        { "es": "En primavera, sus hijas, nietas y bisnietas vuelven poco a poco al norte: el ciclo completo necesita cuatro generaciones.", "fr": "Au printemps, leurs filles, petites-filles et arrière-petites-filles remontent peu à peu vers le nord : le cycle complet demande quatre générations." },
-        { "es": "¿Cómo encuentran un bosque que nunca conocieron? Nadie lo sabe del todo, y los científicos todavía lo estudian.", "fr": "Comment trouvent-ils une forêt qu'ils n'ont jamais connue ? Personne ne le sait vraiment, et les scientifiques l'étudient encore." }
+        {
+          "es": "Lo más increíble es que ninguna mariposa hace el viaje completo de ida y vuelta.",
+          "fr": "Le plus incroyable, c'est qu'aucun papillon ne fait le voyage complet aller-retour.",
+          "en": "The most incredible thing is that no butterfly makes the whole round trip."
+        },
+        {
+          "es": "Una monarca normal vive solo unas semanas, pero la generación que viaja al sur vive unos ocho meses.",
+          "fr": "Un monarque ordinaire ne vit que quelques semaines, mais la génération qui voyage vers le sud vit environ huit mois.",
+          "en": "An ordinary monarch lives only a few weeks, but the generation that travels south lives about eight months."
+        },
+        {
+          "es": "En primavera, sus hijas, nietas y bisnietas vuelven poco a poco al norte: el ciclo completo necesita cuatro generaciones.",
+          "fr": "Au printemps, leurs filles, petites-filles et arrière-petites-filles remontent peu à peu vers le nord : le cycle complet demande quatre générations.",
+          "en": "In spring, their daughters, granddaughters and great-granddaughters gradually return north: the full cycle takes four generations."
+        },
+        {
+          "es": "¿Cómo encuentran un bosque que nunca conocieron? Nadie lo sabe del todo, y los científicos todavía lo estudian.",
+          "fr": "Comment trouvent-ils une forêt qu'ils n'ont jamais connue ? Personne ne le sait vraiment, et les scientifiques l'étudient encore.",
+          "en": "How do they find a forest they've never known? Nobody fully knows, and scientists are still studying it."
+        }
       ]
     },
     {
       "sentences": [
-        { "es": "Los purépechas y los mazahuas, pueblos indígenas de la región, conocen a las monarcas desde hace siglos.", "fr": "Les Purépechas et les Mazahuas, peuples autochtones de la région, connaissent les monarques depuis des siècles." },
-        { "es": "En purépecha, la mariposa se llama «parakata», y su llegada anunciaba la cosecha del maíz.", "fr": "En purépecha, le papillon s'appelle « parakata », et son arrivée annonçait la récolte du maïs." },
-        { "es": "Para muchas familias de la región, las monarcas son las almas de los muertos que vuelven a visitarlas.", "fr": "Pour beaucoup de familles de la région, les monarques sont les âmes des morts qui reviennent leur rendre visite." },
-        { "es": "La ciencia, en cambio, no encontró sus bosques de invierno hasta 1975.", "fr": "La science, elle, n'a trouvé leurs forêts d'hiver qu'en 1975." },
-        { "es": "Hoy, la Reserva de la Biosfera de la Mariposa Monarca es Patrimonio de la Humanidad, pero la tala ilegal y el cambio climático la amenazan.", "fr": "Aujourd'hui, la Réserve de biosphère du papillon monarque est patrimoine de l'humanité, mais l'abattage illégal des arbres et le changement climatique la menacent." }
+        {
+          "es": "Los purépechas y los mazahuas, pueblos indígenas de la región, conocen a las monarcas desde hace siglos.",
+          "fr": "Les Purépechas et les Mazahuas, peuples autochtones de la région, connaissent les monarques depuis des siècles.",
+          "en": "The Purépecha and the Mazahua, Indigenous peoples of the region, have known the monarchs for centuries."
+        },
+        {
+          "es": "En purépecha, la mariposa se llama «parakata», y su llegada anunciaba la cosecha del maíz.",
+          "fr": "En purépecha, le papillon s'appelle « parakata », et son arrivée annonçait la récolte du maïs.",
+          "en": "In Purépecha, the butterfly is called “parakata,” and its arrival announced the corn harvest."
+        },
+        {
+          "es": "Para muchas familias de la región, las monarcas son las almas de los muertos que vuelven a visitarlas.",
+          "fr": "Pour beaucoup de familles de la région, les monarques sont les âmes des morts qui reviennent leur rendre visite.",
+          "en": "For many families in the region, the monarchs are the souls of the dead coming back to visit them."
+        },
+        {
+          "es": "La ciencia, en cambio, no encontró sus bosques de invierno hasta 1975.",
+          "fr": "La science, elle, n'a trouvé leurs forêts d'hiver qu'en 1975.",
+          "en": "Science, on the other hand, didn't find their winter forests until 1975."
+        },
+        {
+          "es": "Hoy, la Reserva de la Biosfera de la Mariposa Monarca es Patrimonio de la Humanidad, pero la tala ilegal y el cambio climático la amenazan.",
+          "fr": "Aujourd'hui, la Réserve de biosphère du papillon monarque est patrimoine de l'humanité, mais l'abattage illégal des arbres et le changement climatique la menacent.",
+          "en": "Today, the Monarch Butterfly Biosphere Reserve is a World Heritage Site, but illegal logging and climate change threaten it."
+        }
       ]
     },
     {
       "sentences": [
-        { "es": "Pero no todas las mariposas traen buenas noticias.", "fr": "Mais tous les papillons n'apportent pas de bonnes nouvelles." },
-        { "es": "La mariposa negra, una polilla enorme de alas oscuras, se llama en México «mariposa de la muerte».", "fr": "La « mariposa negra », un énorme papillon de nuit aux ailes sombres, s'appelle au Mexique le « papillon de la mort »." },
-        { "es": "En náhuatl, su nombre es miquipapalotl: «miqui» significa muerte y «papalotl», mariposa.", "fr": "En nahuatl, son nom est miquipapalotl : « miqui » veut dire mort et « papalotl », papillon." },
-        { "es": "Se dice que, si entra en una casa donde hay un enfermo, la persona va a morir.", "fr": "On dit que si elle entre dans une maison où il y a un malade, la personne va mourir." },
-        { "es": "En el sur de Texas, solo pasa si visita las cuatro esquinas de la casa.", "fr": "Dans le sud du Texas, ça n'arrive que si elle visite les quatre coins de la maison." }
+        {
+          "es": "Pero no todas las mariposas traen buenas noticias.",
+          "fr": "Mais tous les papillons n'apportent pas de bonnes nouvelles.",
+          "en": "But not all butterflies bring good news."
+        },
+        {
+          "es": "La mariposa negra, una polilla enorme de alas oscuras, se llama en México «mariposa de la muerte».",
+          "fr": "La « mariposa negra », un énorme papillon de nuit aux ailes sombres, s'appelle au Mexique le « papillon de la mort ».",
+          "en": "The mariposa negra (black witch), a huge moth with dark wings, is called in Mexico the “butterfly of death.”"
+        },
+        {
+          "es": "En náhuatl, su nombre es miquipapalotl: «miqui» significa muerte y «papalotl», mariposa.",
+          "fr": "En nahuatl, son nom est miquipapalotl : « miqui » veut dire mort et « papalotl », papillon.",
+          "en": "In Nahuatl, its name is miquipapalotl: “miqui” means death and “papalotl,” butterfly."
+        },
+        {
+          "es": "Se dice que, si entra en una casa donde hay un enfermo, la persona va a morir.",
+          "fr": "On dit que si elle entre dans une maison où il y a un malade, la personne va mourir.",
+          "en": "It's said that if it comes into a house where someone is sick, that person will die."
+        },
+        {
+          "es": "En el sur de Texas, solo pasa si visita las cuatro esquinas de la casa.",
+          "fr": "Dans le sud du Texas, ça n'arrive que si elle visite les quatre coins de la maison.",
+          "en": "In South Texas, that only happens if it visits all four corners of the house."
+        }
       ]
     },
     {
       "image": "lessons/media/2026-10-michoacan-2-mariposas/polilla.jpg",
-      "caption": "La « mariposa de la muerte » (Ascalapha odorata). Photo : Charles J. Sharp, CC BY-SA 4.0, Wikimedia Commons."
+      "caption": "La « mariposa de la muerte » (Ascalapha odorata). Photo : Charles J. Sharp, CC BY-SA 4.0, Wikimedia Commons.",
+      "captionEn": "The “butterfly of death” (Ascalapha odorata). Photo: Charles J. Sharp, CC BY-SA 4.0, Wikimedia Commons."
     },
     {
       "sentences": [
-        { "es": "En otros lugares, la historia es más dulce.", "fr": "Ailleurs, l'histoire est plus douce." },
-        { "es": "En Hawái, es el alma de un ser querido que vuelve para despedirse, y en las Bahamas, ¡dicen que trae dinero!", "fr": "À Hawaï, c'est l'âme d'un être cher qui revient dire au revoir, et aux Bahamas, on dit qu'elle apporte de l'argent !" },
-        { "es": "En el cuento que vas a leer, una polilla choca contra una vela y cae en la cera, sin hacer ruido.", "fr": "Dans le conte que tu vas lire, un papillon de nuit se cogne contre une bougie et tombe dans la cire, sans un bruit." }
+        {
+          "es": "En otros lugares, la historia es más dulce.",
+          "fr": "Ailleurs, l'histoire est plus douce.",
+          "en": "Elsewhere, the story is sweeter."
+        },
+        {
+          "es": "En Hawái, es el alma de un ser querido que vuelve para despedirse, y en las Bahamas, ¡dicen que trae dinero!",
+          "fr": "À Hawaï, c'est l'âme d'un être cher qui revient dire au revoir, et aux Bahamas, on dit qu'elle apporte de l'argent !",
+          "en": "In Hawaii, it's the soul of a loved one coming back to say goodbye, and in the Bahamas, they say it brings money!"
+        },
+        {
+          "es": "En el cuento que vas a leer, una polilla choca contra una vela y cae en la cera, sin hacer ruido.",
+          "fr": "Dans le conte que tu vas lire, un papillon de nuit se cogne contre une bougie et tombe dans la cire, sans un bruit.",
+          "en": "In the story you're going to read, a moth hits a candle and falls into the wax, without a sound."
+        }
       ]
     }
   ],
   "vocabulary": [
-    { "es": "la mariposa", "fr": "le papillon", "match": ["mariposa", "mariposas"], "note": "Mot féminin en espagnol : « la monarca »." },
-    { "es": "el bosque", "fr": "la forêt", "match": ["bosques", "bosque"] },
-    { "es": "el racimo", "fr": "la grappe", "match": "racimos" },
-    { "es": "el abeto", "fr": "le sapin", "match": "abetos" },
-    { "es": "de ida y vuelta", "fr": "aller-retour" },
-    { "es": "la bisnieta", "fr": "l'arrière-petite-fille", "match": "bisnietas", "note": "Hija → nieta → bisnieta." },
-    { "es": "la cosecha", "fr": "la récolte" },
-    { "es": "la tala", "fr": "l'abattage des arbres", "note": "Talar un árbol = abattre un arbre." },
-    { "es": "amenazar", "fr": "menacer", "match": "amenazan" },
-    { "es": "la polilla", "fr": "le papillon de nuit ; la mite", "match": "polilla" },
-    { "es": "el ala", "fr": "l'aile", "match": "alas", "note": "Comme « el alma » : mot féminin, mais « el ala » au singulier." },
-    { "es": "el enfermo", "fr": "le malade" },
-    { "es": "la esquina", "fr": "le coin", "match": "esquinas" },
-    { "es": "despedirse", "fr": "dire au revoir", "note": "Verbe irrégulier : me despido, te despides…" }
+    {
+      "es": "la mariposa",
+      "fr": "le papillon",
+      "match": [
+        "mariposa",
+        "mariposas"
+      ],
+      "note": "Mot féminin en espagnol : « la monarca ».",
+      "en": "butterfly",
+      "noteEn": "A feminine word in Spanish: “la monarca”."
+    },
+    {
+      "es": "el bosque",
+      "fr": "la forêt",
+      "match": [
+        "bosques",
+        "bosque"
+      ],
+      "en": "forest"
+    },
+    {
+      "es": "el racimo",
+      "fr": "la grappe",
+      "match": "racimos",
+      "en": "cluster, bunch"
+    },
+    {
+      "es": "el abeto",
+      "fr": "le sapin",
+      "match": "abetos",
+      "en": "fir tree"
+    },
+    {
+      "es": "de ida y vuelta",
+      "fr": "aller-retour",
+      "en": "round-trip"
+    },
+    {
+      "es": "la bisnieta",
+      "fr": "l'arrière-petite-fille",
+      "match": "bisnietas",
+      "note": "Hija → nieta → bisnieta.",
+      "en": "great-granddaughter",
+      "noteEn": "Hija → nieta → bisnieta (daughter → granddaughter → great-granddaughter)."
+    },
+    {
+      "es": "la cosecha",
+      "fr": "la récolte",
+      "en": "harvest"
+    },
+    {
+      "es": "la tala",
+      "fr": "l'abattage des arbres",
+      "note": "Talar un árbol = abattre un arbre.",
+      "en": "logging, tree felling",
+      "noteEn": "Talar un árbol = to cut down a tree."
+    },
+    {
+      "es": "amenazar",
+      "fr": "menacer",
+      "match": "amenazan",
+      "en": "to threaten"
+    },
+    {
+      "es": "la polilla",
+      "fr": "le papillon de nuit ; la mite",
+      "match": "polilla",
+      "en": "moth"
+    },
+    {
+      "es": "el ala",
+      "fr": "l'aile",
+      "match": "alas",
+      "note": "Comme « el alma » : mot féminin, mais « el ala » au singulier.",
+      "en": "wing",
+      "noteEn": "Like “el alma”: a feminine word, but “el ala” in the singular."
+    },
+    {
+      "es": "el enfermo",
+      "fr": "le malade",
+      "en": "sick person"
+    },
+    {
+      "es": "la esquina",
+      "fr": "le coin",
+      "match": "esquinas",
+      "en": "corner"
+    },
+    {
+      "es": "despedirse",
+      "fr": "dire au revoir",
+      "note": "Verbe irrégulier : me despido, te despides…",
+      "en": "to say goodbye",
+      "noteEn": "Irregular verb: me despido, te despides…"
+    }
   ],
   "grammar": {
     "title": "Saber ou conocer ?",
     "explanation": "En espagnol, « savoir » et « connaître » sont deux verbes différents, un peu comme en français, mais la frontière n'est pas toujours la même.\n\n« Saber » : savoir une information, un fait, ou savoir faire quelque chose. « Nadie lo sabe del todo » (personne ne le sait vraiment), « sé nadar » (je sais nager).\n\n« Conocer » : connaître une personne, un lieu, quelque chose qu'on a rencontré ou fréquenté. « Conocen a las monarcas desde hace siglos » (ils connaissent les monarques depuis des siècles). Attention : quand on connaît une personne ou un animal qu'on traite comme une personne, on ajoute « a » : conocer a alguien.",
     "examples": [
-      { "es": "Nadie lo sabe del todo.", "fr": "Personne ne le sait vraiment. (une information)" },
-      { "es": "Conocen a las monarcas desde hace siglos.", "fr": "Ils connaissent les monarques depuis des siècles. (une familiarité, avec « a »)" },
-      { "es": "¿Cómo encuentran un bosque que nunca conocieron?", "fr": "Comment trouvent-ils une forêt qu'ils n'ont jamais connue ? (un lieu)" }
-    ]
+      {
+        "es": "Nadie lo sabe del todo.",
+        "fr": "Personne ne le sait vraiment. (une information)",
+        "en": "Nobody fully knows. (a piece of information)"
+      },
+      {
+        "es": "Conocen a las monarcas desde hace siglos.",
+        "fr": "Ils connaissent les monarques depuis des siècles. (une familiarité, avec « a »)",
+        "en": "They've known the monarchs for centuries. (familiarity, with “a”)"
+      },
+      {
+        "es": "¿Cómo encuentran un bosque que nunca conocieron?",
+        "fr": "Comment trouvent-ils une forêt qu'ils n'ont jamais connue ? (un lieu)",
+        "en": "How do they find a forest they've never known? (a place)"
+      }
+    ],
+    "titleEn": "Saber or conocer?",
+    "explanationEn": "Spanish has two verbs for “to know”.\n\n“Saber”: to know a piece of information or a fact, or to know how to do something. “Nadie lo sabe del todo” (nobody fully knows), “sé nadar” (I know how to swim).\n\n“Conocer”: to know a person or a place, something you've met or are familiar with. “Conocen a las monarcas desde hace siglos” (they've known the monarchs for centuries). Careful: when you know a person, or an animal treated like a person, add “a”: conocer a alguien."
   },
   "exercises": [
     {
       "type": "choice",
       "question": "¿De dónde salen las monarcas cada otoño?",
-      "options": ["De Canadá y de Estados Unidos", "De Brasil", "De España"],
+      "options": [
+        "De Canadá y de Estados Unidos",
+        "De Brasil",
+        "De España"
+      ],
       "answer": 0
     },
     {
       "type": "choice",
       "question": "¿Cuánto tiempo vive la generación que viaja al sur?",
-      "options": ["Unos ocho meses", "Unas semanas", "Dos años"],
+      "options": [
+        "Unos ocho meses",
+        "Unas semanas",
+        "Dos años"
+      ],
       "answer": 0
     },
     {
       "type": "truefalse",
       "statement": "Una sola mariposa hace el viaje completo de ida y vuelta.",
       "answer": false,
-      "explanation": "Le cycle complet demande quatre générations."
+      "explanation": "Le cycle complet demande quatre générations.",
+      "explanationEn": "The full cycle takes four generations."
     },
     {
       "type": "truefalse",
@@ -110,39 +300,64 @@
     {
       "type": "choice",
       "question": "En náhuatl, ¿qué significa «miqui»?",
-      "options": ["Muerte", "Mariposa", "Noche"],
+      "options": [
+        "Muerte",
+        "Mariposa",
+        "Noche"
+      ],
       "answer": 0
     },
     {
       "type": "fill",
       "sentence": "Los purépechas ___ a las monarcas desde hace siglos.",
       "hint": "une familiarité (avec « a »)",
-      "options": ["conocen", "saben", "sabe"],
+      "options": [
+        "conocen",
+        "saben",
+        "sabe"
+      ],
       "answer": "conocen",
-      "explanation": "Connaître des êtres vivants, avec « a » → conocer."
+      "explanation": "Connaître des êtres vivants, avec « a » → conocer.",
+      "hintEn": "familiarity (with “a”)",
+      "explanationEn": "Knowing living beings, with “a” → conocer."
     },
     {
       "type": "fill",
       "sentence": "Nadie ___ exactamente cómo encuentran el camino.",
       "hint": "une information",
-      "options": ["sabe", "conoce", "conocen"],
+      "options": [
+        "sabe",
+        "conoce",
+        "conocen"
+      ],
       "answer": "sabe",
-      "explanation": "Savoir une information → saber."
+      "explanation": "Savoir une information → saber.",
+      "hintEn": "a piece of information",
+      "explanationEn": "Knowing a fact → saber."
     },
     {
       "type": "fill",
       "sentence": "En Texas, la polilla tiene que visitar las cuatro ___ de la casa.",
-      "options": ["esquinas", "alas", "cosechas"],
+      "options": [
+        "esquinas",
+        "alas",
+        "cosechas"
+      ],
       "answer": "esquinas"
     },
     {
       "type": "translate",
       "fr": "Je ne sais pas comment ils trouvent le chemin.",
-      "es": "No sé cómo encuentran el camino."
+      "es": "No sé cómo encuentran el camino.",
+      "en": "I don't know how they find the way."
     }
   ],
   "reply": {
     "prompt": "Mamá, ¿conoces alguna leyenda sobre mariposas o sobre otros animales? ¿Qué sabes de ella?",
-    "promptFr": "Connais-tu une légende sur les papillons ou sur d'autres animaux ? Raconte-la-moi en utilisant « conocer » et « saber »."
-  }
+    "promptFr": "Connais-tu une légende sur les papillons ou sur d'autres animaux ? Raconte-la-moi en utilisant « conocer » et « saber ».",
+    "promptEn": "Do you know a legend about butterflies or other animals? Tell it to me using “conocer” and “saber”."
+  },
+  "titleEn": "The monarchs and the butterfly of death",
+  "placeEn": "Michoacán, Mexico",
+  "summaryEn": "The monarchs' incredible journey to the forests of Michoacán, the souls who return with them… and the “butterfly of death” of Mexican folklore."
 }

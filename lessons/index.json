@@ -3,54 +3,72 @@
     "id": "2026-10-michoacan-2-mariposas",
     "title": "Las monarcas y la mariposa de la muerte",
     "titleFr": "Les monarques et le papillon de la mort",
+    "titleEn": "The monarchs and the butterfly of death",
     "place": "Michoacán, Mexique",
+    "placeEn": "Michoacán, Mexico",
     "date": "2026-10-14",
     "landscape": "forest",
-    "summaryFr": "Le voyage incroyable des papillons monarques jusqu'aux forêts du Michoacán, les âmes qui reviennent avec eux… et la « mariposa de la muerte » du folklore mexicain."
+    "summaryFr": "Le voyage incroyable des papillons monarques jusqu'aux forêts du Michoacán, les âmes qui reviennent avec eux… et la « mariposa de la muerte » du folklore mexicain.",
+    "summaryEn": "The monarchs' incredible journey to the forests of Michoacán, the souls who return with them… and the “butterfly of death” of Mexican folklore."
   },
   {
     "id": "2026-10-michoacan-1-dia-de-muertos",
     "title": "El Día de Muertos: flores, velas y almas",
     "titleFr": "Le Jour des Morts : fleurs, bougies et âmes",
+    "titleEn": "The Day of the Dead: flowers, candles and souls",
     "place": "Michoacán, Mexique",
+    "placeEn": "Michoacán, Mexico",
     "date": "2026-10-14",
     "landscape": "countryside",
-    "summaryFr": "D'où vient le Jour des Morts, ce qu'on met sur une ofrenda, pourquoi les fleurs de cempasúchil guident les âmes… et d'où vient « la carrera de las almas »."
+    "summaryFr": "D'où vient le Jour des Morts, ce qu'on met sur une ofrenda, pourquoi les fleurs de cempasúchil guident les âmes… et d'où vient « la carrera de las almas ».",
+    "summaryEn": "Where the Day of the Dead comes from, what goes on an ofrenda, why cempasúchil flowers guide souls… and where “the race of souls” comes from."
   },
   {
     "id": "2026-10-fuego-y-hielo",
     "title": "Una noche de fuego y hielo",
     "titleFr": "Une soirée feu et glace",
+    "titleEn": "A night of fire and ice",
     "place": "Costa Rica",
+    "placeEn": "Costa Rica",
     "date": "2026-10-09",
     "landscape": "jungle",
-    "summaryFr": "Quarante minutes de vélo à travers la jungle pour une soirée « feu et glace » : des saunas aux herbes du potager et des bains glacés."
+    "summaryFr": "Quarante minutes de vélo à travers la jungle pour une soirée « feu et glace » : des saunas aux herbes du potager et des bains glacés.",
+    "summaryEn": "Forty minutes of biking through the jungle to a “fire and ice” night: saunas steamed with garden herbs, and ice baths."
   },
   {
     "id": "2026-10-playa-cantar",
     "title": "La playa, el mar y una canción",
     "titleFr": "La plage, la mer et une chanson",
+    "titleEn": "The beach, the sea and a song",
     "place": "Costa Rica",
+    "placeEn": "Costa Rica",
     "date": "2026-10-07",
     "landscape": "sea",
-    "summaryFr": "Un moment à la plage sans téléphone, des chansons au hasard… et la professeure Luna qui explique pourquoi chanter fait tant de bien."
+    "summaryFr": "Un moment à la plage sans téléphone, des chansons au hasard… et la professeure Luna qui explique pourquoi chanter fait tant de bien.",
+    "summaryEn": "A moment at the beach without a phone, random songs… and Profesora Luna explaining why singing does you so much good."
   },
   {
     "id": "2026-10-puerto-viejo-2-caribe",
     "title": "Puerto Viejo, el Caribe de Costa Rica",
     "titleFr": "Puerto Viejo, les Caraïbes du Costa Rica",
+    "titleEn": "Puerto Viejo, Costa Rica's Caribbean",
     "place": "Puerto Viejo, Costa Rica",
+    "placeEn": "Puerto Viejo, Costa Rica",
     "date": "2026-09",
     "landscape": "jungle",
-    "summaryFr": "L'histoire afro-caribéenne de Puerto Viejo, le « rice and beans » au lait de coco, les paresseux, les singes hurleurs et la devise « pura vida »."
+    "summaryFr": "L'histoire afro-caribéenne de Puerto Viejo, le « rice and beans » au lait de coco, les paresseux, les singes hurleurs et la devise « pura vida ».",
+    "summaryEn": "The Afro-Caribbean history of Puerto Viejo, “rice and beans” with coconut milk, sloths, howler monkeys and the motto “pura vida”."
   },
   {
     "id": "2026-10-puerto-viejo-1-cocos",
     "title": "La aventura de los cocos",
     "titleFr": "L'aventure des noix de coco",
+    "titleEn": "The coconut adventure",
     "place": "Puerto Viejo, Costa Rica",
+    "placeEn": "Puerto Viejo, Costa Rica",
     "date": "2026-09",
     "landscape": "island",
-    "summaryFr": "Josh veut faire de l'huile de coco maison… mais les cocotiers sont trop hauts, et les noix de coco cachent une drôle de surprise."
+    "summaryFr": "Josh veut faire de l'huile de coco maison… mais les cocotiers sont trop hauts, et les noix de coco cachent une drôle de surprise.",
+    "summaryEn": "Josh wants to make homemade coconut oil… but the palm trees are too tall, and the coconuts hide a strange surprise."
   }
 ]

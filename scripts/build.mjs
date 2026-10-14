@@ -88,8 +88,9 @@ for (const file of files) {
     continue;
   }
   await check(file, lesson);
-  const { id, title, titleFr, place, date, landscape, cover, summaryFr } = lesson;
-  index.push({ id, title, titleFr, place, date, landscape, cover, summaryFr });
+  const { id, title, titleFr, titleEn, place, placeEn, date, landscape, cover, summaryFr, summaryEn } = lesson;
+  index.push({ id, title, titleFr, titleEn, place, placeEn, date, landscape, cover, summaryFr, summaryEn });
+  for (const k of ['titleEn', 'summaryEn']) if (!lesson[k]) warnings.push(`${file}: missing "${k}" (English version)`);
 }
 
 // Newest first.

@@ -10,73 +10,233 @@
   "story": [
     {
       "sentences": [
-        { "es": "Hace poco, Josh y yo fuimos a una noche de «fuego y hielo».", "fr": "Il y a peu, Josh et moi sommes allés à une soirée « feu et glace »." },
-        { "es": "Para llegar, tuvimos que ir en bici durante cuarenta minutos, hasta el medio de la selva.", "fr": "Pour y arriver, nous avons dû faire quarante minutes de vélo, jusqu'au milieu de la jungle." },
-        { "es": "El camino tenía colinas enormes y bajadas muy empinadas.", "fr": "Le chemin avait d'énormes collines et des descentes très raides." },
-        { "es": "Las pendientes eran tan fuertes que teníamos que bajarnos de las bicis y bajar caminando.", "fr": "Les pentes étaient si fortes que nous devions descendre de vélo et faire la descente à pied." }
+        {
+          "es": "Hace poco, Josh y yo fuimos a una noche de «fuego y hielo».",
+          "fr": "Il y a peu, Josh et moi sommes allés à une soirée « feu et glace ».",
+          "en": "Not long ago, Josh and I went to a “fire and ice” night."
+        },
+        {
+          "es": "Para llegar, tuvimos que ir en bici durante cuarenta minutos, hasta el medio de la selva.",
+          "fr": "Pour y arriver, nous avons dû faire quarante minutes de vélo, jusqu'au milieu de la jungle.",
+          "en": "To get there, we had to cycle for forty minutes, into the middle of the jungle."
+        },
+        {
+          "es": "El camino tenía colinas enormes y bajadas muy empinadas.",
+          "fr": "Le chemin avait d'énormes collines et des descentes très raides.",
+          "en": "The road had huge hills and very steep descents."
+        },
+        {
+          "es": "Las pendientes eran tan fuertes que teníamos que bajarnos de las bicis y bajar caminando.",
+          "fr": "Les pentes étaient si fortes que nous devions descendre de vélo et faire la descente à pied.",
+          "en": "The slopes were so steep that we had to get off the bikes and walk down."
+        }
       ]
     },
     {
       "sentences": [
-        { "es": "Cuando llegamos, el organizador nos explicó cómo funciona todo.", "fr": "Quand nous sommes arrivés, l'organisateur nous a expliqué comment tout fonctionne." },
-        { "es": "—Tengo dos saunas en tiendas de campaña y dos congeladores que convertí en baños de agua helada —nos dijo.", "fr": "— J'ai deux saunas sous tente et deux congélateurs que j'ai transformés en bains d'eau glacée, nous a-t-il dit." },
-        { "es": "La idea es sencilla: hay que pasar del calor de la sauna al frío del agua, y volver a empezar.", "fr": "L'idée est simple : il faut passer de la chaleur du sauna au froid de l'eau, et recommencer." }
+        {
+          "es": "Cuando llegamos, el organizador nos explicó cómo funciona todo.",
+          "fr": "Quand nous sommes arrivés, l'organisateur nous a expliqué comment tout fonctionne.",
+          "en": "When we arrived, the organizer explained how everything works."
+        },
+        {
+          "es": "—Tengo dos saunas en tiendas de campaña y dos congeladores que convertí en baños de agua helada —nos dijo.",
+          "fr": "— J'ai deux saunas sous tente et deux congélateurs que j'ai transformés en bains d'eau glacée, nous a-t-il dit.",
+          "en": "— I have two saunas in tents and two freezers that I turned into ice-water baths, he told us."
+        },
+        {
+          "es": "La idea es sencilla: hay que pasar del calor de la sauna al frío del agua, y volver a empezar.",
+          "fr": "L'idée est simple : il faut passer de la chaleur du sauna au froid de l'eau, et recommencer.",
+          "en": "The idea is simple: you go from the heat of the sauna to the cold of the water, and start again."
+        }
       ]
     },
     {
       "sentences": [
-        { "es": "Lo más especial son las saunas: él las llena de vapor con hierbas de su huerto.", "fr": "Le plus spécial, ce sont les saunas : il les remplit de vapeur avec des herbes de son potager." },
-        { "es": "Por eso, cuando entras, el aire tiene un sabor delicioso.", "fr": "Alors, quand tu entres, l'air a un goût délicieux." },
-        { "es": "Pasamos dos horas allí, entre el fuego y el hielo.", "fr": "Nous avons passé deux heures là-bas, entre le feu et la glace." },
-        { "es": "Y un detalle: yo era la única mujer. ¡Éramos solo yo y los chicos: Josh y otros cuatro hombres!", "fr": "Et un détail : j'étais la seule femme. Il n'y avait que moi et les garçons : Josh et quatre autres hommes !" }
+        {
+          "es": "Lo más especial son las saunas: él las llena de vapor con hierbas de su huerto.",
+          "fr": "Le plus spécial, ce sont les saunas : il les remplit de vapeur avec des herbes de son potager.",
+          "en": "The most special thing is the saunas: he fills them with steam using herbs from his garden."
+        },
+        {
+          "es": "Por eso, cuando entras, el aire tiene un sabor delicioso.",
+          "fr": "Alors, quand tu entres, l'air a un goût délicieux.",
+          "en": "So when you go in, the air tastes delicious."
+        },
+        {
+          "es": "Pasamos dos horas allí, entre el fuego y el hielo.",
+          "fr": "Nous avons passé deux heures là-bas, entre le feu et la glace.",
+          "en": "We spent two hours there, between fire and ice."
+        },
+        {
+          "es": "Y un detalle: yo era la única mujer. ¡Éramos solo yo y los chicos: Josh y otros cuatro hombres!",
+          "fr": "Et un détail : j'étais la seule femme. Il n'y avait que moi et les garçons : Josh et quatre autres hommes !",
+          "en": "And one detail: I was the only woman. It was just me and the boys: Josh and four other men!"
+        }
       ]
     },
     {
       "sentences": [
-        { "es": "¿Sabías que alternar el calor y el frío es una tradición muy antigua?", "fr": "Savais-tu qu'alterner le chaud et le froid est une tradition très ancienne ?" },
-        { "es": "Los romanos ya lo hacían en sus termas, con una sala caliente y otra fría.", "fr": "Les Romains le faisaient déjà dans leurs thermes, avec une salle chaude et une salle froide." },
-        { "es": "Y en Finlandia, después de la sauna, mucha gente se mete en el lago… ¡incluso en invierno!", "fr": "Et en Finlande, après le sauna, beaucoup de gens plongent dans le lac… même en hiver !" },
-        { "es": "Allí hay unos tres millones de saunas para cinco millones y medio de habitantes.", "fr": "Là-bas, il y a environ trois millions de saunas pour cinq millions et demi d'habitants." }
+        {
+          "es": "¿Sabías que alternar el calor y el frío es una tradición muy antigua?",
+          "fr": "Savais-tu qu'alterner le chaud et le froid est une tradition très ancienne ?",
+          "en": "Did you know that alternating heat and cold is a very old tradition?"
+        },
+        {
+          "es": "Los romanos ya lo hacían en sus termas, con una sala caliente y otra fría.",
+          "fr": "Les Romains le faisaient déjà dans leurs thermes, avec une salle chaude et une salle froide.",
+          "en": "The Romans already did it in their baths, with a hot room and a cold one."
+        },
+        {
+          "es": "Y en Finlandia, después de la sauna, mucha gente se mete en el lago… ¡incluso en invierno!",
+          "fr": "Et en Finlande, après le sauna, beaucoup de gens plongent dans le lac… même en hiver !",
+          "en": "And in Finland, after the sauna, many people jump into the lake… even in winter!"
+        },
+        {
+          "es": "Allí hay unos tres millones de saunas para cinco millones y medio de habitantes.",
+          "fr": "Là-bas, il y a environ trois millions de saunas pour cinq millions et demi d'habitants.",
+          "en": "There are about three million saunas there for five and a half million people."
+        }
       ]
     }
   ],
   "vocabulary": [
-    { "es": "la bici", "fr": "le vélo", "match": ["bici", "bicis"], "note": "C'est le diminutif de « la bicicleta ». Ir en bici = aller à vélo." },
-    { "es": "la colina", "fr": "la colline", "match": "colinas" },
-    { "es": "la bajada", "fr": "la descente", "match": "bajadas", "note": "Le contraire : la subida (la montée)." },
-    { "es": "empinado, empinada", "fr": "raide, en pente forte", "match": "empinadas" },
-    { "es": "la pendiente", "fr": "la pente", "match": "pendientes" },
-    { "es": "bajarse de", "fr": "descendre (d'un vélo, d'un bus…)", "match": "bajarnos de" },
-    { "es": "la tienda de campaña", "fr": "la tente", "match": "tiendas de campaña", "note": "Attention : « la tienda » toute seule, c'est le magasin !" },
-    { "es": "el congelador", "fr": "le congélateur", "match": "congeladores" },
-    { "es": "helado, helada", "fr": "glacé, glacée", "match": "helada", "note": "Et « el helado », c'est la glace qu'on mange !" },
-    { "es": "el vapor", "fr": "la vapeur" },
-    { "es": "la hierba", "fr": "l'herbe ; les herbes aromatiques", "match": "hierbas" },
-    { "es": "el huerto", "fr": "le potager" },
-    { "es": "el sabor", "fr": "le goût, la saveur" },
-    { "es": "meterse en", "fr": "entrer dans, plonger dans (l'eau)", "match": "se mete en" }
+    {
+      "es": "la bici",
+      "fr": "le vélo",
+      "match": [
+        "bici",
+        "bicis"
+      ],
+      "note": "C'est le diminutif de « la bicicleta ». Ir en bici = aller à vélo.",
+      "en": "bike",
+      "noteEn": "Short for “la bicicleta”. Ir en bici = to go by bike."
+    },
+    {
+      "es": "la colina",
+      "fr": "la colline",
+      "match": "colinas",
+      "en": "hill"
+    },
+    {
+      "es": "la bajada",
+      "fr": "la descente",
+      "match": "bajadas",
+      "note": "Le contraire : la subida (la montée).",
+      "en": "descent, downhill",
+      "noteEn": "The opposite: la subida (the climb)."
+    },
+    {
+      "es": "empinado, empinada",
+      "fr": "raide, en pente forte",
+      "match": "empinadas",
+      "en": "steep"
+    },
+    {
+      "es": "la pendiente",
+      "fr": "la pente",
+      "match": "pendientes",
+      "en": "slope"
+    },
+    {
+      "es": "bajarse de",
+      "fr": "descendre (d'un vélo, d'un bus…)",
+      "match": "bajarnos de",
+      "en": "to get off (a bike, a bus…)"
+    },
+    {
+      "es": "la tienda de campaña",
+      "fr": "la tente",
+      "match": "tiendas de campaña",
+      "note": "Attention : « la tienda » toute seule, c'est le magasin !",
+      "en": "tent",
+      "noteEn": "Careful: “la tienda” on its own means a shop!"
+    },
+    {
+      "es": "el congelador",
+      "fr": "le congélateur",
+      "match": "congeladores",
+      "en": "freezer"
+    },
+    {
+      "es": "helado, helada",
+      "fr": "glacé, glacée",
+      "match": "helada",
+      "note": "Et « el helado », c'est la glace qu'on mange !",
+      "en": "ice-cold, frozen",
+      "noteEn": "And “el helado” is ice cream!"
+    },
+    {
+      "es": "el vapor",
+      "fr": "la vapeur",
+      "en": "steam"
+    },
+    {
+      "es": "la hierba",
+      "fr": "l'herbe ; les herbes aromatiques",
+      "match": "hierbas",
+      "en": "herb; grass"
+    },
+    {
+      "es": "el huerto",
+      "fr": "le potager",
+      "en": "vegetable garden"
+    },
+    {
+      "es": "el sabor",
+      "fr": "le goût, la saveur",
+      "en": "taste, flavor"
+    },
+    {
+      "es": "meterse en",
+      "fr": "entrer dans, plonger dans (l'eau)",
+      "match": "se mete en",
+      "en": "to get into, jump into (water)"
+    }
   ],
   "grammar": {
     "title": "Dire ce qu'il faut faire : tener que et hay que",
     "explanation": "Pour exprimer une obligation, l'espagnol utilise surtout deux tournures. « Tener que + infinitif » veut dire « devoir » pour une personne précise : tengo que, tienes que, tenemos que… Il se conjugue à tous les temps : « tuvimos que ir en bici » (nous avons dû y aller à vélo), « teníamos que bajar caminando » (nous devions descendre à pied).\n\n« Hay que + infinitif », c'est « il faut », une obligation générale, pour tout le monde. Il ne change jamais de forme au présent : « hay que pasar del calor al frío » (il faut passer du chaud au froid).\n\nAstuce : comme pour l'imparfait et le passé simple, « tuvimos que » parle d'une fois précise, et « teníamos que » d'une situation qui se répète (à chaque descente).",
     "examples": [
-      { "es": "Para llegar, tuvimos que ir en bici durante cuarenta minutos.", "fr": "Pour y arriver, nous avons dû faire quarante minutes de vélo. (une fois précise)" },
-      { "es": "Teníamos que bajarnos de las bicis y bajar caminando.", "fr": "Nous devions descendre de vélo et faire la descente à pied. (à chaque descente)" },
-      { "es": "Hay que pasar del calor de la sauna al frío del agua.", "fr": "Il faut passer de la chaleur du sauna au froid de l'eau. (pour tout le monde)" }
-    ]
+      {
+        "es": "Para llegar, tuvimos que ir en bici durante cuarenta minutos.",
+        "fr": "Pour y arriver, nous avons dû faire quarante minutes de vélo. (une fois précise)",
+        "en": "To get there, we had to cycle for forty minutes. (one specific time)"
+      },
+      {
+        "es": "Teníamos que bajarnos de las bicis y bajar caminando.",
+        "fr": "Nous devions descendre de vélo et faire la descente à pied. (à chaque descente)",
+        "en": "We had to get off the bikes and walk down. (on every downhill)"
+      },
+      {
+        "es": "Hay que pasar del calor de la sauna al frío del agua.",
+        "fr": "Il faut passer de la chaleur du sauna au froid de l'eau. (pour tout le monde)",
+        "en": "You go from the heat of the sauna to the cold of the water. (for everyone)"
+      }
+    ],
+    "titleEn": "Saying what you have to do: tener que and hay que",
+    "explanationEn": "Spanish mainly uses two expressions for obligation. “Tener que + infinitive” means “to have to” for a specific person: tengo que, tienes que, tenemos que… It works in every tense: “tuvimos que ir en bici” (we had to go by bike), “teníamos que bajar caminando” (we had to walk down).\n\n“Hay que + infinitive” means “you have to / one must”: a general obligation for everyone. It never changes form in the present: “hay que pasar del calor al frío” (you go from the heat to the cold).\n\nTip: as with the two past tenses, “tuvimos que” describes one specific time, and “teníamos que” a situation that kept repeating (on every downhill)."
   },
   "exercises": [
     {
       "type": "choice",
       "question": "¿Cómo llegaron a la noche de fuego y hielo?",
-      "options": ["En bici", "En autobús", "A caballo"],
+      "options": [
+        "En bici",
+        "En autobús",
+        "A caballo"
+      ],
       "answer": 0,
       "explanation": "« Tuvimos que ir en bici durante cuarenta minutos. »"
     },
     {
       "type": "choice",
       "question": "¿Por qué tuvieron que bajar caminando?",
-      "options": ["Porque las bajadas eran muy empinadas", "Porque una bici estaba rota", "Porque llovía mucho"],
+      "options": [
+        "Porque las bajadas eran muy empinadas",
+        "Porque una bici estaba rota",
+        "Porque llovía mucho"
+      ],
       "answer": 0
     },
     {
@@ -88,12 +248,17 @@
       "type": "truefalse",
       "statement": "En las saunas, el aire tenía un sabor desagradable.",
       "answer": false,
-      "explanation": "Au contraire : grâce aux herbes du potager, « el aire tiene un sabor delicioso »."
+      "explanation": "Au contraire : grâce aux herbes du potager, « el aire tiene un sabor delicioso ».",
+      "explanationEn": "On the contrary: thanks to the garden herbs, “el aire tiene un sabor delicioso”."
     },
     {
       "type": "choice",
       "question": "¿Quiénes estaban esa noche?",
-      "options": ["Julie, Josh y otros cuatro hombres", "Julie, Josh y tres amigas", "Solo Julie y Josh"],
+      "options": [
+        "Julie, Josh y otros cuatro hombres",
+        "Julie, Josh y tres amigas",
+        "Solo Julie y Josh"
+      ],
       "answer": 0,
       "explanation": "« Éramos solo yo y los chicos: Josh y otros cuatro hombres. »"
     },
@@ -101,32 +266,53 @@
       "type": "fill",
       "sentence": "Para llegar, ___ pedalear cuarenta minutos.",
       "hint": "tener que, nosotros — une fois précise, au passé",
-      "options": ["tuvimos que", "tenemos", "hay"],
+      "options": [
+        "tuvimos que",
+        "tenemos",
+        "hay"
+      ],
       "answer": "tuvimos que",
-      "explanation": "Une action précise et terminée → indefinido : tuvimos que."
+      "explanation": "Une action précise et terminée → indefinido : tuvimos que.",
+      "hintEn": "tener que, nosotros — one specific time, in the past",
+      "explanationEn": "A specific, finished action → indefinido: tuvimos que."
     },
     {
       "type": "fill",
       "sentence": "En la sauna, ___ beber mucha agua.",
       "hint": "une obligation générale (« il faut »)",
-      "options": ["hay que", "tengo", "tiene"],
+      "options": [
+        "hay que",
+        "tengo",
+        "tiene"
+      ],
       "answer": "hay que",
-      "explanation": "« Hay que + infinitif » = il faut, pour tout le monde."
+      "explanation": "« Hay que + infinitif » = il faut, pour tout le monde.",
+      "hintEn": "an obligation for everyone (“you must”)",
+      "explanationEn": "“Hay que + infinitive” = you have to, for everyone."
     },
     {
       "type": "fill",
       "sentence": "Él llena las saunas de vapor con hierbas de su ___.",
-      "options": ["huerto", "congelador", "pendiente"],
+      "options": [
+        "huerto",
+        "congelador",
+        "pendiente"
+      ],
       "answer": "huerto"
     },
     {
       "type": "translate",
       "fr": "Nous avons dû descendre de vélo.",
-      "es": "Tuvimos que bajarnos de las bicis."
+      "es": "Tuvimos que bajarnos de las bicis.",
+      "en": "We had to get off our bikes."
     }
   ],
   "reply": {
     "prompt": "Mamá, ¿te atreverías a probar el fuego y el hielo? Y cuéntame: ¿qué tienes que hacer esta semana?",
-    "promptFr": "Dis-moi si tu oserais essayer… puis raconte-moi ce que tu dois faire cette semaine avec « tengo que… »."
-  }
+    "promptFr": "Dis-moi si tu oserais essayer… puis raconte-moi ce que tu dois faire cette semaine avec « tengo que… ».",
+    "promptEn": "Tell me if you'd dare to try it… then tell me what you have to do this week with “tengo que…”."
+  },
+  "titleEn": "A night of fire and ice",
+  "placeEn": "Costa Rica",
+  "summaryEn": "Forty minutes of biking through the jungle to a “fire and ice” night: saunas steamed with garden herbs, and ice baths."
 }

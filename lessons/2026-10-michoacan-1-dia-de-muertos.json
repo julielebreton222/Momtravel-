@@ -11,91 +11,292 @@
   "story": [
     {
       "sentences": [
-        { "es": "En México, cada año, del 31 de octubre al 2 de noviembre, los vivos esperan la visita de sus muertos.", "fr": "Au Mexique, chaque année, du 31 octobre au 2 novembre, les vivants attendent la visite de leurs morts." },
-        { "es": "El 1 de noviembre vuelven los niños, a quienes llaman «angelitos», y el 2 de noviembre llegan los adultos.", "fr": "Le 1er novembre, ce sont les enfants qui reviennent, qu'on appelle les « petits anges », et le 2 novembre arrivent les adultes." },
-        { "es": "Las familias limpian las tumbas, comen juntas en el cementerio y preparan en casa una ofrenda, un altar lleno de colores.", "fr": "Les familles nettoient les tombes, mangent ensemble au cimetière et préparent à la maison une ofrenda, un autel plein de couleurs." }
+        {
+          "es": "En México, cada año, del 31 de octubre al 2 de noviembre, los vivos esperan la visita de sus muertos.",
+          "fr": "Au Mexique, chaque année, du 31 octobre au 2 novembre, les vivants attendent la visite de leurs morts.",
+          "en": "In Mexico, every year from October 31 to November 2, the living wait for a visit from their dead."
+        },
+        {
+          "es": "El 1 de noviembre vuelven los niños, a quienes llaman «angelitos», y el 2 de noviembre llegan los adultos.",
+          "fr": "Le 1er novembre, ce sont les enfants qui reviennent, qu'on appelle les « petits anges », et le 2 novembre arrivent les adultes.",
+          "en": "On November 1 the children come back, who are called “angelitos” (little angels), and on November 2 the adults arrive."
+        },
+        {
+          "es": "Las familias limpian las tumbas, comen juntas en el cementerio y preparan en casa una ofrenda, un altar lleno de colores.",
+          "fr": "Les familles nettoient les tombes, mangent ensemble au cimetière et préparent à la maison une ofrenda, un autel plein de couleurs.",
+          "en": "Families clean the graves, eat together in the cemetery, and prepare an ofrenda at home, an altar full of color."
+        }
       ]
     },
     {
       "sentences": [
-        { "es": "¿De dónde viene esta fiesta? Los historiadores no están de acuerdo.", "fr": "D'où vient cette fête ? Les historiens ne sont pas d'accord." },
-        { "es": "Los aztecas dedicaban dos meses de su calendario a los muertos: uno para los niños y otro para los adultos.", "fr": "Les Aztèques consacraient deux mois de leur calendrier aux morts : un pour les enfants et un autre pour les adultes." },
-        { "es": "Según ellos, el alma viajaba durante cuatro años por el Mictlán, un mundo subterráneo de nueve niveles.", "fr": "Selon eux, l'âme voyageait pendant quatre ans à travers le Mictlán, un monde souterrain à neuf niveaux." },
-        { "es": "Allí reinaban el dios Mictlantecuhtli y su esposa Mictecacíhuatl, «la Señora de los Muertos».", "fr": "Là régnaient le dieu Mictlantecuhtli et son épouse Mictecacíhuatl, « la Dame des Morts »." },
-        { "es": "Después, los españoles trajeron el Día de Todos los Santos y el Día de los Fieles Difuntos, el 1 y el 2 de noviembre.", "fr": "Ensuite, les Espagnols ont apporté la Toussaint et le Jour des Défunts, le 1er et le 2 novembre." },
-        { "es": "Para muchos, las dos tradiciones se mezclaron, y en 2008 la UNESCO declaró la fiesta Patrimonio de la Humanidad.", "fr": "Pour beaucoup, les deux traditions se sont mélangées, et en 2008 l'UNESCO a déclaré la fête patrimoine de l'humanité." }
+        {
+          "es": "¿De dónde viene esta fiesta? Los historiadores no están de acuerdo.",
+          "fr": "D'où vient cette fête ? Les historiens ne sont pas d'accord.",
+          "en": "Where does this celebration come from? Historians don't agree."
+        },
+        {
+          "es": "Los aztecas dedicaban dos meses de su calendario a los muertos: uno para los niños y otro para los adultos.",
+          "fr": "Les Aztèques consacraient deux mois de leur calendrier aux morts : un pour les enfants et un autre pour les adultes.",
+          "en": "The Aztecs devoted two months of their calendar to the dead: one for children and another for adults."
+        },
+        {
+          "es": "Según ellos, el alma viajaba durante cuatro años por el Mictlán, un mundo subterráneo de nueve niveles.",
+          "fr": "Selon eux, l'âme voyageait pendant quatre ans à travers le Mictlán, un monde souterrain à neuf niveaux.",
+          "en": "According to them, the soul traveled for four years through Mictlán, an underworld with nine levels."
+        },
+        {
+          "es": "Allí reinaban el dios Mictlantecuhtli y su esposa Mictecacíhuatl, «la Señora de los Muertos».",
+          "fr": "Là régnaient le dieu Mictlantecuhtli et son épouse Mictecacíhuatl, « la Dame des Morts ».",
+          "en": "There ruled the god Mictlantecuhtli and his wife Mictecacíhuatl, “the Lady of the Dead.”"
+        },
+        {
+          "es": "Después, los españoles trajeron el Día de Todos los Santos y el Día de los Fieles Difuntos, el 1 y el 2 de noviembre.",
+          "fr": "Ensuite, les Espagnols ont apporté la Toussaint et le Jour des Défunts, le 1er et le 2 novembre.",
+          "en": "Later, the Spanish brought All Saints' Day and All Souls' Day, on November 1 and 2."
+        },
+        {
+          "es": "Para muchos, las dos tradiciones se mezclaron, y en 2008 la UNESCO declaró la fiesta Patrimonio de la Humanidad.",
+          "fr": "Pour beaucoup, les deux traditions se sont mélangées, et en 2008 l'UNESCO a déclaré la fête patrimoine de l'humanité.",
+          "en": "For many, the two traditions blended, and in 2008 UNESCO declared the celebration part of the heritage of humanity."
+        }
       ]
     },
     {
       "image": "lessons/media/2026-10-michoacan-1-dia-de-muertos/ofrenda.jpg",
-      "caption": "Une ofrenda monumentale à Huaquechula (Puebla). Photo : Edson2k, CC BY-SA 4.0, Wikimedia Commons."
+      "caption": "Une ofrenda monumentale à Huaquechula (Puebla). Photo : Edson2k, CC BY-SA 4.0, Wikimedia Commons.",
+      "captionEn": "A monumental ofrenda in Huaquechula (Puebla). Photo: Edson2k, CC BY-SA 4.0, Wikimedia Commons."
     },
     {
       "sentences": [
-        { "es": "En la ofrenda hay fotos de los muertos y la comida que más les gustaba, como los tamales, el chocolate y el pan de muerto.", "fr": "Sur l'ofrenda, il y a des photos des défunts et les plats qu'ils aimaient le plus, comme les tamales, le chocolat et le pain des morts." },
-        { "es": "Muchas familias ponen también los cuatro elementos.", "fr": "Beaucoup de familles y mettent aussi les quatre éléments." },
-        { "es": "Ponen agua para la sed del alma después de su largo viaje, velas para el fuego, comida para la tierra y papel picado, que se mueve con el viento.", "fr": "Elles mettent de l'eau pour la soif de l'âme après son long voyage, des bougies pour le feu, de la nourriture pour la terre et du papier découpé, qui bouge avec le vent." },
-        { "es": "El humo del copal, una resina que se quema como incienso, perfuma toda la casa.", "fr": "La fumée du copal, une résine qu'on brûle comme de l'encens, parfume toute la maison." }
+        {
+          "es": "En la ofrenda hay fotos de los muertos y la comida que más les gustaba, como los tamales, el chocolate y el pan de muerto.",
+          "fr": "Sur l'ofrenda, il y a des photos des défunts et les plats qu'ils aimaient le plus, comme les tamales, le chocolat et le pain des morts.",
+          "en": "On the ofrenda there are photos of the dead and the food they loved most, like tamales, chocolate and pan de muerto (bread of the dead)."
+        },
+        {
+          "es": "Muchas familias ponen también los cuatro elementos.",
+          "fr": "Beaucoup de familles y mettent aussi les quatre éléments.",
+          "en": "Many families also add the four elements."
+        },
+        {
+          "es": "Ponen agua para la sed del alma después de su largo viaje, velas para el fuego, comida para la tierra y papel picado, que se mueve con el viento.",
+          "fr": "Elles mettent de l'eau pour la soif de l'âme après son long voyage, des bougies pour le feu, de la nourriture pour la terre et du papier découpé, qui bouge avec le vent.",
+          "en": "They put out water for the soul's thirst after its long journey, candles for fire, food for earth, and papel picado (cut paper), which moves in the wind."
+        },
+        {
+          "es": "El humo del copal, una resina que se quema como incienso, perfuma toda la casa.",
+          "fr": "La fumée du copal, une résine qu'on brûle comme de l'encens, parfume toute la maison.",
+          "en": "The smoke of copal, a resin burned like incense, perfumes the whole house."
+        }
       ]
     },
     {
       "sentences": [
-        { "es": "Y por todas partes, flores naranjas: el cempasúchil.", "fr": "Et partout, des fleurs orange : le cempasúchil (l'œillet d'Inde)." },
-        { "es": "Su nombre viene del náhuatl cempōhualxōchitl, «flor de veinte», porque el veinte era la base de los números aztecas.", "fr": "Son nom vient du nahuatl cempōhualxōchitl, « fleur de vingt », parce que vingt était la base des nombres aztèques." },
-        { "es": "Es una flor nativa de México: los aztecas ya la usaban en sus ceremonias y como medicina.", "fr": "C'est une fleur originaire du Mexique : les Aztèques l'utilisaient déjà dans leurs cérémonies et comme remède." },
-        { "es": "Se dice que su color y su olor fuerte guían a las almas desde el cementerio hasta su casa.", "fr": "On dit que sa couleur et son odeur forte guident les âmes du cimetière jusqu'à leur maison." },
-        { "es": "Por eso, muchas familias hacen caminos de pétalos hasta la puerta.", "fr": "C'est pour ça que beaucoup de familles font des chemins de pétales jusqu'à la porte." }
+        {
+          "es": "Y por todas partes, flores naranjas: el cempasúchil.",
+          "fr": "Et partout, des fleurs orange : le cempasúchil (l'œillet d'Inde).",
+          "en": "And everywhere, orange flowers: cempasúchil (Mexican marigold)."
+        },
+        {
+          "es": "Su nombre viene del náhuatl cempōhualxōchitl, «flor de veinte», porque el veinte era la base de los números aztecas.",
+          "fr": "Son nom vient du nahuatl cempōhualxōchitl, « fleur de vingt », parce que vingt était la base des nombres aztèques.",
+          "en": "Its name comes from the Nahuatl cempōhualxōchitl, “twenty flower,” because twenty was the base of Aztec numbers."
+        },
+        {
+          "es": "Es una flor nativa de México: los aztecas ya la usaban en sus ceremonias y como medicina.",
+          "fr": "C'est une fleur originaire du Mexique : les Aztèques l'utilisaient déjà dans leurs cérémonies et comme remède.",
+          "en": "It's a flower native to Mexico: the Aztecs already used it in their ceremonies and as medicine."
+        },
+        {
+          "es": "Se dice que su color y su olor fuerte guían a las almas desde el cementerio hasta su casa.",
+          "fr": "On dit que sa couleur et son odeur forte guident les âmes du cimetière jusqu'à leur maison.",
+          "en": "It's said that its color and strong scent guide souls from the cemetery to their home."
+        },
+        {
+          "es": "Por eso, muchas familias hacen caminos de pétalos hasta la puerta.",
+          "fr": "C'est pour ça que beaucoup de familles font des chemins de pétales jusqu'à la porte.",
+          "en": "That's why many families make paths of petals up to the door."
+        }
       ]
     },
     {
       "image": "lessons/media/2026-10-michoacan-1-dia-de-muertos/cempasuchil.jpg",
-      "caption": "Un champ de cempasúchil. Photo : Ferfive, CC BY-SA 4.0, Wikimedia Commons."
+      "caption": "Un champ de cempasúchil. Photo : Ferfive, CC BY-SA 4.0, Wikimedia Commons.",
+      "captionEn": "A field of cempasúchil. Photo: Ferfive, CC BY-SA 4.0, Wikimedia Commons."
     },
     {
       "sentences": [
-        { "es": "En Michoacán, en el lago de Pátzcuaro, la gente enciende velas en sus barcas, llamadas «mariposas».", "fr": "Au Michoacán, sur le lac de Pátzcuaro, les gens allument des bougies sur leurs barques, qu'on appelle des « papillons »." },
-        { "es": "Reman en la noche hasta la isla de Janitzio y pasan horas junto a las tumbas de sus familiares.", "fr": "Ils rament dans la nuit jusqu'à l'île de Janitzio et passent des heures près des tombes de leurs proches." }
+        {
+          "es": "En Michoacán, en el lago de Pátzcuaro, la gente enciende velas en sus barcas, llamadas «mariposas».",
+          "fr": "Au Michoacán, sur le lac de Pátzcuaro, les gens allument des bougies sur leurs barques, qu'on appelle des « papillons ».",
+          "en": "In Michoacán, on Lake Pátzcuaro, people light candles in their boats, which are called “mariposas” (butterflies)."
+        },
+        {
+          "es": "Reman en la noche hasta la isla de Janitzio y pasan horas junto a las tumbas de sus familiares.",
+          "fr": "Ils rament dans la nuit jusqu'à l'île de Janitzio et passent des heures près des tombes de leurs proches.",
+          "en": "They row through the night to the island of Janitzio and spend hours beside the graves of their loved ones."
+        }
       ]
     },
     {
       "sentences": [
-        { "es": "¿Y la «carrera de las almas»? En el cuento que vas a leer pronto, unos jóvenes la juegan con una vela en la mano.", "fr": "Et « la course des âmes » ? Dans le conte que tu vas bientôt lire, des jeunes y jouent avec une bougie à la main." },
-        { "es": "No es una tradición real: Julie la inventó para su historia.", "fr": "Ce n'est pas une vraie tradition : Julie l'a inventée pour son histoire." },
-        { "es": "Pero se inspira en algo muy real: en el Día de Muertos, la llama de las velas ilumina el camino de las almas.", "fr": "Mais elle s'inspire de quelque chose de bien réel : au Jour des Morts, la flamme des bougies éclaire le chemin des âmes." }
+        {
+          "es": "¿Y la «carrera de las almas»? En el cuento que vas a leer pronto, unos jóvenes la juegan con una vela en la mano.",
+          "fr": "Et « la course des âmes » ? Dans le conte que tu vas bientôt lire, des jeunes y jouent avec une bougie à la main.",
+          "en": "And the “race of souls”? In the story you'll read soon, some young people play it with a candle in their hand."
+        },
+        {
+          "es": "No es una tradición real: Julie la inventó para su historia.",
+          "fr": "Ce n'est pas une vraie tradition : Julie l'a inventée pour son histoire.",
+          "en": "It isn't a real tradition: Julie invented it for her story."
+        },
+        {
+          "es": "Pero se inspira en algo muy real: en el Día de Muertos, la llama de las velas ilumina el camino de las almas.",
+          "fr": "Mais elle s'inspire de quelque chose de bien réel : au Jour des Morts, la flamme des bougies éclaire le chemin des âmes.",
+          "en": "But it's inspired by something very real: on the Day of the Dead, candlelight lights the way for souls."
+        }
       ]
     }
   ],
   "vocabulary": [
-    { "es": "los vivos y los muertos", "fr": "les vivants et les morts", "match": ["los vivos", "sus muertos"] },
-    { "es": "la tumba", "fr": "la tombe", "match": ["tumbas"] },
-    { "es": "el alma", "fr": "l'âme", "match": ["alma", "almas"], "note": "Mot féminin, mais on dit « el alma » au singulier pour éviter « la a… ». Au pluriel : las almas." },
-    { "es": "los difuntos", "fr": "les défunts", "match": "Difuntos" },
-    { "es": "reinar", "fr": "régner", "match": "reinaban" },
-    { "es": "mezclarse", "fr": "se mélanger", "match": "se mezclaron" },
-    { "es": "la sed", "fr": "la soif", "note": "Tener sed = avoir soif." },
-    { "es": "la vela", "fr": "la bougie", "match": ["velas", "vela"], "note": "Attention : « la vela » est aussi la voile d'un bateau." },
-    { "es": "el humo", "fr": "la fumée" },
-    { "es": "el olor", "fr": "l'odeur" },
-    { "es": "guiar", "fr": "guider", "match": "guían" },
-    { "es": "el pétalo", "fr": "le pétale", "match": "pétalos" },
-    { "es": "remar", "fr": "ramer", "match": "Reman" },
-    { "es": "la llama", "fr": "la flamme", "note": "Et aussi… le lama, l'animal des Andes !" }
+    {
+      "es": "los vivos y los muertos",
+      "fr": "les vivants et les morts",
+      "match": [
+        "los vivos",
+        "sus muertos"
+      ],
+      "en": "the living and the dead"
+    },
+    {
+      "es": "la tumba",
+      "fr": "la tombe",
+      "match": [
+        "tumbas"
+      ],
+      "en": "grave, tomb"
+    },
+    {
+      "es": "el alma",
+      "fr": "l'âme",
+      "match": [
+        "alma",
+        "almas"
+      ],
+      "note": "Mot féminin, mais on dit « el alma » au singulier pour éviter « la a… ». Au pluriel : las almas.",
+      "en": "soul",
+      "noteEn": "A feminine word, but you say “el alma” in the singular to avoid “la a…”. Plural: las almas."
+    },
+    {
+      "es": "los difuntos",
+      "fr": "les défunts",
+      "match": "Difuntos",
+      "en": "the deceased"
+    },
+    {
+      "es": "reinar",
+      "fr": "régner",
+      "match": "reinaban",
+      "en": "to reign, rule"
+    },
+    {
+      "es": "mezclarse",
+      "fr": "se mélanger",
+      "match": "se mezclaron",
+      "en": "to blend, mix"
+    },
+    {
+      "es": "la sed",
+      "fr": "la soif",
+      "note": "Tener sed = avoir soif.",
+      "en": "thirst",
+      "noteEn": "Tener sed = to be thirsty."
+    },
+    {
+      "es": "la vela",
+      "fr": "la bougie",
+      "match": [
+        "velas",
+        "vela"
+      ],
+      "note": "Attention : « la vela » est aussi la voile d'un bateau.",
+      "en": "candle",
+      "noteEn": "Careful: “la vela” is also a boat's sail."
+    },
+    {
+      "es": "el humo",
+      "fr": "la fumée",
+      "en": "smoke"
+    },
+    {
+      "es": "el olor",
+      "fr": "l'odeur",
+      "en": "smell, scent"
+    },
+    {
+      "es": "guiar",
+      "fr": "guider",
+      "match": "guían",
+      "en": "to guide"
+    },
+    {
+      "es": "el pétalo",
+      "fr": "le pétale",
+      "match": "pétalos",
+      "en": "petal"
+    },
+    {
+      "es": "remar",
+      "fr": "ramer",
+      "match": "Reman",
+      "en": "to row"
+    },
+    {
+      "es": "la llama",
+      "fr": "la flamme",
+      "note": "Et aussi… le lama, l'animal des Andes !",
+      "en": "flame",
+      "noteEn": "And also… the llama, the Andean animal!"
+    }
   ],
   "grammar": {
     "title": "Por ou para ?",
     "explanation": "« Por » et « para » se traduisent souvent tous les deux par « pour », mais ils n'ont pas le même sens.\n\n« Para » regarde vers un but, une destination : « agua para la sed del alma » (de l'eau pour la soif de l'âme), « velas para el fuego ». Pense à une flèche qui va vers quelque chose.\n\n« Por » explique la cause, le lieu qu'on traverse ou le moyen : « por todas partes » (partout), « viajaba por el Mictlán » (voyageait à travers le Mictlán), « por eso » (c'est pour ça). Pense au chemin, à la raison.",
     "examples": [
-      { "es": "Ponen agua para la sed del alma.", "fr": "Elles mettent de l'eau pour la soif de l'âme. (but)" },
-      { "es": "Y por todas partes, flores naranjas.", "fr": "Et partout, des fleurs orange. (lieu)" },
-      { "es": "El alma viajaba durante cuatro años por el Mictlán.", "fr": "L'âme voyageait pendant quatre ans à travers le Mictlán. (lieu traversé)" },
-      { "es": "Por eso, muchas familias hacen caminos de pétalos.", "fr": "C'est pour ça que beaucoup de familles font des chemins de pétales. (cause)" }
-    ]
+      {
+        "es": "Ponen agua para la sed del alma.",
+        "fr": "Elles mettent de l'eau pour la soif de l'âme. (but)",
+        "en": "They put out water for the soul's thirst. (goal)"
+      },
+      {
+        "es": "Y por todas partes, flores naranjas.",
+        "fr": "Et partout, des fleurs orange. (lieu)",
+        "en": "And everywhere, orange flowers. (place)"
+      },
+      {
+        "es": "El alma viajaba durante cuatro años por el Mictlán.",
+        "fr": "L'âme voyageait pendant quatre ans à travers le Mictlán. (lieu traversé)",
+        "en": "The soul traveled for four years through Mictlán. (place moved through)"
+      },
+      {
+        "es": "Por eso, muchas familias hacen caminos de pétalos.",
+        "fr": "C'est pour ça que beaucoup de familles font des chemins de pétales. (cause)",
+        "en": "That's why many families make paths of petals. (cause)"
+      }
+    ],
+    "titleEn": "Por or para?",
+    "explanationEn": "“Por” and “para” can both mean “for”, but they don't mean the same thing.\n\n“Para” points toward a goal or destination: “agua para la sed del alma” (water for the soul's thirst), “velas para el fuego” (candles for fire). Think of an arrow heading toward something.\n\n“Por” explains the cause, the place you move through, or the means: “por todas partes” (everywhere), “viajaba por el Mictlán” (traveled through Mictlán), “por eso” (that's why). Think of the path, or the reason."
   },
   "exercises": [
     {
       "type": "choice",
       "question": "¿Qué día vuelven los niños, los «angelitos»?",
-      "options": ["El 1 de noviembre", "El 2 de noviembre", "El 31 de octubre"],
+      "options": [
+        "El 1 de noviembre",
+        "El 2 de noviembre",
+        "El 31 de octubre"
+      ],
       "answer": 0
     },
     {
@@ -107,52 +308,84 @@
     {
       "type": "choice",
       "question": "¿Qué significa cempōhualxōchitl en náhuatl?",
-      "options": ["Flor de veinte", "Flor del sol", "Flor de la muerte"],
+      "options": [
+        "Flor de veinte",
+        "Flor del sol",
+        "Flor de la muerte"
+      ],
       "answer": 0,
-      "explanation": "Vingt était la base des nombres aztèques."
+      "explanation": "Vingt était la base des nombres aztèques.",
+      "explanationEn": "Twenty was the base of Aztec numbers."
     },
     {
       "type": "choice",
       "question": "¿Para qué ponen agua en la ofrenda?",
-      "options": ["Para la sed del alma después de su largo viaje", "Para regar las flores", "Para limpiar las tumbas"],
+      "options": [
+        "Para la sed del alma después de su largo viaje",
+        "Para regar las flores",
+        "Para limpiar las tumbas"
+      ],
       "answer": 0
     },
     {
       "type": "truefalse",
       "statement": "La «carrera de las almas» es una tradición antigua de Michoacán.",
       "answer": false,
-      "explanation": "Julie l'a inventée pour son conte, en s'inspirant des bougies qui éclairent le chemin des âmes."
+      "explanation": "Julie l'a inventée pour son conte, en s'inspirant des bougies qui éclairent le chemin des âmes.",
+      "explanationEn": "Julie invented it for her story, inspired by the candles that light the way for souls."
     },
     {
       "type": "fill",
       "sentence": "Ponen agua ___ la sed de las almas.",
       "hint": "un but",
-      "options": ["para", "por", "de"],
+      "options": [
+        "para",
+        "por",
+        "de"
+      ],
       "answer": "para",
-      "explanation": "Un but, une destination → para."
+      "explanation": "Un but, une destination → para.",
+      "hintEn": "a goal",
+      "explanationEn": "A goal or destination → para."
     },
     {
       "type": "fill",
       "sentence": "El alma viajaba ___ el Mictlán durante cuatro años.",
       "hint": "le lieu qu'on traverse",
-      "options": ["por", "para", "con"],
+      "options": [
+        "por",
+        "para",
+        "con"
+      ],
       "answer": "por",
-      "explanation": "Le lieu qu'on traverse → por."
+      "explanation": "Le lieu qu'on traverse → por.",
+      "hintEn": "the place you move through",
+      "explanationEn": "The place you move through → por."
     },
     {
       "type": "fill",
       "sentence": "Las familias hacen caminos de ___ hasta la puerta.",
-      "options": ["pétalos", "tumbas", "barcas"],
+      "options": [
+        "pétalos",
+        "tumbas",
+        "barcas"
+      ],
       "answer": "pétalos"
     },
     {
       "type": "translate",
       "fr": "On allume des bougies pour éclairer le chemin des âmes.",
-      "es": "Se encienden velas para iluminar el camino de las almas."
+      "es": "Se encienden velas para iluminar el camino de las almas.",
+      "en": "People light candles to light the way for souls."
     }
   ],
   "reply": {
     "prompt": "Mamá, si hicieras una ofrenda, ¿para quién sería y qué pondrías en ella?",
-    "promptFr": "Si tu faisais une ofrenda, pour qui serait-elle, et qu'est-ce que tu y mettrais ? Essaie d'utiliser « para » et « por »."
-  }
+    "promptFr": "Si tu faisais une ofrenda, pour qui serait-elle, et qu'est-ce que tu y mettrais ? Essaie d'utiliser « para » et « por ».",
+    "promptEn": "If you made an ofrenda, who would it be for, and what would you put on it? Try using “para” and “por”."
+  },
+  "titleEn": "The Day of the Dead: flowers, candles and souls",
+  "placeEn": "Michoacán, Mexico",
+  "summaryEn": "Where the Day of the Dead comes from, what goes on an ofrenda, why cempasúchil flowers guide souls… and where “the race of souls” comes from.",
+  "noteEn": "Mom, these two lessons take you to Mexico, to the heart of the Day of the Dead. They're preparing a surprise you've been waiting for a long time…"
 }

@@ -81,4 +81,4 @@ to the copy step in `.github/workflows/pages.yml` and to `SHELL` in `sw.js`.
 
 - `node scripts/build.mjs` must pass.
 - Run the app locally with `python3 -m http.server` and open http://localhost:8000.
-- After changing `app.js`/`styles.css`, bump `CACHE` in `sw.js` so installed copies update.
+- After changing any script or `styles.css`, bump `VERSION` in `sw.js` and the matching `?v=` numbers in `index.html` (same number), so phones never mix old and new code.
