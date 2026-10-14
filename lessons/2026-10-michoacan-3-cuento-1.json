@@ -1,0 +1,165 @@
+{
+  "id": "2026-10-michoacan-3-cuento-1",
+  "title": "El camino de las monarcas (I)",
+  "titleFr": "Le chemin des monarques, 1re partie (un conte de Julie)",
+  "titleEn": "The path of the monarchs, part 1 (a story by Julie)",
+  "place": "Michoacán, Mexique",
+  "placeEn": "Michoacán, Mexico",
+  "date": "2026-10-14",
+  "landscape": "city",
+  "level": "B1",
+  "summaryFr": "Le conte que tu m'avais demandé : à la veille du Jour des Morts, Marisol prépare les fleurs de cempasúchil, et sa mère Inés réveille un souvenir douloureux.",
+  "summaryEn": "The story Mom asked for: on the eve of the Day of the Dead, Marisol prepares the marigolds, and her mother Inés stirs up a painful memory.",
+  "note": "Maman, il y a environ un an, tu m'as demandé d'écrire une histoire sur un papillon et une mère. Je l'ai enfin écrite, pour toi, après avoir fait une petite recherche sur les thèmes que tu viens de découvrir : le Jour des Morts, le cempasúchil, les monarques et le papillon de la mort. La voici, en deux parties.",
+  "noteEn": "Mom, about a year ago you asked me to write a story about a butterfly and a mother. I finally wrote it, for you, after a little research into the themes you've just discovered: the Day of the Dead, cempasúchil, the monarchs and the butterfly of death. Here it is, in two parts.",
+  "story": [
+    {
+      "sentences": [
+        { "es": "Cada octubre, las montañas que rodean Michoacán cobraban vida.", "fr": "Chaque mois d'octobre, les montagnes qui entourent le Michoacán prenaient vie.", "en": "Each October, the mountains surrounding Michoacán came alive." },
+        { "es": "Escondido en un valle, un pequeño pueblo de México descansaba entre las colinas.", "fr": "Niché dans une vallée, un petit village du Mexique reposait entre les collines.", "en": "Nestled in a valley, a little village in Mexico lay cradled between the hills." },
+        { "es": "Allí toleraban Halloween, la Noche de Brujas.", "fr": "Là-bas, on tolérait Halloween, la Nuit des Sorcières.", "en": "Halloween, or the Night of the Witches, was tolerated there." },
+        { "es": "Los adolescentes colgaban globos negros y gritaban «¡Feliz Halloween!» mientras corrían por las calles empedradas con máscaras de calavera.", "fr": "Les adolescents accrochaient des ballons noirs et criaient « ¡Feliz Halloween! » en courant dans les rues pavées, avec des masques de tête de mort.", "en": "Teenagers strung up black balloons and shouted “¡Feliz Halloween!” as they ran through the cobblestone streets in skull masks." }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "Marisol estaba sentada en un banquito del patio, ensartando flores de cempasúchil en un alambre fino.", "fr": "Marisol était assise sur un petit tabouret dans la cour, à enfiler des fleurs de cempasúchil sur un fil de fer fin.", "en": "Marisol sat on a low stool in the courtyard, threading marigolds onto thin wire." },
+        { "es": "Los pétalos le manchaban la punta de los dedos de amarillo y naranja, como un rubor de sol sobre la piel.", "fr": "Les pétales lui tachaient le bout des doigts de jaune et d'orange, comme le soleil qui rougit sur la peau.", "en": "The petals stained her fingertips yellow-orange, like sunlight blushing against her skin." },
+        { "es": "Sus hijas entraban y salían de la casa con canastas de pétalos, riéndose de los disfraces que habían visto en el pueblo.", "fr": "Ses filles entraient et sortaient de la maison avec des paniers de pétales, en riant des déguisements qu'elles avaient vus au village.", "en": "Her daughters ran in and out of the house, carrying baskets of petals and laughing about the costumes they had seen in town." },
+        { "es": "Una quería ser bruja; otra, vampira.", "fr": "L'une voulait être une sorcière, l'autre un vampire.", "en": "One wanted to be a witch, another a vampire." },
+        { "es": "Marisol sonrió sin levantar la vista.", "fr": "Marisol sourit sans lever les yeux.", "en": "Marisol smiled without looking up." },
+        { "es": "Las dejaba platicar, ya acostumbrada al ritmo de este mundo nuevo que se rozaba con el viejo.", "fr": "Elle les laissait bavarder, désormais habituée au rythme de ce monde nouveau qui frottait contre l'ancien.", "en": "She let them chatter, now accustomed to the rhythm of this new world rubbing against the old." }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "Marisol seguía arreglando las flores cuando su madre entró por la puerta lateral.", "fr": "Marisol arrangeait encore les fleurs quand sa mère entra par la porte de côté.", "en": "Marisol was still arranging the marigolds when her mother came in through the side gate." },
+        { "es": "—Mira, míralos —dijo Inés, mirando hacia la calle de al lado.", "fr": "— Regarde, regarde-les, dit Inés en jetant un coup d'œil vers la rue d'à côté.", "en": "“Mira, look at them,” Inés said, glancing toward the side street." },
+        { "es": "Pasó corriendo un grupo de muchachos; uno llevaba una guadaña de plástico que se doblaba con el viento.", "fr": "Une bande de garçons passa en courant ; l'un d'eux tenait une faux en plastique qui pliait dans le vent.", "en": "A pack of boys ran past, one of them holding a plastic scythe that bent in the wind." },
+        { "es": "Se reían.", "fr": "Ils riaient.", "en": "They laughed." },
+        { "es": "—Se visten como los muertos, pero se les olvida lo que significa —murmuró Inés.", "fr": "— Ils s'habillent comme les morts, mais ils oublient ce que ça veut dire, murmura Inés.", "en": "“They dress like the dead, but they forget what it means,” Inés murmured." }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "Se sentó despacio en la banca, junto a Marisol, con las rodillas rígidas y el rebozo resbalándole de un hombro.", "fr": "Elle s'assit lentement sur le banc, près de Marisol, les genoux raides, son châle glissant d'une épaule.", "en": "She lowered herself onto the bench near Marisol, her knees stiff, her shawl slipping from one shoulder." },
+        { "es": "—Antes, la muerte era sagrada. La alimentábamos. Platicábamos con ella.", "fr": "— Avant, la mort était sacrée. Nous la nourrissions. Nous parlions avec elle.", "en": "“Death used to be sacred. We fed it. We talked with it." },
+        { "es": "Ahora es una broma, un disfraz de Estados Unidos.", "fr": "Maintenant, c'est une blague, un déguisement venu des États-Unis.", "en": "Now it's a joke, a costume from America.”" }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "Marisol no apartó los ojos de su trabajo.", "fr": "Marisol ne quitta pas son travail des yeux.", "en": "Marisol kept her eyes on her work." },
+        { "es": "El alambre le marcó un surco leve en el pulgar.", "fr": "Le fil de fer lui creusa un léger sillon dans le pouce.", "en": "The wire cut a faint groove into her thumb." },
+        { "es": "—Solo es un juego, mamá —dijo.", "fr": "— Ce n'est qu'un jeu, maman, dit-elle.", "en": "“It's only play, Mama,” she said." },
+        { "es": "Inés resopló.", "fr": "Inés souffla avec mépris.", "en": "Inés snorted." },
+        { "es": "—Jugar a olvidar. Parece que no te acuerdas del año pasado.", "fr": "— Jouer à oublier. On dirait que tu ne te souviens pas de l'année dernière.", "en": "“Play at forgetting. You don't seem to remember last year." },
+        { "es": "¿Lo que le pasó a Eduardo? Eso ya no fue un juego. Cuando tu hijo…", "fr": "Ce qui est arrivé à Eduardo ? Ce n'était plus un jeu. Quand ton fils…", "en": "What happened to Eduardo? It wasn't just play anymore. When your son—”" },
+        { "es": "—Mamá, ya basta —dijo Marisol.", "fr": "— Maman, arrête, dit Marisol.", "en": "“Mama, stop it,” Marisol said." },
+        { "es": "Su madre se calló.", "fr": "Sa mère se tut.", "en": "Her mother fell silent." }
+      ]
+    },
+    {
+      "sentences": [
+        { "es": "Inés se levantó despacio y se sacudió el polvo de la falda.", "fr": "Inés se leva lentement et épousseta sa jupe.", "en": "Inés rose slowly, brushing the dust from her skirt." },
+        { "es": "—Mañana vuelve con los demás, el Día de los Niños —dijo.", "fr": "— Demain, il revient avec les autres, pour le Jour des Enfants, dit-elle.", "en": "“He will be back with the others tomorrow, on el Día de los Niños,” she said." }
+      ]
+    }
+  ],
+  "vocabulary": [
+    { "es": "cobrar vida", "fr": "prendre vie", "en": "to come alive", "match": "cobraban vida" },
+    { "es": "empedrado, empedrada", "fr": "pavé, pavée", "en": "cobbled, cobblestone", "match": "empedradas" },
+    { "es": "la calavera", "fr": "la tête de mort", "en": "skull", "note": "Au Jour des Morts, on offre aussi des « calaveritas de azúcar », des petites têtes de mort en sucre.", "noteEn": "On the Day of the Dead people also give “calaveritas de azúcar”, little sugar skulls." },
+    { "es": "ensartar", "fr": "enfiler (sur un fil)", "en": "to thread (onto a string)", "match": "ensartando" },
+    { "es": "el alambre", "fr": "le fil de fer", "en": "wire" },
+    { "es": "manchar", "fr": "tacher", "en": "to stain", "match": "manchaban" },
+    { "es": "el disfraz", "fr": "le déguisement", "en": "costume", "match": ["disfraces", "disfraz"], "note": "Disfrazarse de bruja = se déguiser en sorcière.", "noteEn": "Disfrazarse de bruja = to dress up as a witch." },
+    { "es": "la bruja", "fr": "la sorcière", "en": "witch", "match": ["bruja", "Brujas"] },
+    { "es": "platicar", "fr": "bavarder, discuter", "en": "to chat, talk", "match": ["platicar", "Platicábamos"], "note": "Très mexicain ! En Espagne, on dit plutôt « charlar ».", "noteEn": "Very Mexican! In Spain people say “charlar”." },
+    { "es": "la guadaña", "fr": "la faux", "en": "scythe" },
+    { "es": "el rebozo", "fr": "le châle mexicain", "en": "Mexican shawl", "note": "Le rebozo est un long châle traditionnel du Mexique, porté par les femmes.", "noteEn": "The rebozo is a long traditional Mexican shawl worn by women." },
+    { "es": "resoplar", "fr": "souffler (d'agacement)", "en": "to snort", "match": "resopló" },
+    { "es": "el surco", "fr": "le sillon", "en": "groove, furrow" },
+    { "es": "callarse", "fr": "se taire", "en": "to fall silent", "match": "se calló" }
+  ],
+  "grammar": {
+    "title": "Imperfecto ou indefinido ?",
+    "titleEn": "Imperfecto or indefinido?",
+    "explanation": "Pour raconter une histoire au passé, l'espagnol utilise deux temps, un peu comme l'imparfait et le passé simple en français.\n\nL'imperfecto (colgaban, gritaban, seguía, se reían) peint le décor : ce qui durait, ce qui se répétait, ce qui était en train de se passer. L'indefinido (entró, dijo, se calló, se levantó) raconte les actions précises qui font avancer l'histoire.\n\nLa phrase la plus typique mélange les deux : une action en cours (imperfecto) est interrompue par un événement (indefinido). « Marisol seguía arreglando las flores cuando su madre entró. »",
+    "explanationEn": "To tell a story in the past, Spanish uses two tenses.\n\nThe imperfecto (colgaban, gritaban, seguía, se reían) paints the background: what was going on, what kept happening, what was in progress. It's often “was …-ing” or “used to” in English. The indefinido (entró, dijo, se calló, se levantó) tells the specific actions that move the story forward.\n\nThe most typical sentence mixes both: an action in progress (imperfecto) is interrupted by an event (indefinido). “Marisol seguía arreglando las flores cuando su madre entró.”",
+    "examples": [
+      { "es": "Los adolescentes colgaban globos negros y gritaban «¡Feliz Halloween!».", "fr": "Le décor, ce qui se répète → imperfecto.", "en": "Background, things happening repeatedly → imperfecto." },
+      { "es": "Marisol seguía arreglando las flores cuando su madre entró.", "fr": "Une action en cours (imperfecto) interrompue par un événement (indefinido).", "en": "An action in progress (imperfecto) interrupted by an event (indefinido)." },
+      { "es": "Su madre se calló.", "fr": "Une action précise qui fait avancer l'histoire → indefinido.", "en": "A specific action that moves the story forward → indefinido." }
+    ]
+  },
+  "exercises": [
+    {
+      "type": "choice",
+      "question": "¿Qué hacía Marisol en el patio?",
+      "options": ["Ensartaba flores de cempasúchil en un alambre", "Cocinaba pan de muerto", "Cosía los disfraces de sus hijas"],
+      "answer": 0
+    },
+    {
+      "type": "choice",
+      "question": "¿De qué querían disfrazarse sus hijas?",
+      "options": ["De bruja y de vampira", "De calavera y de monarca", "De Catrina y de fantasma"],
+      "answer": 0
+    },
+    {
+      "type": "truefalse",
+      "statement": "A Inés le gusta mucho Halloween.",
+      "answer": false,
+      "explanation": "« Ahora es una broma, un disfraz de Estados Unidos. »"
+    },
+    {
+      "type": "truefalse",
+      "statement": "Para Inés, antes la muerte era sagrada.",
+      "answer": true,
+      "explanation": "« Antes, la muerte era sagrada. La alimentábamos. »"
+    },
+    {
+      "type": "choice",
+      "question": "Según Inés, ¿cuándo va a volver Eduardo?",
+      "options": ["Mañana, el Día de los Niños", "En Navidad", "El día de su cumpleaños"],
+      "answer": 0
+    },
+    {
+      "type": "fill",
+      "sentence": "Marisol ___ las flores cuando su madre entró.",
+      "hint": "seguir arreglando — une action en cours (le décor)",
+      "hintEn": "seguir arreglando — an action in progress (background)",
+      "options": ["seguía arreglando", "siguió arreglando", "sigue arreglando"],
+      "answer": "seguía arreglando",
+      "explanation": "Une action en cours, interrompue par une autre → imperfecto.",
+      "explanationEn": "An action in progress, interrupted by another → imperfecto."
+    },
+    {
+      "type": "fill",
+      "sentence": "Cuando Inés habló de Eduardo, Marisol ___: «Mamá, ya basta».",
+      "hint": "decir — une action précise",
+      "hintEn": "decir — a specific action",
+      "options": ["dijo", "decía", "dice"],
+      "answer": "dijo",
+      "explanation": "Une action précise qui fait avancer l'histoire → indefinido.",
+      "explanationEn": "A specific action that moves the story forward → indefinido."
+    },
+    {
+      "type": "fill",
+      "sentence": "El alambre le marcó un ___ en el pulgar.",
+      "options": ["surco", "rebozo", "disfraz"],
+      "answer": "surco"
+    },
+    {
+      "type": "translate",
+      "fr": "Ses filles riaient pendant qu'elle travaillait.",
+      "en": "Her daughters were laughing while she worked.",
+      "es": "Sus hijas se reían mientras ella trabajaba."
+    }
+  ],
+  "reply": {
+    "prompt": "Mamá, cuando eras niña, ¿qué hacía tu familia para recordar a los muertos? ¿Te acuerdas de un momento especial?",
+    "promptFr": "Raconte-moi ce que faisait ta famille pour se souvenir des défunts quand tu étais petite (imperfecto), puis un moment précis dont tu te souviens (indefinido).",
+    "promptEn": "Tell me what your family used to do to remember the dead when you were little (imperfecto), then one specific moment you remember (indefinido)."
+  }
+}
