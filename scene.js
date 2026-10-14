@@ -168,6 +168,125 @@ const PaperScene = (() => {
       + layer(0.13, wave(y + 230, 20, 0.02, 4, B(y), '#e9cf7a') + roundTree(350, y + 260, 1.3))
       + layer(0.17, wave(y + 350, 14, 0.025, 1, B(y), '#8fbf6c')),
   };
+
+  /* ---------- Story-specific scenery (Michoacán) ---------- */
+
+  // A string of papel picado: cut-paper flags hanging from a sagging cord.
+  const papelPicado = (y, x0 = -10, x1 = W + 10, sag = 26) => {
+    const colors = ['#e85a8a', '#f39a3c', '#8e5bb5', '#3fa36b', '#f2c94c', '#3d8fd1'];
+    let g = `<path d="M ${x0} ${y} Q ${(x0 + x1) / 2} ${y + sag * 2} ${x1} ${y}" stroke="#5b4636" stroke-width="1.2" fill="none"/>`;
+    let i = 0;
+    for (let x = x0 + 12; x < x1 - 10; x += 26, i++) {
+      const t = (x - x0) / (x1 - x0);
+      const yy = y + 4 * sag * t * (1 - t);
+      const c = colors[i % colors.length];
+      g += `<path d="M ${f(x - 10)} ${f(yy)} h 20 v 22 l -3.3 4 -3.3 -4 -3.4 4 -3.3 -4 -3.4 4 -3.3 -4 Z" fill="${c}"/>
+        <path d="M ${f(x - 4)} ${f(yy + 8)} l 4 -4 4 4 -4 4 Z M ${f(x - 6)} ${f(yy + 17)} h 3 v 3 h -3 Z M ${f(x + 3)} ${f(yy + 17)} h 3 v 3 h -3 Z" fill="rgba(255,255,255,.55)"/>`;
+    }
+    return `<g ${CUT}>${g}</g>`;
+  };
+  const marigold = (x, y, r) => `<circle cx="${f(x)}" cy="${f(y)}" r="${f(r)}" fill="#f5a01f"/><circle cx="${f(x)}" cy="${f(y)}" r="${f(r * 0.55)}" fill="#e2731a"/>`;
+  const marigoldField = (y, h, n, x0 = 0, x1 = W) => {
+    let g = '';
+    for (let i = 0; i < n; i++) g += marigold(x0 + rnd() * (x1 - x0), y + rnd() * h, 3.5 + rnd() * 4);
+    return `<g ${CUT}>${g}</g>`;
+  };
+  // A candle (static wax) whose flame is drawn live so it can flicker.
+  const candle = (x, base, h) => {
+    live += `<path class="flame" style="animation-delay:${f(rnd())}s" d="M ${x} ${base - h - 15} C ${x + 5} ${base - h - 8}, ${x + 4.5} ${base - h - 2}, ${x} ${base - h - 1} C ${x - 4.5} ${base - h - 2}, ${x - 5} ${base - h - 8}, ${x} ${base - h - 15} Z" fill="#ffb93b"/>
+      <circle class="twinkle" cx="${x}" cy="${base - h - 8}" r="11" fill="url(#ff)" opacity=".7"/>`;
+    return `<g ${CUT}><rect x="${x - 5}" y="${base - h}" width="10" height="${h}" rx="2" fill="#f5e6c4"/><rect x="${x - 0.6}" y="${base - h - 3}" width="1.2" height="3" fill="#3b2f2a"/></g>`;
+  };
+  const calavera = (x, y, s = 1) => `<g ${CUT} transform="translate(${x} ${y}) scale(${s})">
+    <path d="M -13 2 C -13 -14, 13 -14, 13 2 C 13 8, 8 9, 8 13 L -8 13 C -8 9, -13 8, -13 2 Z" fill="#fbf6ea"/>
+    <circle cx="-5" cy="0" r="4" fill="#e85a8a"/><circle cx="5" cy="0" r="4" fill="#3d8fd1"/>
+    <path d="M -1 5 L 1 5 L 0 8 Z" fill="#3b2f2a"/><path d="M -5 11 v -2 M -1.7 11 v -2 M 1.7 11 v -2 M 5 11 v -2" stroke="#3b2f2a" stroke-width="1"/></g>`;
+  // Monarch butterfly drawn at the origin; `flying` ones flap and drift in the live layer.
+  const monarchShape = (s = 1) => `<g transform="scale(${s})">
+    <path d="M 0 0 C -6 -10, -16 -11, -15 -3 C -14 2, -6 3, 0 1 Z" fill="#ec8a26" stroke="#2a1a10" stroke-width="1.3"/>
+    <path d="M 0 0 C 6 -10, 16 -11, 15 -3 C 14 2, 6 3, 0 1 Z" fill="#ec8a26" stroke="#2a1a10" stroke-width="1.3"/>
+    <path d="M 0 1 C -4 4, -11 7, -8 11 C -5 13, -1 7, 0 2 Z" fill="#d9731c" stroke="#2a1a10" stroke-width="1.3"/>
+    <path d="M 0 1 C 4 4, 11 7, 8 11 C 5 13, 1 7, 0 2 Z" fill="#d9731c" stroke="#2a1a10" stroke-width="1.3"/>
+    <path d="M 0 -4 L 0 8" stroke="#2a1a10" stroke-width="1.8" stroke-linecap="round"/></g>`;
+  const flyingMonarch = (x, y, s, rot = 0) => {
+    live += `<g transform="translate(${f(x)} ${f(y)}) rotate(${f(rot)})"><g class="drift" style="animation-delay:${f(rnd() * 5)}s"><g class="flutter" style="animation-delay:${f(rnd())}s">${monarchShape(s)}</g></g></g>`;
+  };
+  // Monarchs resting in clusters on a fir tree.
+  const clusterTree = (x, base, h) => {
+    let g = pine(x, base, h, '#24503b');
+    let c = '';
+    for (let i = 0; i < 9; i++) {
+      const yy = base - 14 - rnd() * h * 0.7;
+      const spread = (base - yy) * 0.35;
+      c += `<g transform="translate(${f(x + (rnd() - 0.5) * spread)} ${f(yy)}) rotate(${f((rnd() - 0.5) * 50)})">${monarchShape(0.45)}</g>`;
+    }
+    return g + `<g>${c}</g>`;
+  };
+  const moth = (x, y, s = 1) => `<g ${CUT} transform="translate(${x} ${y}) scale(${s})">
+    <path d="M 0 0 C -10 -12, -26 -8, -24 4 C -22 10, -8 8, 0 3 Z M 0 0 C 10 -12, 26 -8, 24 4 C 22 10, 8 8, 0 3 Z" fill="#3b2c2a"/>
+    <path d="M -15 -2 q 2 3 -1 4 M 15 -2 q -2 3 1 4" stroke="#8fb36a" stroke-width="1.6" fill="none"/>
+    <path d="M 0 -3 L 0 9" stroke="#1d1514" stroke-width="2.4" stroke-linecap="round"/></g>`;
+  const house = (x, base, w, h, wall, roof) => `<g ${CUT}>
+    <rect x="${x}" y="${base - h}" width="${w}" height="${h + 30}" fill="${wall}"/>
+    <path d="M ${x - 5} ${base - h + 2} L ${x + w * 0.12} ${base - h - 12} L ${x + w * 0.88} ${base - h - 12} L ${x + w + 5} ${base - h + 2} Z" fill="${roof}"/>
+    <path d="M ${x + w * 0.38} ${base} v -18 a ${w * 0.12} ${w * 0.12} 0 0 1 ${w * 0.24} 0 v 18 Z" fill="#5b3a2a"/>
+    <rect x="${x + w * 0.1}" y="${base - h + 12}" width="${w * 0.2}" height="12" fill="#6b4a3a"/></g>`;
+  const balloon = (x, y) => `<g ${CUT}><path d="M ${x} ${y + 15} q 4 14 -2 30" stroke="#3b2f2a" stroke-width="1" fill="none"/>
+    <ellipse cx="${x}" cy="${y}" rx="10" ry="13" fill="#1f1a1d"/><ellipse cx="${x - 3}" cy="${y - 5}" rx="2.5" ry="4" fill="rgba(255,255,255,.35)"/></g>`;
+  const side = (sx) => (sx > 200 ? { a: 60, b: 120 } : { a: 280, b: 340 }); // free side, away from the stop
+
+  Object.assign(PAINT, {
+    // Día de Muertos: papel picado, a dusky sky, hills of cempasúchil, candles and a sugar skull.
+    ofrenda: (y, sx) => {
+      const o = side(sx);
+      return cloudBank(y, B(y), 'url(#violet)')
+        + papelPicado(y + 30)
+        + wave(y + 150, 14, 0.02, 1, B(y), '#5d3f6a')
+        + wave(y + 225, 12, 0.025, 3, B(y), '#3f6b3a') + marigoldField(y + 235, 120, 70)
+        + candle(o.a - 14, y + 300, 26) + candle(o.a, y + 302, 36) + candle(o.a + 14, y + 300, 22)
+        + calavera(o.b, y + 290, 1.1)
+        + wave(y + 360, 10, 0.03, 2, B(y), '#356030') + marigoldField(y + 368, 60, 40);
+    },
+    // Monarchs: misty mountains, oyamel firs heavy with butterflies, more in the air, one dark moth.
+    monarchs: (y, sx) => {
+      const o = side(sx);
+      for (let i = 0; i < 6; i++) flyingMonarch(30 + rnd() * 340, y + 60 + rnd() * 300, 0.7 + rnd() * 0.4, (rnd() - 0.5) * 40);
+      return cloudBank(y, B(y), '#d7e8e4')
+        + wave(y + 70, 22, 0.015, 2, B(y), '#8aa79a')
+        + wave(y + 150, 18, 0.02, 4, B(y), '#5f8a73')
+        + clusterTree(o.a - 20, y + 320, 150) + clusterTree(o.a + 30, y + 340, 120) + clusterTree(sx > 200 ? 360 : 40, y + 300, 110)
+        + wave(y + 340, 12, 0.025, 1, B(y), '#3d6b52')
+        + moth(o.b, y + 400, 0.9);
+    },
+    // Part I: a village courtyard at sunset — adobe houses, papel picado, black Halloween balloons, marigolds.
+    village: (y, sx) => {
+      const o = side(sx);
+      return cloudBank(y, B(y), 'url(#dusk)')
+        + wave(y + 120, 16, 0.016, 2, B(y), '#8e6f8f')
+        + house(-10, y + 290, 90, 80, '#e2b77a', '#a8432e') + house(90, y + 300, 70, 60, '#d98f5c', '#93392a')
+        + house(250, y + 295, 80, 75, '#e8c48e', '#a8432e') + house(335, y + 285, 80, 90, '#d9a066', '#93392a')
+        + papelPicado(y + 200, 40, 360, 18)
+        + balloon(o.a, y + 150) + balloon(o.a + 22, y + 140)
+        + wave(y + 300, 6, 0.03, 1, B(y), '#c9b08f')
+        + `<g opacity=".5">${Array.from({ length: 40 }, () => `<ellipse cx="${f(rnd() * W)}" cy="${f(y + 312 + rnd() * 120)}" rx="7" ry="3.5" fill="#a88f6e"/>`).join('')}</g>`
+        + candle(o.b, y + 330, 30) + marigoldField(y + 320, 20, 14, o.b - 40, o.b + 40);
+    },
+    // Part II: dusk turning to night over the mountains, the village lights below, a candle and its moth,
+    // and the monarchs coming home.
+    souls: (y, sx) => {
+      const o = side(sx);
+      for (let i = 0; i < 7; i++) flyingMonarch(40 + i * 48 + rnd() * 20, y + 60 + i * 26 + rnd() * 20, 0.75, 25);
+      return cloudBank(y, B(y), 'url(#souls)')
+        + sparkles(y + 20, 140, 18, '#fbf6ea')
+        + wave(y + 170, 30, 0.012, 1, B(y), '#3b3f66')
+        + wave(y + 240, 20, 0.018, 3, B(y), '#2b3456')
+        + `<g>${Array.from({ length: 16 }, () => `<circle cx="${f(rnd() * W)}" cy="${f(y + 280 + rnd() * 40)}" r="2" fill="#ffd27a"/>`).join('')}</g>`
+        + wave(y + 340, 12, 0.025, 2, B(y), '#22294a')
+        + candle(o.a, y + 400, 40) + moth(o.a + 18, y + 410, 0.55)
+        + marigoldField(y + 395, 20, 10, o.a - 40, o.a + 40);
+    },
+  });
+
   const CYCLE = ['island', 'jungle', 'sea', 'mountain', 'countryside', 'city', 'desert', 'forest', 'snow'];
 
   function build(lessons) {
@@ -185,7 +304,9 @@ const PaperScene = (() => {
       <filter id="cut" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="3" stdDeviation="2.2" flood-color="#14201a" flood-opacity=".28"/></filter>
       <linearGradient id="dawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6dcc0"/><stop offset="1" stop-color="#cfe6e4"/></linearGradient>
       <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3b28a"/><stop offset=".55" stop-color="#ee9478"/><stop offset="1" stop-color="#d9746a"/></linearGradient>
-      <linearGradient id="nightsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b3a63"/><stop offset="1" stop-color="#141d33"/></linearGradient>
+      <linearGradient id="violet" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0a77f"/><stop offset=".6" stop-color="#b9708a"/><stop offset="1" stop-color="#6e4a7a"/></linearGradient>
+      <linearGradient id="souls" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a5a86"/><stop offset=".5" stop-color="#3f3f6b"/><stop offset="1" stop-color="#232b4d"/></linearGradient>
+            <linearGradient id="nightsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b3a63"/><stop offset="1" stop-color="#141d33"/></linearGradient>
       <mask id="crescent"><rect width="${W}" height="${H}" fill="#fff"/><circle cx="318" cy="${H - END + 108}" r="24" fill="#000"/></mask>
     </defs>
     <rect width="${W}" height="${H}" fill="url(#dawn)"/>`;
@@ -196,7 +317,7 @@ const PaperScene = (() => {
 
     lessons.forEach((l, i) => {
       const kind = PAINT[l.landscape] ? l.landscape : CYCLE[i % CYCLE.length];
-      art += PAINT[kind](TOP + i * SEG);
+      art += PAINT[kind](TOP + i * SEG, stops[i].x);
     });
 
     // Night: stars and a paper moon, waiting for the next story.
