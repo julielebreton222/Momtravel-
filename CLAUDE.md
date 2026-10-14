@@ -54,7 +54,7 @@ When asked to "convert the new stories" (or similar), do this for each story in 
 7. **Reply prompt** (`reply.prompt` in Spanish, `reply.promptFr` in French): a warm, personal question
    for the mother that invites her to write back using the grammar point.
 8. `title` (Spanish), `titleFr`, `place` (in French, e.g. "Lisbonne, Portugal"), `date`,
-   `landscape` (the scenery on the home map: countryside, city, sea, mountain, desert, forest, island, snow or jungle, or a story-specific scene: ofrenda, monarchs, village, souls), `summaryFr`
+   `landscape` (the scenery around the lesson's stop on the home map; see **Home map** below: it must match the lesson), `summaryFr`
    (one sentence), optional `cover` (an image path), and `note` (a short message from the author to their
    mother, in French. Use the author's own words if they wrote one, otherwise leave it out).
 9. **Photos**: copy them to `lessons/media/<id>/` and resize to max 1600px wide, JPEG quality ~80
@@ -70,6 +70,15 @@ Use an existing lesson (e.g. `lessons/2026-10-puerto-viejo-1-cocos.json`) as the
 The home page is a paper-cut journey map: lessons are numbered stops along a stitched path,
 oldest first, from a dawn sky down to a starry night where the next story will appear. A lesson's
 `landscape` picks the scenery painted around its stop (see `PAINT` in `scene.js`).
+
+**Always match the background to the lesson (Julie's standing rule).** Every lesson gets a scene drawn
+from its own content: its place, objects, animals, moments (e.g. `cocos`: sprouting coconuts on the beach;
+`fireice`: steaming sauna tents, ice baths and the bike; `ofrenda`: papel picado, marigolds, candles).
+Reuse an existing scene only if it truly fits the story; otherwise add a new painter to `PAINT` in
+`scene.js`, add its name to `LANDSCAPES` in `scripts/build.mjs`, and check the map on a phone-sized
+screenshot. Draw the details on the side away from the stop (`side(sx)`); moving details (flames, steam,
+notes, butterflies) go in the live layer. Generic scenes (island, sea, jungle, mountain, countryside,
+city, desert, forest, snow) are only building blocks.
 
 ## Design
 

@@ -4,7 +4,7 @@
 //   matching new code; those versioned files can then safely come straight from the cache.
 // - Lessons always try the network first, so new stories appear as soon as they are published.
 // When changing the app: bump VERSION here and the ?v= numbers in index.html together.
-const VERSION = '9';
+const VERSION = '10';
 const CACHE = `cartas-v${VERSION}`;
 const ASSETS = ['styles.css', 'i18n.js', 'scene.js', 'tour.js', 'quiz.js', 'app.js'].map((f) => `${f}?v=${VERSION}`);
 const SHELL = ['./', 'index.html', 'icon.svg', 'manifest.webmanifest', 'config.json', ...ASSETS];

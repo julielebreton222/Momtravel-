@@ -287,6 +287,83 @@ const PaperScene = (() => {
     },
   });
 
+  /* ---------- Story-specific scenery (Costa Rica) ---------- */
+
+  const sproutingCoconut = (x, y) => `<g ${CUT}>
+    <ellipse cx="${x}" cy="${y}" rx="10" ry="8.5" fill="#6b4a2c"/><ellipse cx="${x - 3}" cy="${y - 3}" rx="3" ry="2" fill="#8a6a45"/>
+    <path d="M ${x + 2} ${y - 7} C ${x + 2} ${y - 18}, ${x - 8} ${y - 24}, ${x - 14} ${y - 22} C ${x - 6} ${y - 16}, ${x} ${y - 12}, ${x + 2} ${y - 7} Z" fill="#4d9a5f"/>
+    <path d="M ${x + 2} ${y - 7} C ${x + 4} ${y - 18}, ${x + 14} ${y - 22}, ${x + 18} ${y - 18} C ${x + 10} ${y - 14}, ${x + 5} ${y - 11}, ${x + 2} ${y - 7} Z" fill="#3f8a55"/></g>`;
+  const branch = (x0, y, x1) => `<path d="M ${x0} ${y} Q ${(x0 + x1) / 2} ${y + 8} ${x1} ${y - 4}" stroke="#6b4a2c" stroke-width="6" stroke-linecap="round" fill="none" ${CUT}/>`;
+  const sloth = (x, y) => `<g ${CUT}>
+    <path d="M ${x - 12} ${y + 2} L ${x - 8} ${y + 18} M ${x + 12} ${y + 2} L ${x + 8} ${y + 18}" stroke="#7a6048" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="${x}" cy="${y + 24}" rx="16" ry="12" fill="#8a7056"/>
+    <circle cx="${x + 13}" cy="${y + 30}" r="9" fill="#a88c6e"/>
+    <path d="M ${x + 8} ${y + 29} q 5 -3 10 0" stroke="#3b2c22" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <circle cx="${x + 13}" cy="${y + 33}" r="1.5" fill="#3b2c22"/></g>`;
+  const toucan = (x, y) => `<g ${CUT}>
+    <ellipse cx="${x}" cy="${y}" rx="11" ry="16" fill="#1f1d24"/><ellipse cx="${x + 4}" cy="${y - 6}" rx="6" ry="7" fill="#f6e7a8"/>
+    <path d="M ${x + 6} ${y - 12} C ${x + 22} ${y - 18}, ${x + 34} ${y - 12}, ${x + 36} ${y - 6} C ${x + 26} ${y - 6}, ${x + 14} ${y - 4}, ${x + 6} ${y - 6} Z" fill="#f39a3c"/>
+    <path d="M ${x + 34} ${y - 9} l 2 3" stroke="#c0392b" stroke-width="2"/>
+    <circle cx="${x + 5}" cy="${y - 11}" r="2" fill="#3fa36b"/><path d="M ${x - 6} ${y + 14} l -6 10" stroke="#1f1d24" stroke-width="5" stroke-linecap="round"/></g>`;
+  const frog = (x, y) => `<g ${CUT}>
+    <path d="M ${x - 8} ${y + 2} l -6 5 M ${x + 8} ${y + 2} l 6 5 M ${x - 6} ${y - 3} l -6 -3 M ${x + 6} ${y - 3} l 6 -3" stroke="#2f5fb3" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="${x}" cy="${y}" rx="9" ry="7" fill="#d9362b"/><circle cx="${x - 4}" cy="${y - 5}" r="2" fill="#1f1d24"/><circle cx="${x + 4}" cy="${y - 5}" r="2" fill="#1f1d24"/></g>`;
+  // Julie on a rock by the sea (curly hair), singing; the notes rise live.
+  const singer = (x, base) => {
+    for (let i = 0; i < 4; i++) {
+      live += `<text class="note-rise" style="animation-delay:${i * 1.1}s" x="${x + 10 + i * 6}" y="${base - 46 - i * 3}" font-family="Georgia, serif" font-size="${16 + (i % 2) * 6}" fill="#fbf6ea">${['♪', '♫', '♪', '♬'][i]}</text>`;
+    }
+    let curls = '';
+    for (let a = -170; a <= 10; a += 30) curls += `<circle cx="${f(x + 10 * Math.cos(a * Math.PI / 180))}" cy="${f(base - 40 + 10 * Math.sin(a * Math.PI / 180))}" r="5"/>`;
+    return `<g ${CUT}><path d="M ${x - 30} ${base} C ${x - 26} ${base - 18}, ${x + 22} ${base - 22}, ${x + 30} ${base} Z" fill="#6f6a6a"/></g>
+      <g ${CUT} fill="#3a2a35"><path d="M ${x - 12} ${base - 14} C ${x - 12} ${base - 30}, ${x + 12} ${base - 30}, ${x + 12} ${base - 14} Z"/>${curls}<circle cx="${x}" cy="${base - 38}" r="8"/></g>`;
+  };
+  const tent = (x, base, w, h) => {
+    for (let i = 0; i < 3; i++) {
+      live += `<path class="steam" style="animation-delay:${f(i * 0.9 + rnd())}s" d="M ${x + w / 2 - 6 + i * 6} ${base - h - 4} c -6 -8, 6 -14, 0 -22 c -6 -8, 6 -14, 0 -22" stroke="#ffffff" stroke-width="3" stroke-linecap="round" fill="none" opacity=".8"/>`;
+    }
+    return `<g ${CUT}><path d="M ${x} ${base} L ${x + w / 2} ${base - h} L ${x + w} ${base} Z" fill="#efe3c8"/>
+      <path d="M ${x + w / 2 - 9} ${base} L ${x + w / 2} ${base - h * 0.5} L ${x + w / 2 + 9} ${base} Z" fill="#c9a77a"/></g>`;
+  };
+  const iceBath = (x, base) => `<g ${CUT}><rect x="${x}" y="${base - 26}" width="46" height="26" rx="3" fill="#e9f3f8"/>
+    <rect x="${x + 3}" y="${base - 23}" width="40" height="7" fill="#7fc3e0"/>
+    <rect x="${x + 7}" y="${base - 27}" width="7" height="7" fill="#ffffff" transform="rotate(12 ${x + 10} ${base - 23})"/>
+    <rect x="${x + 25}" y="${base - 26}" width="6" height="6" fill="#ffffff" transform="rotate(-10 ${x + 28} ${base - 23})"/></g>`;
+  const bike = (x, y) => `<g ${CUT} stroke="#2b3a63" stroke-width="2.4" fill="none">
+    <circle cx="${x - 14}" cy="${y}" r="10"/><circle cx="${x + 16}" cy="${y}" r="10"/>
+    <path d="M ${x - 14} ${y} L ${x - 2} ${y - 16} L ${x + 12} ${y - 16} L ${x + 16} ${y} M ${x - 2} ${y - 16} L ${x + 2} ${y} L ${x - 14} ${y} M ${x + 12} ${y - 16} L ${x + 10} ${y - 22} M ${x - 4} ${y - 20} h 6"/></g>`;
+
+  Object.assign(PAINT, {
+    // The coconut adventure: the beach with palms, and sprouting coconuts in the sand.
+    cocos: (y, sx) => {
+      const o = side(sx);
+      return PAINT.island(y)
+        + sproutingCoconut(o.a - 10, y + 330) + sproutingCoconut(o.a + 26, y + 342) + sproutingCoconut(o.b + 20, y + 395);
+    },
+    // Puerto Viejo: the jungle with a sloth, a toucan and little poison frogs.
+    caribe: (y, sx) => {
+      const o = side(sx);
+      return PAINT.jungle(y)
+        + branch(o.a - 70, y + 150, o.a + 40) + sloth(o.a - 10, y + 150)
+        + branch(o.b - 20, y + 270, o.b + 70) + toucan(o.b + 10, y + 250)
+        + frog(o.a, y + 410) + frog(o.a + 40, y + 420);
+    },
+    // The beach and the song: sunset sea, and Julie singing on a rock.
+    singing: (y, sx) => PAINT.sea(y) + singer(side(sx).a + 10, y + 335),
+    // Fire and ice: jungle hills, steaming herb saunas, ice baths, and the bike.
+    fireice: (y, sx) => {
+      const o = side(sx);
+      return wave(y, 16, 0.02, 0, B(y), '#2c5a43')
+        + wave(y + 90, 20, 0.022, 2, B(y), '#3d7a52')
+        + wave(y + 230, 10, 0.03, 1, B(y), '#4f8a5b')
+        + tent(o.a - 40, y + 300, 58, 60) + tent(o.a + 22, y + 310, 50, 52)
+        + iceBath(o.b - 30, y + 360) + iceBath(o.b + 22, y + 368)
+        + bike(o.a, y + 400)
+        + `<g ${CUT}>${[0, 1, 2, 3, 4].map((i) => leaf(o.b - 50 + i * 9, y + 300, 16, -60 - i * 15, i % 2 ? '#6fae5f' : '#4d9a5f')).join('')}</g>`
+        + ((live += fireflies(y + 120, 260, 8)), '');
+    },
+  });
+
   const CYCLE = ['island', 'jungle', 'sea', 'mountain', 'countryside', 'city', 'desert', 'forest', 'snow'];
 
   function build(lessons) {
