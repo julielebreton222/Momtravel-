@@ -4,7 +4,7 @@
 
 const STORE_KEY = 'cartas.v1';
 const store = (() => {
-  let data = { seen: {}, done: {}, cards: {}, drafts: {}, scale: 1 };
+  let data = { seen: {}, done: {}, cards: {}, drafts: {}, scale: 1, lang: 'fr' };
   try {
     const raw = localStorage.getItem(STORE_KEY);
     if (raw) data = Object.assign(data, JSON.parse(raw));
@@ -29,14 +29,7 @@ const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({
 
 const escRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-const MONTHS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août',
-  'septembre', 'octobre', 'novembre', 'décembre'];
-function formatDate(iso) {
-  if (!iso) return '';
-  const [y, m, d] = iso.split('-').map(Number);
-  if (!m) return String(y);
-  return d ? `${d} ${MONTHS[m - 1]} ${y}` : `${MONTHS[m - 1]} ${y}`;
-}
+const formatDate = (iso) => I18N.formatDate(iso);
 
 // Turns a paragraph of plain text (with blank lines) into <p> elements.
 const paragraphs = (text) => String(text ?? '').split(/\n\s*\n/).map((p) => `<p>${esc(p.trim())}</p>`).join('');
@@ -132,8 +125,9 @@ function renderHome() {
   const currentIdx = lessons.findIndex((l) => !store.data.done[l.id]);
   const scene = PaperScene.build(lessons);
   const pos = (p) => `left:${(p.x / scene.W) * 100}%;top:${(p.y / scene.H) * 100}%`;
-  const name = config.learnerName ? `, ${esc(config.learnerName)}` : '';
-  const from = config.authorName ? ` de ${esc(config.authorName)}` : '';
+  // In English the app is for friends, so the greeting is not addressed to Maman.
+  const name = config.learnerName && I18N.lang === 'fr' ? `, ${esc(config.learnerName)}` : '';
+  const from = config.authorName ? t('home.from', { name: esc(config.authorName) }) : '';
 
   const stamps = lessons.map((l) => `<span class="${store.data.done[l.id] ? 'on' : ''}"></span>`).join('');
   const stops = lessons.map((l, i) => {
@@ -141,10 +135,10 @@ function renderHome() {
     const isCurrent = i === currentIdx;
     const n = stars(done);
     const cls = ['stop', 'lesson', done ? 'done' : '', isCurrent ? 'current' : ''].join(' ');
-    const city = String(l.place || '').split(',')[0];
-    return `<button type="button" class="${cls}" style="${pos(scene.stops[i])}" data-id="${esc(l.id)}" aria-label="Histoire ${i + 1} : ${esc(l.title)}">
+    const city = String(tx(l, 'place')).split(',')[0];
+    return `<button type="button" class="${cls}" style="${pos(scene.stops[i])}" data-id="${esc(l.id)}" aria-label="${esc(t('home.storyN', { n: i + 1, title: l.title }))}">
       ${isCurrent ? `<span class="bubble">${store.data.seen[l.id] ? '¡Sigue!' : '¡Nuevo!'}</span>` : ''}
-      ${n ? `<span class="stars" aria-label="${n} étoiles">${'★'.repeat(n)}<i>${'★'.repeat(3 - n)}</i></span>` : ''}
+      ${n ? `<span class="stars" aria-label="${t('home.stars', { n })}">${'★'.repeat(n)}<i>${'★'.repeat(3 - n)}</i></span>` : ''}
       <span class="medal">${done ? '✓' : i + 1}</span>
       <span class="tag"><small>${esc(city)}</small><span>${esc(l.title)}</span></span>
     </button>`;
@@ -156,13 +150,13 @@ function renderHome() {
       <svg class="scene-live" viewBox="0 0 ${scene.W} ${scene.H}" aria-hidden="true">${scene.live}</svg>
       <div class="hello">
         <h1>¡Hola${name}!</h1>
-        <p>Le voyage${from}, une histoire à la fois.</p>
-        ${lessons.length ? `<div class="stamps" role="img" aria-label="${doneCount} histoires terminées sur ${lessons.length}">${stamps}</div>` : ''}
+        <p>${capitalize(t('home.tagline', { from }))}</p>
+        ${lessons.length ? `<div class="stamps" role="img" aria-label="${t('home.progress', { done: doneCount, total: lessons.length })}">${stamps}</div>` : ''}
       </div>
-      <div class="stop start" style="${pos(scene.start)}"><span class="tag"><small>Départ</small><span>${esc(lessons[0]?.place?.split(',').pop()?.trim() || 'Le voyage')}</span></span></div>
+      <div class="stop start" style="${pos(scene.start)}"><span class="tag"><small>${t('home.start')}</small><span>${esc(tx(lessons[0], 'place').split(',').pop().trim() || t('home.trip'))}</span></span></div>
       ${stops}
       <div class="stop next" style="${pos(scene.next)}"><span class="medal">${lessons.length + 1}</span>
-        <span class="tag"><small>Prochaine étape</small><span>Bientôt…</span></span></div>
+        <span class="tag"><small>${t('home.next')}</small><span>${t('home.soon')}</span></span></div>
     </div>
   </div>`;
 
@@ -201,26 +195,26 @@ document.addEventListener('click', (e) => {
 function openLessonSheet(l) {
   if (!l) return;
   const done = store.data.done[l.id];
-  openSheet(`<small>${esc(l.place)}${l.date ? ` · ${esc(formatDate(l.date))}` : ''}</small>
+  openSheet(`<small>${esc(tx(l, 'place'))}${l.date ? ` · ${esc(formatDate(l.date))}` : ''}</small>
     <h2>${esc(l.title)}</h2>
-    <p class="fr">${esc(l.titleFr || '')}</p>
-    ${l.summaryFr ? `<p class="sum">${esc(l.summaryFr)}</p>` : ''}
-    ${done ? `<p class="hint">Terminée : ${done.score} / ${done.total}</p>` : ''}
+    <p class="fr">${esc(tx(l, 'titleFr'))}</p>
+    ${tx(l, 'summaryFr') ? `<p class="sum">${esc(tx(l, 'summaryFr'))}</p>` : ''}
+    ${done ? `<p class="hint">${t('sheet.done', { score: done.score, total: done.total })}</p>` : ''}
     <div class="row">
-      <a class="btn primary" href="#/lecon/${encodeURIComponent(l.id)}">${done ? 'Relire la leçon' : 'Commencer la leçon'}</a>
-      <button type="button" class="btn ghost" data-close>Fermer</button>
+      <a class="btn primary" href="#/lecon/${encodeURIComponent(l.id)}">${done ? t('sheet.reread') : t('sheet.start')}</a>
+      <button type="button" class="btn ghost" data-close>${t('common.close')}</button>
     </div>`);
   sheet.querySelector('a').addEventListener('click', closeSheet);
 }
 
 function openHelp() {
   const from = config.authorName || '';
-  openSheet(`<small>Aide</small>
-    <h2>Besoin d'un coup de main ?</h2>
+  openSheet(`<small>${t('help.eyebrow')}</small>
+    <h2>${t('help.title')}</h2>
     <div class="menu">
-      <button type="button" class="btn" id="help-voice">Réécouter le message${from ? ` de ${esc(from)}` : ''}</button>
-      <button type="button" class="btn" id="help-tour">Refaire la visite guidée</button>
-      <button type="button" class="btn ghost" data-close>Fermer</button>
+      <button type="button" class="btn" id="help-voice">${t('help.voice', { from: from ? (I18N.lang === 'fr' ? ` de ${esc(from)}` : ` from ${esc(from)}`) : '' })}</button>
+      <button type="button" class="btn" id="help-tour">${t('help.tour')}</button>
+      <button type="button" class="btn ghost" data-close>${t('common.close')}</button>
     </div>`);
   $('#help-voice').addEventListener('click', () => { closeSheet(); Welcome.intro({ thenTour: false }); });
   $('#help-tour').addEventListener('click', () => { closeSheet(); Welcome.tour(); });
@@ -232,21 +226,22 @@ $('#help-btn').addEventListener('click', openHelp);
 function renderWrite() {
   setActiveNav('write');
   const to = config.authorName || '';
-  document.title = `Écrire${to ? ` à ${to}` : ''} · Cartas de viaje`;
+  const title = to ? t('write.title', { name: to }) : t('write.titleNoName');
+  document.title = `${title} · Cartas de viaje`;
   const letters = store.data.letters || [];
   app.innerHTML = `<div class="page">
-    <h1>Écrire${to ? ` à ${esc(to)}` : ''}</h1>
-    <p class="lede">Raconte-moi ce que tu veux : ta journée, une question, un souvenir, une chanson… En espagnol ou en français, comme tu préfères. Les fautes, ce n'est pas grave !</p>
+    <h1>${esc(title)}</h1>
+    <p class="lede">${t('write.lede')}</p>
     <div class="letter">
-      <label for="letter" class="sr-only">Ta lettre</label>
+      <label for="letter" class="sr-only">${t('write.label')}</label>
       <textarea id="letter" placeholder="${to ? `Querida ${esc(to)},` : 'Escribe aquí…'}" spellcheck="true">${esc(store.data.letterDraft || '')}</textarea>
     </div>
     <div class="toolbar">
-      <button type="button" class="btn primary" id="send">Envoyer${to ? ` à ${esc(to)}` : ''}</button>
-      <button type="button" class="btn" id="copy">Copier le texte</button>
+      <button type="button" class="btn primary" id="send">${to ? t('reply.sendTo', { name: esc(to) }) : t('reply.send')}</button>
+      <button type="button" class="btn" id="copy">${t('write.copy')}</button>
     </div>
     <p class="hint" id="sent-msg" role="status"></p>
-    ${letters.length ? `<h2>Mes lettres envoyées</h2><ul class="letters">${letters.slice().reverse().map((x) => `<li><small>${esc(new Date(x.at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' }))}</small><p>${esc(x.text)}</p></li>`).join('')}</ul>` : ''}
+    ${letters.length ? `<h2>${t('write.sentList')}</h2><ul class="letters">${letters.slice().reverse().map((x) => `<li><small>${esc(new Date(x.at).toLocaleDateString(I18N.lang === 'en' ? 'en-GB' : 'fr-FR', { day: 'numeric', month: 'long' }))}</small><p>${esc(x.text)}</p></li>`).join('')}</ul>` : ''}
   </div>`;
   const ta = $('#letter');
   const msg = $('#sent-msg');
@@ -257,26 +252,20 @@ function renderWrite() {
     store.save();
   };
   const copy = async () => {
-    try { await navigator.clipboard.writeText(ta.value.trim()); msg.textContent = 'Copié ! Colle-le dans un message pour moi.'; return true; } catch (_) { ta.select(); msg.textContent = 'Sélectionne le texte et copie-le.'; return false; }
+    try { await navigator.clipboard.writeText(ta.value.trim()); msg.textContent = t('write.copied'); return true; } catch (_) { ta.select(); msg.textContent = t('common.selectCopy'); return false; }
   };
   $('#copy').addEventListener('click', copy);
   $('#send').addEventListener('click', async () => {
-    if (!ta.value.trim()) { msg.textContent = "Écris d'abord quelque chose."; ta.focus(); return; }
+    if (!ta.value.trim()) { msg.textContent = t('common.writeFirst'); ta.focus(); return; }
     if (navigator.share) {
-      try { await navigator.share({ text: ta.value.trim() }); sent(); renderWrite(); $('#sent-msg').textContent = '¡Enviado! Merci pour ta lettre.'; } catch (_) { /* cancelled */ }
+      try { await navigator.share({ text: ta.value.trim() }); sent(); renderWrite(); $('#sent-msg').textContent = t('write.thanks'); } catch (_) { /* cancelled */ }
     } else if (await copy()) {
       sent();
     }
   });
 }
 
-const STEPS = [
-  { id: 'story', label: 'Histoire' },
-  { id: 'vocab', label: 'Mots' },
-  { id: 'grammar', label: 'Grammaire' },
-  { id: 'exercises', label: 'Exercices' },
-  { id: 'reply', label: 'À toi' },
-];
+const STEPS = ['story', 'vocab', 'grammar', 'exercises', 'reply'].map((id) => ({ id }));
 
 let current = null; // { lesson, step, answers }
 
@@ -287,7 +276,7 @@ async function renderLesson(id, step) {
   try {
     lesson = await loadLesson(id);
   } catch (err) {
-    app.innerHTML = `<a class="back" href="#/">← La carte</a><p class="empty">Histoire introuvable.</p>`;
+    app.innerHTML = `<a class="back" href="#/">${t('common.back')}</a><p class="empty">${t('lesson.notFound')}</p>`;
     return;
   }
   if (!current || current.lesson.id !== lesson.id) current = { lesson, step: 'story', answers: {} };
@@ -297,15 +286,15 @@ async function renderLesson(id, step) {
 
   const author = config.authorName ? `<span class="from">— ${esc(config.authorName)}</span>` : '';
   app.innerHTML = `
-    <a class="back" href="#/">← La carte</a>
+    <a class="back" href="#/">${t('common.back')}</a>
     <div class="lesson-hero">
       ${lesson.cover ? `<img src="${esc(lesson.cover)}" alt="">` : ''}
       <h1>${esc(lesson.title)}</h1>
-      <p class="subtitle">${esc(lesson.titleFr || '')}${lesson.place ? ` · ${esc(lesson.place)}` : ''}${lesson.date ? ` · ${esc(formatDate(lesson.date))}` : ''}</p>
-      ${lesson.note ? `<div class="note">${esc(lesson.note)}${author}</div>` : ''}
+      <p class="subtitle">${esc(tx(lesson, 'titleFr'))}${lesson.place ? ` · ${esc(tx(lesson, 'place'))}` : ''}${lesson.date ? ` · ${esc(formatDate(lesson.date))}` : ''}</p>
+      ${lesson.note ? `<div class="note">${esc(tx(lesson, 'note'))}${author}</div>` : ''}
     </div>
     <div class="steps" role="tablist">
-      ${STEPS.map((s) => `<button type="button" role="tab" data-step="${s.id}" aria-selected="${s.id === current.step}">${s.label}</button>`).join('')}
+      ${STEPS.map((s) => `<button type="button" role="tab" data-step="${s.id}" aria-selected="${s.id === current.step}">${t(`step.${s.id}`)}</button>`).join('')}
     </div>
     <section id="step"></section>`;
 
@@ -351,7 +340,8 @@ function vocabMatcher(lesson) {
   }
   entries.sort((a, b) => b.form.length - a.form.length);
   if (!entries.length) return null;
-  const re = new RegExp(`(?<![\\p{L}])(${entries.map((e) => escRe(e.form)).join('|')})(?![\\p{L}])`, 'giu');
+  // No lookbehind here: older iPhones (before iOS 16.4) can't run it.
+  const re = new RegExp(`(^|[^\\p{L}])(${entries.map((e) => escRe(e.form)).join('|')})(?![\\p{L}])`, 'giu');
   const lookup = (text) => entries.find((e) => e.form.toLowerCase() === text.toLowerCase())?.v;
   return { re, lookup };
 }
@@ -361,10 +351,11 @@ function highlight(text, matcher, vocab) {
   let out = '';
   let last = 0;
   for (const m of text.matchAll(matcher.re)) {
-    const v = matcher.lookup(m[0]);
-    out += esc(text.slice(last, m.index));
-    out += `<span class="v" data-v="${vocab.indexOf(v)}" role="button" tabindex="0">${esc(m[0])}</span>`;
-    last = m.index + m[0].length;
+    const start = m.index + m[1].length;
+    const v = matcher.lookup(m[2]);
+    out += esc(text.slice(last, start));
+    out += `<span class="v" data-v="${vocab.indexOf(v)}" role="button" tabindex="0">${esc(m[2])}</span>`;
+    last = start + m[2].length;
   }
   return out + esc(text.slice(last));
 }
@@ -375,8 +366,9 @@ function viewStory(host, lesson) {
   const sentences = [];
   const body = lesson.story.map((block, bi) => {
     if (block.image) {
-      return `<figure><img src="${esc(block.image)}" alt="${esc(block.caption || '')}" loading="lazy">
-        ${block.caption ? `<figcaption>${esc(block.caption)}</figcaption>` : ''}</figure>`;
+      const cap = tx(block, 'caption');
+      return `<figure><img src="${esc(block.image)}" alt="${esc(cap)}" loading="lazy">
+        ${cap ? `<figcaption>${esc(cap)}</figcaption>` : ''}</figure>`;
     }
     const spans = block.sentences.map((s) => {
       const i = sentences.push(s) - 1;
@@ -387,15 +379,15 @@ function viewStory(host, lesson) {
 
   host.innerHTML = `
     <div class="toolbar">
-      ${speech.supported ? `<button type="button" class="btn primary" id="play">${SPEAK} Écouter l'histoire</button>
-      <button type="button" class="btn" id="slow" aria-pressed="${speech.slow}">Vitesse : ${speech.slow ? 'lente' : 'normale'}</button>` : ''}
-      <button type="button" class="btn" id="all-tr">Tout traduire</button>
+      ${speech.supported ? `<button type="button" class="btn primary" id="play">${SPEAK} ${t('story.play')}</button>
+      <button type="button" class="btn" id="slow" aria-pressed="${speech.slow}">${speedLabel()}</button>` : ''}
+      <button type="button" class="btn" id="all-tr">${t('story.all')}</button>
     </div>
-    <p class="hint">Touche une phrase pour voir la traduction. Les <span class="v">mots en couleur</span> sont expliqués.</p>
+    <p class="hint">${t('story.hint')}</p>
     <div class="story">${body}</div>
-    ${nextStepButton('vocab', 'Les mots')}`;
+    ${nextStepButton('vocab', t('next.vocab'))}`;
 
-  const trLine = (i) => `<div class="tr-line">${speech.supported ? `<button type="button" class="speak" data-say="${i}" aria-label="Écouter">${SPEAK}</button>` : ''}<span>${esc(sentences[i].fr)}</span></div>`;
+  const trLine = (i) => `<div class="tr-line">${speech.supported ? `<button type="button" class="speak" data-say="${i}" aria-label="${t('common.listen')}">${SPEAK}</button>` : ''}<span>${esc(tx(sentences[i], 'fr'))}</span></div>`;
 
   const story = host.querySelector('.story');
   story.addEventListener('click', (e) => {
@@ -403,7 +395,7 @@ function viewStory(host, lesson) {
     if (v) {
       e.stopPropagation();
       const item = vocab[Number(v.dataset.v)];
-      showPopover(v, `<strong>${esc(item.es)}</strong> — ${esc(item.fr)}${item.note ? `<div class="ex">${esc(item.note)}</div>` : ''}`);
+      showPopover(v, `<strong>${esc(item.es)}</strong> — ${esc(tx(item, 'fr'))}${tx(item, 'note') ? `<div class="ex">${esc(tx(item, 'note'))}</div>` : ''}`);
       return;
     }
     const say = e.target.closest('[data-say]');
@@ -427,7 +419,7 @@ function viewStory(host, lesson) {
   let showingAll = false;
   host.querySelector('#all-tr').addEventListener('click', (e) => {
     showingAll = !showingAll;
-    e.currentTarget.textContent = showingAll ? 'Masquer la traduction' : 'Tout traduire';
+    e.currentTarget.textContent = showingAll ? t('story.hide') : t('story.all');
     story.querySelectorAll('.s.active').forEach((x) => x.classList.remove('active'));
     story.querySelectorAll('.para-wrap').forEach((wrap) => {
       const tr = wrap.querySelector('.tr');
@@ -443,7 +435,7 @@ function viewStory(host, lesson) {
   const stopPlaying = () => {
     playing = false;
     speech.stop();
-    play.innerHTML = `${SPEAK} Écouter l'histoire`;
+    play.innerHTML = `${SPEAK} ${t('story.play')}`;
     story.querySelectorAll('.speaking').forEach((x) => x.classList.remove('speaking'));
   };
   const playFrom = (i) => {
@@ -462,13 +454,13 @@ function viewStory(host, lesson) {
     if (playing) { stopPlaying(); return; }
     speech.stop();
     playing = true;
-    play.textContent = 'Arrêter';
+    play.textContent = t('story.stop');
     playFrom(0);
   });
   host.querySelector('#slow').addEventListener('click', (e) => {
     speech.slow = !speech.slow;
     e.currentTarget.setAttribute('aria-pressed', speech.slow);
-    e.currentTarget.textContent = `Vitesse : ${speech.slow ? 'lente' : 'normale'}`;
+    e.currentTarget.textContent = speedLabel();
   });
 }
 
@@ -477,15 +469,15 @@ function viewStory(host, lesson) {
 function viewVocab(host, lesson) {
   const items = (lesson.vocabulary || []).map((v, i) => `<li>
       <div class="row">
-        <span>${speech.supported ? `<button type="button" class="speak" data-i="${i}" aria-label="Écouter">${SPEAK}</button>` : ''}<span class="es">${esc(v.es)}</span></span>
-        <span class="fr">${esc(v.fr)}</span>
+        <span>${speech.supported ? `<button type="button" class="speak" data-i="${i}" aria-label="${t('common.listen')}">${SPEAK}</button>` : ''}<span class="es">${esc(v.es)}</span></span>
+        <span class="fr">${esc(tx(v, 'fr'))}</span>
       </div>
-      ${v.note ? `<div class="ex">${esc(v.note)}</div>` : ''}
+      ${tx(v, 'note') ? `<div class="ex">${esc(tx(v, 'note'))}</div>` : ''}
     </li>`).join('');
-  host.innerHTML = `<h2>Les mots de l'histoire</h2>
-    <p class="hint">Ces mots sont ajoutés à « Mes mots » pour les réviser plus tard.</p>
+  host.innerHTML = `<h2>${t('vocab.title')}</h2>
+    <p class="hint">${t('vocab.hint')}</p>
     <ul class="vocab-list">${items}</ul>
-    ${nextStepButton('grammar', 'La grammaire')}`;
+    ${nextStepButton('grammar', t('next.grammar'))}`;
   host.querySelector('.vocab-list').addEventListener('click', (e) => {
     const b = e.target.closest('[data-i]');
     if (b) { speech.stop(); speech.say(lesson.vocabulary[Number(b.dataset.i)].es); }
@@ -496,28 +488,25 @@ function viewVocab(host, lesson) {
 
 function viewGrammar(host, lesson) {
   const g = lesson.grammar;
-  if (!g) { host.innerHTML = `<p class="empty">Pas de grammaire pour cette histoire.</p>${nextStepButton('exercises', 'Les exercices')}`; return; }
-  const examples = (g.examples || []).map((ex) => `<li><div class="es">${esc(ex.es)}</div><div class="fr">${esc(ex.fr)}</div></li>`).join('');
+  if (!g) { host.innerHTML = `<p class="empty">${t('grammar.none')}</p>${nextStepButton('exercises', t('next.exercises'))}`; return; }
+  const examples = (g.examples || []).map((ex) => `<li><div class="es">${esc(ex.es)}</div><div class="fr">${esc(tx(ex, 'fr'))}</div></li>`).join('');
   host.innerHTML = `<div class="grammar">
-      <h2>${esc(g.title)}</h2>
-      <div class="expl">${paragraphs(g.explanation)}</div>
-      ${examples ? `<h3>Dans l'histoire</h3><ul class="examples">${examples}</ul>` : ''}
+      <h2>${esc(tx(g, 'title'))}</h2>
+      <div class="expl">${paragraphs(tx(g, 'explanation'))}</div>
+      ${examples ? `<h3>${t('grammar.inStory')}</h3><ul class="examples">${examples}</ul>` : ''}
     </div>
-    ${nextStepButton('exercises', 'Les exercices')}`;
+    ${nextStepButton('exercises', t('next.exercises'))}`;
 }
 
 /* --- Exercises --- */
 
-const KIND_LABEL = {
-  choice: 'Compréhension', truefalse: 'Vrai ou faux ?', fill: 'Complète la phrase', translate: 'Traduis en espagnol',
-};
 
 function viewExercises(host, lesson) {
   const exercises = lesson.exercises || [];
   const answers = current.answers;
 
   const render = () => {
-    host.innerHTML = `<h2>Exercices</h2>
+    host.innerHTML = `<h2>${t('ex.title')}</h2>
       ${exercises.map((ex, i) => renderExercise(ex, i, answers[i])).join('')}
       <div id="score"></div>`;
     updateScore();
@@ -536,8 +525,8 @@ function viewExercises(host, lesson) {
     const msg = score === exercises.length ? '¡Perfecto!' : score >= exercises.length * 0.7 ? '¡Muy bien!' : '¡Bien! Sigue así';
     box.innerHTML = `<div class="score"><strong>${score} / ${exercises.length}</strong>${msg}
       <div style="margin-top:12px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
-        <button type="button" class="btn" id="retry">↺ Recommencer</button>
-        <button type="button" class="btn primary" data-goto="reply">À toi d'écrire →</button>
+        <button type="button" class="btn" id="retry">${t('ex.retry')}</button>
+        <button type="button" class="btn primary" data-goto="reply">${t('ex.toReply')}</button>
       </div></div>`;
     box.querySelector('#retry').addEventListener('click', () => {
       for (const k of Object.keys(answers)) delete answers[k];
@@ -571,12 +560,12 @@ function viewExercises(host, lesson) {
 
 function feedback(ex, a) {
   if (!a || a.pending) return '';
-  return `<div class="feedback ${a.correct ? 'ok' : 'ko'}">${a.correct ? '✓ ¡Correcto!' : '✗ Pas tout à fait.'}
-    ${ex.explanation ? `<span class="why">${esc(ex.explanation)}</span>` : ''}</div>`;
+  return `<div class="feedback ${a.correct ? 'ok' : 'ko'}">${a.correct ? t('ex.correct') : t('ex.wrong')}
+    ${tx(ex, 'explanation') ? `<span class="why">${esc(tx(ex, 'explanation'))}</span>` : ''}</div>`;
 }
 
 function renderExercise(ex, i, a) {
-  const head = `<div class="kind">${KIND_LABEL[ex.type] || ''}</div>`;
+  const head = `<div class="kind">${t(`ex.${ex.type}`)}</div>`;
   const locked = a && !a.pending ? 'disabled' : '';
   let body = '';
   if (ex.type === 'choice') {
@@ -595,19 +584,19 @@ function renderExercise(ex, i, a) {
     const [before, after] = ex.sentence.split('___');
     const filled = a ? `<span class="blank">${esc(ex.answer)}</span>` : '<span class="blank">&nbsp;</span>';
     body = `<p class="q"><span class="num">${i + 1}.</span>${esc(before)}${filled}${esc(after ?? '')}</p>
-      ${ex.hint ? `<p class="hint">${esc(ex.hint)}</p>` : ''}
+      ${tx(ex, 'hint') ? `<p class="hint">${esc(tx(ex, 'hint'))}</p>` : ''}
       <div class="options inline">${ex.options.map((o) => {
         const cls = a ? (o === ex.answer ? 'correct' : o === a.choice ? 'wrong' : '') : '';
         return `<button type="button" class="option ${cls}" data-ex="${i}" data-val="${esc(o)}" ${locked}>${esc(o)}</button>`;
       }).join('')}</div>`;
   } else if (ex.type === 'translate') {
-    body = `<p class="q"><span class="num">${i + 1}.</span>« ${esc(ex.fr)} »</p>
-      <p class="hint">Dis-le à voix haute ou écris-le sur un papier, puis regarde la réponse.</p>
+    body = `<p class="q"><span class="num">${i + 1}.</span>« ${esc(tx(ex, 'fr'))} »</p>
+      <p class="hint">${t('ex.sayIt')}</p>
       ${a ? `<div class="reveal">${esc(ex.es)}</div>` : ''}
       <div class="options inline" style="margin-top:10px">
-        ${!a ? `<button type="button" class="option" data-ex="${i}" data-act="reveal">Voir la réponse</button>`
-          : a.pending ? `<button type="button" class="option" data-ex="${i}" data-act="yes">J'avais bon</button>
-                 <button type="button" class="option" data-ex="${i}" data-act="no">Pas tout à fait</button>` : ''}
+        ${!a ? `<button type="button" class="option" data-ex="${i}" data-act="reveal">${t('ex.reveal')}</button>`
+          : a.pending ? `<button type="button" class="option" data-ex="${i}" data-act="yes">${t('ex.gotIt')}</button>
+                 <button type="button" class="option" data-ex="${i}" data-act="no">${t('ex.notQuite')}</button>` : ''}
       </div>`;
   }
   return `<div class="exercise">${head}${body}${feedback(ex, a)}</div>`;
@@ -619,16 +608,16 @@ function viewReply(host, lesson) {
   const r = lesson.reply || {};
   const draft = store.data.drafts[lesson.id] || '';
   const to = config.authorName || '';
-  host.innerHTML = `<h2>À toi d'écrire</h2>
+  host.innerHTML = `<h2>${t('reply.title')}</h2>
     <div class="grammar">
       <p style="font-family:var(--serif);font-size:1.15rem;margin:0 0 6px">${esc(r.prompt || '¿Qué te ha parecido esta historia?')}</p>
-      ${r.promptFr ? `<p class="hint" style="margin:0">${esc(r.promptFr)}</p>` : ''}
+      ${tx(r, 'promptFr') ? `<p class="hint" style="margin:0">${esc(tx(r, 'promptFr'))}</p>` : ''}
     </div>
-    <p class="hint" style="margin-top:14px">Écris ta réponse en espagnol${to ? ` et envoie-la à ${esc(to)}` : ''}. Pas grave s'il y a des fautes !</p>
+    <p class="hint" style="margin-top:14px">${t('reply.hint', { to: to ? t('reply.to', { name: esc(to) }) : '' })}</p>
     <textarea id="draft" placeholder="Escribe aquí…" lang="es" spellcheck="true">${esc(draft)}</textarea>
     <div class="toolbar" style="margin-top:10px">
-      <button type="button" class="btn primary" id="send">Envoyer${to ? ` à ${esc(to)}` : ''}</button>
-      <button type="button" class="btn" id="copy">Copier</button>
+      <button type="button" class="btn primary" id="send">${to ? t('reply.sendTo', { name: esc(to) }) : t('reply.send')}</button>
+      <button type="button" class="btn" id="copy">${t('common.copy')}</button>
     </div>
     <p class="hint" id="sent-msg" role="status"></p>`;
   const ta = host.querySelector('#draft');
@@ -636,13 +625,13 @@ function viewReply(host, lesson) {
   ta.addEventListener('input', () => { store.data.drafts[lesson.id] = ta.value; store.save(); });
   const text = () => `${lesson.title}\n\n${ta.value.trim()}`;
   const copy = async () => {
-    try { await navigator.clipboard.writeText(text()); msg.textContent = 'Copié ! Tu peux le coller dans un message.'; } catch (_) { ta.select(); msg.textContent = 'Sélectionne le texte et copie-le.'; }
+    try { await navigator.clipboard.writeText(text()); msg.textContent = t('common.copied'); } catch (_) { ta.select(); msg.textContent = t('common.selectCopy'); }
   };
   host.querySelector('#copy').addEventListener('click', copy);
   host.querySelector('#send').addEventListener('click', async () => {
-    if (!ta.value.trim()) { msg.textContent = "Écris d'abord quelque chose."; ta.focus(); return; }
+    if (!ta.value.trim()) { msg.textContent = t('common.writeFirst'); ta.focus(); return; }
     if (navigator.share) {
-      try { await navigator.share({ text: text() }); msg.textContent = '¡Enviado!'; } catch (_) { /* cancelled */ }
+      try { await navigator.share({ text: text() }); msg.textContent = t('reply.sent'); } catch (_) { /* cancelled */ }
     } else {
       await copy();
     }
@@ -654,8 +643,8 @@ function viewReply(host, lesson) {
 async function renderWords() {
   setActiveNav('words');
   speech.stop();
-  document.title = 'Mes mots · Cartas de viaje';
-  app.innerHTML = '<p class="loading">Chargement…</p>';
+  document.title = `${t('words.title')} · Cartas de viaje`;
+  app.innerHTML = `<p class="loading">${t('common.loading')}</p>`;
   const opened = index.filter((l) => store.data.seen[l.id]);
   const lessons = await Promise.all(opened.map((l) => loadLesson(l.id).catch(() => null)));
   const cards = [];
@@ -663,7 +652,7 @@ async function renderWords() {
     for (const v of lesson.vocabulary || []) cards.push({ key: `${lesson.id}::${v.es}`, v, lesson });
   }
   if (!cards.length) {
-    app.innerHTML = `<h1>Mes mots</h1><p class="empty">Ouvre une histoire : ses mots apparaîtront ici pour les réviser.</p>`;
+    app.innerHTML = `<h1>${t('words.title')}</h1><p class="empty">${t('words.empty')}</p>`;
     return;
   }
   // Simple Leitner boxes: 0 = new/à revoir, higher = known better. Lowest boxes come first.
@@ -679,25 +668,25 @@ async function renderWords() {
   const draw = () => {
     const known = cards.filter((c) => box(c) >= 2).length;
     if (pos >= deck.length) {
-      app.innerHTML = `<h1>Mes mots</h1>
-        <div class="score"><strong>${known} / ${cards.length}</strong>mots bien connus</div>
-        <div class="flash-actions" style="margin-top:16px"><button type="button" class="btn primary" id="again">↺ Encore une fois</button></div>`;
+      app.innerHTML = `<h1>${t('words.title')}</h1>
+        <div class="score"><strong>${known} / ${cards.length}</strong>${t('words.known')}</div>
+        <div class="flash-actions" style="margin-top:16px"><button type="button" class="btn primary" id="again">${t('words.again')}</button></div>`;
       $('#again').addEventListener('click', () => { shuffleDeck(); pos = 0; flipped = false; draw(); });
       return;
     }
     const c = deck[pos];
-    app.innerHTML = `<h1>Mes mots</h1>
-      <div class="stats"><span>Carte ${pos + 1} / ${deck.length}</span><span>·</span><span>${known} bien connus</span></div>
+    app.innerHTML = `<h1>${t('words.title')}</h1>
+      <div class="stats"><span>${t('words.card', { n: pos + 1, total: deck.length })}</span><span>·</span><span>${t('words.knownN', { n: known })}</span></div>
       <div class="flash"><button type="button" class="flash-card" id="card">
         <div class="front">${esc(c.v.es)}</div>
-        ${flipped ? `<div class="back-side"><div class="fr">${esc(c.v.fr)}</div>${c.v.note ? `<div class="ex">${esc(c.v.note)}</div>` : ''}</div>
+        ${flipped ? `<div class="back-side"><div class="fr">${esc(tx(c.v, 'fr'))}</div>${tx(c.v, 'note') ? `<div class="ex">${esc(tx(c.v, 'note'))}</div>` : ''}</div>
           <div class="from-lesson">${esc(c.lesson.title)}</div>`
-          : '<div class="hint" style="margin-top:14px">Touche pour voir la traduction</div>'}
+          : `<div class="hint" style="margin-top:14px">${t('words.tap')}</div>`}
       </button></div>
       <div class="flash-actions">
-        ${speech.supported ? '<button type="button" class="btn" id="say">${SPEAK} Écouter</button>' : ''}
-        ${flipped ? `<button type="button" class="btn" id="again-card">À revoir</button>
-          <button type="button" class="btn primary" id="knew">✓ Je savais</button>` : ''}
+        ${speech.supported ? `<button type="button" class="btn" id="say">${SPEAK} ${t('common.listen')}</button>` : ''}
+        ${flipped ? `<button type="button" class="btn" id="again-card">${t('words.review')}</button>
+          <button type="button" class="btn primary" id="knew">${t('words.knew')}</button>` : ''}
       </div>`;
     $('#card').addEventListener('click', () => { flipped = !flipped; draw(); });
     $('#say')?.addEventListener('click', () => { speech.stop(); speech.say(c.v.es); });
@@ -724,11 +713,41 @@ $('#font-btn').addEventListener('click', () => {
 });
 applyScale();
 
+/* ---------- Language (French for Maman, English for friends) ---------- */
+
+const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+const speedLabel = () => t('story.speed', { s: speech.slow ? t('story.slow') : t('story.normal') });
+
+// Texts that live outside the page content: tab bar, top buttons.
+function applyChrome() {
+  $('[data-nav="home"] span').textContent = t('nav.home');
+  $('[data-nav="words"] span').textContent = t('nav.words');
+  $('[data-nav="quiz"] span').textContent = t('nav.quiz');
+  $('[data-nav="write"] span').textContent = config.authorName ? t('nav.write', { name: config.authorName }) : t('nav.writeNoName');
+  $('#font-btn').setAttribute('aria-label', t('top.size'));
+  $('#help-btn').setAttribute('aria-label', t('top.help'));
+  document.querySelectorAll('#lang-switch [data-lang]').forEach((b) => b.setAttribute('aria-pressed', b.dataset.lang === I18N.lang));
+}
+
+I18N.setLang(store.data.lang);
+$('#lang-switch').addEventListener('click', (e) => {
+  const b = e.target.closest('[data-lang]');
+  if (!b || b.dataset.lang === I18N.lang) return;
+  store.data.lang = b.dataset.lang;
+  store.save();
+  I18N.setLang(store.data.lang);
+  applyChrome();
+  // Redraw the current page in the new language, keeping the lesson's progress.
+  if (current) renderLesson(current.lesson.id, current.step);
+  else route();
+});
+
 /* ---------- Router ---------- */
 
 async function route() {
   const parts = location.hash.replace(/^#\/?/, '').split('/').map(decodeURIComponent);
   closeSheet();
+  app.classList.toggle('is-home', !['lecon', 'mots', 'quiz', 'ecrire'].includes(parts[0]));
   if (parts[0] === 'lecon' && parts[1]) {
     const sameLesson = current && current.lesson.id === parts[1] && $('#step');
     if (sameLesson) {
@@ -743,6 +762,7 @@ async function route() {
   current = null;
   window.scrollTo(0, 0);
   if (parts[0] === 'mots') await renderWords();
+  else if (parts[0] === 'quiz') await Quiz.render();
   else if (parts[0] === 'ecrire') renderWrite();
   else renderHome();
 }
@@ -750,12 +770,12 @@ async function route() {
 (async function start() {
   const [cfg, idx] = await Promise.allSettled([getJSON('config.json'), getJSON('lessons/index.json')]);
   if (cfg.status === 'fulfilled') config = Object.assign(config, cfg.value);
-  $('[data-nav="write"] span').textContent = config.authorName ? `Écrire à ${config.authorName}` : 'Écrire';
+  applyChrome();
   try {
     if (idx.status === 'rejected') throw idx.reason;
     index = idx.value;
   } catch (err) {
-    app.innerHTML = '<p class="empty">Impossible de charger les histoires. Vérifie la connexion internet.</p>';
+    app.innerHTML = `<p class="empty">${t('common.loadError')}</p>`;
     return;
   }
   window.addEventListener('hashchange', route);

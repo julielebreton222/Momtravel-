@@ -1,8 +1,8 @@
 // The app's own files (code, styles, icons) come straight from the cache and refresh in the
 // background, so the app opens instantly. Lessons always try the network first, so a new story
 // shows up as soon as it is published; the cached copy is the fallback when offline.
-const CACHE = 'cartas-v6';
-const SHELL = ['./', 'index.html', 'styles.css', 'scene.js', 'tour.js', 'app.js', 'icon.svg', 'manifest.webmanifest', 'config.json'];
+const CACHE = 'cartas-v7';
+const SHELL = ['./', 'index.html', 'styles.css', 'i18n.js', 'scene.js', 'tour.js', 'quiz.js', 'app.js', 'icon.svg', 'manifest.webmanifest', 'config.json'];
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL)).then(() => self.skipWaiting()));

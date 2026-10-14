@@ -1,5 +1,23 @@
 [
   {
+    "id": "2026-10-michoacan-2-mariposas",
+    "title": "Las monarcas y la mariposa de la muerte",
+    "titleFr": "Les monarques et le papillon de la mort",
+    "place": "Michoacán, Mexique",
+    "date": "2026-10-14",
+    "landscape": "forest",
+    "summaryFr": "Le voyage incroyable des papillons monarques jusqu'aux forêts du Michoacán, les âmes qui reviennent avec eux… et la « mariposa de la muerte » du folklore mexicain."
+  },
+  {
+    "id": "2026-10-michoacan-1-dia-de-muertos",
+    "title": "El Día de Muertos: flores, velas y almas",
+    "titleFr": "Le Jour des Morts : fleurs, bougies et âmes",
+    "place": "Michoacán, Mexique",
+    "date": "2026-10-14",
+    "landscape": "countryside",
+    "summaryFr": "D'où vient le Jour des Morts, ce qu'on met sur une ofrenda, pourquoi les fleurs de cempasúchil guident les âmes… et d'où vient « la carrera de las almas »."
+  },
+  {
     "id": "2026-10-fuego-y-hielo",
     "title": "Una noche de fuego y hielo",
     "titleFr": "Une soirée feu et glace",

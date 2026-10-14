@@ -7,10 +7,50 @@ const Welcome = (() => {
   let onDone = () => {};
 
   const el = (html) => {
-    const t = document.createElement('template');
-    t.innerHTML = html.trim();
-    return t.content.firstElementChild;
+    const tpl = document.createElement('template');
+    tpl.innerHTML = html.trim();
+    return tpl.content.firstElementChild;
   };
+
+  const TEXT = {
+    fr: {
+      eyebrow: (n) => `Pour toi, ${n ? n.toLowerCase() : ''}`, title: (f) => `Un message de ${f || 'moi'}`,
+      listen: 'Écouter le message', pause: 'Mettre en pause', tap: 'Touche le bouton pour écouter',
+      soundFail: "Le son n'a pas pu démarrer. Vérifie que le téléphone n'est pas en silencieux.",
+      replay: 'Tu peux le réécouter quand tu veux avec le bouton « ? » en haut.',
+      discover: "Découvrir l'app →", close: 'Fermer', skip: 'Passer', next: 'Suivant', go: "C'est parti !",
+      steps: [
+        'Voici ton voyage. Chaque étape sur le chemin est une histoire que je t\'envoie, depuis là où je suis.',
+        'Touche une étape pour l\'ouvrir. Celle qui flotte et qui brille, c\'est la prochaine à faire.',
+        'Chaque timbre vert, c\'est une histoire terminée. Tu peux refaire les leçons autant que tu veux.',
+        'Ici, tous les mots des histoires, en petites cartes à retourner pour les réviser.',
+        'Le quiz : quelques minutes par jour pour que les mots restent dans ta tête. Il revient sur ceux qui sont difficiles.',
+        'Et ici, tu peux m\'écrire ce que tu veux, quand tu veux. En espagnol ou en français !',
+        'Ici, tu changes la langue des explications : français ou anglais. Les histoires restent en espagnol.',
+        'Ce bouton agrandit le texte, si tu veux lire plus confortablement.',
+        'Et ici, tu peux réécouter mon message ou refaire cette visite. ¡Buen viaje, mamá!',
+      ],
+    },
+    en: {
+      eyebrow: () => 'For you', title: (f) => `A message from ${f || 'me'}`,
+      listen: 'Play the message', pause: 'Pause', tap: 'Tap the button to listen',
+      soundFail: "The sound couldn't start. Check that the phone isn't on silent.",
+      replay: 'You can play it again any time with the “?” button at the top.',
+      discover: 'Explore the app →', close: 'Close', skip: 'Skip', next: 'Next', go: "Let's go!",
+      steps: [
+        'This is the journey. Each stop on the path is a story from wherever I am.',
+        'Tap a stop to open it. The one that floats and glows is the next one to do.',
+        'Each green stamp is a finished story. You can redo the lessons as often as you like.',
+        'Here are all the words from the stories, as little cards to flip and review.',
+        'The quiz: a few minutes a day so the words stick. It comes back to the hard ones.',
+        'And here you can write to me about anything, any time. In Spanish or English!',
+        'Switch the help language here: French or English. The stories stay in Spanish.',
+        'This button makes the text bigger, for more comfortable reading.',
+        'And here you can play my message again or redo this tour. ¡Buen viaje!',
+      ],
+    },
+  };
+  const T = () => TEXT[I18N.lang] || TEXT.fr;
 
   /* ---------- Voice message ---------- */
 
@@ -23,16 +63,16 @@ const Welcome = (() => {
           <path d="M4 14 L60 52 L116 14" fill="none" stroke="#d8cbb0" stroke-width="3" stroke-linejoin="round"/>
           <circle cx="98" cy="22" r="11" fill="#e9785a"/><path d="M98 27.5 C 92.5 24, 92 18.5, 95.5 17.5 C 97 17.1, 98 18.2, 98 19.2 C 98 18.2, 99 17.1, 100.5 17.5 C 104 18.5, 103.5 24, 98 27.5 Z" fill="#fbf6ea"/>
         </svg>
-        <p class="intro-eyebrow">Pour toi, ${config.learnerName ? config.learnerName.toLowerCase() : ''}</p>
-        <h1 id="intro-title">Un message de ${from || 'moi'}</h1>
-        <button type="button" class="play" id="intro-play" aria-label="Écouter le message">
+        <p class="intro-eyebrow">${T().eyebrow(config.learnerName)}</p>
+        <h1 id="intro-title">${T().title(from)}</h1>
+        <button type="button" class="play" id="intro-play" aria-label="${T().listen}">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5.5v13l11-6.5z"/><g class="i-pause"><rect x="7" y="5" width="3.6" height="14" rx="1"/><rect x="13.4" y="5" width="3.6" height="14" rx="1"/></g></svg>
         </button>
         <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         <div class="track"><span id="intro-progress"></span></div>
-        <p class="intro-hint" id="intro-hint">Touche le bouton pour écouter</p>
+        <p class="intro-hint" id="intro-hint">${T().tap}</p>
         <div class="intro-actions">
-          <button type="button" class="btn primary" id="intro-next">${thenTour ? 'Découvrir l\'app →' : 'Fermer'}</button>
+          <button type="button" class="btn primary" id="intro-next">${thenTour ? T().discover : T().close}</button>
         </div>
       </div>
     </div>`);
@@ -46,11 +86,11 @@ const Welcome = (() => {
     const bar = overlay.querySelector('#intro-progress');
     const setPlaying = (on) => {
       overlay.classList.toggle('playing', on);
-      play.setAttribute('aria-label', on ? 'Mettre en pause' : 'Écouter le message');
+      play.setAttribute('aria-label', on ? T().pause : T().listen);
     };
     play.addEventListener('click', () => {
       if (audio.paused) {
-        audio.play().then(() => { hint.textContent = ''; }).catch(() => { hint.textContent = "Le son n'a pas pu démarrer. Vérifie que le téléphone n'est pas en silencieux."; });
+        audio.play().then(() => { hint.textContent = ''; }).catch(() => { hint.textContent = T().soundFail; });
       } else {
         audio.pause();
       }
@@ -63,7 +103,7 @@ const Welcome = (() => {
     audio.addEventListener('ended', () => {
       setPlaying(false);
       bar.style.width = '100%';
-      hint.textContent = 'Tu peux le réécouter quand tu veux avec le bouton « ? » en haut.';
+      hint.textContent = T().replay;
       overlay.querySelector('#intro-next').focus();
     });
     overlay.querySelector('#intro-next').addEventListener('click', () => {
@@ -78,15 +118,18 @@ const Welcome = (() => {
 
   /* ---------- Guided tour ---------- */
 
-  const STEPS = () => [
-    { target: '.scene', text: 'Voici ton voyage. Chaque étape sur le chemin est une histoire que je t\'envoie, depuis là où je suis.', place: 'inside' },
-    { target: '.stop.current, .stop.lesson', text: 'Touche une étape pour l\'ouvrir. Celle qui flotte et qui brille, c\'est la prochaine à faire.' },
-    { target: '.stamps', text: 'Chaque timbre vert, c\'est une histoire terminée. Tu peux refaire les leçons autant que tu veux.' },
-    { target: '[data-nav="words"]', text: 'Ici, tous les mots des histoires, en petites cartes à retourner pour les réviser.' },
-    { target: '[data-nav="write"]', text: `Et ici, tu peux m'écrire ce que tu veux, quand tu veux. En espagnol ou en français !` },
-    { target: '#font-btn', text: 'Ce bouton agrandit le texte, si tu veux lire plus confortablement.' },
-    { target: '#help-btn', text: 'Et ici, tu peux réécouter mon message ou refaire cette visite. ¡Buen viaje, mamá!' },
+  const TARGETS = [
+    { target: '.scene', place: 'inside' },
+    { target: '.stop.current, .stop.lesson' },
+    { target: '.stamps' },
+    { target: '[data-nav="words"]' },
+    { target: '[data-nav="quiz"]' },
+    { target: '[data-nav="write"]' },
+    { target: '#lang-switch' },
+    { target: '#font-btn' },
+    { target: '#help-btn' },
   ];
+  const STEPS = () => TARGETS.map((s, i) => ({ ...s, text: T().steps[i] }));
 
   function tour() {
     if (location.hash && location.hash !== '#/') location.hash = '#/';
@@ -97,8 +140,8 @@ const Welcome = (() => {
       <p class="tour-text"></p>
       <div class="tour-row">
         <span class="tour-count"></span>
-        <button type="button" class="tour-skip">Passer</button>
-        <button type="button" class="btn primary tour-next">Suivant</button>
+        <button type="button" class="tour-skip">${T().skip}</button>
+        <button type="button" class="btn primary tour-next">${T().next}</button>
       </div></div>`);
     document.body.append(spot, card);
 
@@ -111,9 +154,9 @@ const Welcome = (() => {
     };
     function place() {
       const s = steps[i];
-      const t = document.querySelector(s.target);
-      if (!t) return;
-      let r = t.getBoundingClientRect();
+      const target = document.querySelector(s.target);
+      if (!target) return;
+      let r = target.getBoundingClientRect();
       if (s.place === 'inside') {
         // The map is taller than the screen: highlight the part that is visible.
         r = { left: r.left, right: r.right, width: r.width, top: Math.max(r.top, 60), bottom: Math.min(r.bottom, window.innerHeight * 0.55) };
@@ -130,12 +173,12 @@ const Welcome = (() => {
     }
     function show() {
       const s = steps[i];
-      const t = document.querySelector(s.target);
-      if (!t) { next(); return; }
+      const target = document.querySelector(s.target);
+      if (!target) { next(); return; }
       card.querySelector('.tour-text').textContent = s.text;
       card.querySelector('.tour-count').textContent = `${i + 1} / ${steps.length}`;
-      card.querySelector('.tour-next').textContent = i === steps.length - 1 ? 'C\'est parti !' : 'Suivant';
-      if (s.place !== 'inside' && !t.closest('.topbar, .tabbar')) t.scrollIntoView({ block: 'center', behavior: 'instant' });
+      card.querySelector('.tour-next').textContent = i === steps.length - 1 ? T().go : T().next;
+      if (s.place !== 'inside' && !target.closest('.topbar, .tabbar')) target.scrollIntoView({ block: 'center', behavior: 'instant' });
       if (s.place === 'inside') window.scrollTo({ top: 0, behavior: 'instant' });
       requestAnimationFrame(place);
     }

@@ -8,6 +8,8 @@ is **intermediate (B1)**. All UI text, translations and explanations are in Fren
 
 - `index.html`, `app.js`, `styles.css`, `sw.js`: the app (vanilla JS, hash routing)
 - `scene.js`: paints the paper-cut home map (one landscape band per lesson)
+- `i18n.js`: interface texts in French and English (switch at the top). Lessons carry English next to French: `en` beside `fr` in sentences and examples, `titleEn`, `summaryEn`, `placeEn`, `noteEn`, `captionEn`, `explanationEn`, `hintEn`, `promptEn`
+- `quiz.js`: spaced-repetition quiz over the vocabulary of opened lessons
 - `tour.js`: first-visit welcome (Julie's voice note in `media/intro-julie.mp3`) and the guided tour
 - `icon.svg`, `icons/`: app icon (mother and daughter hugging at sunset); regenerate the PNGs from `icons/icon-square.svg` if it changes
 - `config.json`: names shown in the app (`learnerName`, `authorName`)
@@ -30,7 +32,7 @@ When asked to "convert the new stories" (or similar), do this for each story in 
    - Keep the author's voice, personal details, names and feelings. Don't invent events.
      You may lightly simplify or reorder for clarity.
    - Aim for about 200–400 words, in 3–6 paragraphs. Split long stories into several lessons ("parte 1", "parte 2").
-   - Every sentence gets a natural French translation (`fr`), not a word-for-word one.
+   - Every sentence gets a natural French translation (`fr`) and English translation (`en`), not word-for-word ones. Every French help text in the lesson needs its English twin (see `i18n.js` notes above).
    - The narrator's gender: keep it as the author wrote it. If unknown, prefer phrasings with no
      gender agreement (in both the Spanish and the French).
    - Add photos as `{ "image": "lessons/media/<id>/x.jpg", "caption": "…" }` blocks between paragraphs.
